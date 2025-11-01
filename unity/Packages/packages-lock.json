@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.mackysoft.serializereference-extensions": {
-      "version": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions",
+      "version": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions#1.1.9",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "ee6f6ce519e64f3eeb84865e52aaa23785800133"
+      "hash": "cdcbbedf21f4ccfc8108a2c893ad073e02c9ff62"
     },
     "com.unity.ai.navigation": {
       "version": "2.0.9",

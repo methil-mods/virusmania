@@ -159,6 +159,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9e402a1afd4551bd90266c0229cf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Player.PlayerController
+  updatables:
+  - rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!81 &1748281298581342933
 AudioListener:
   m_ObjectHideFlags: 0
