@@ -28,6 +28,7 @@ namespace Core.Player
             if (controller == null || controller.body == null || _playerMovement == null) return;
             Gizmos.color = Color.yellow;
             Vector3 origin = controller.body.transform.position;
+            origin = origin.AddY(1.4f);
             Vector3 center = origin + _playerMovement.direction * interactionDistance;
             Gizmos.DrawWireSphere(center, interactionRadius);
         }

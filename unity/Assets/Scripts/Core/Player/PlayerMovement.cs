@@ -1,5 +1,6 @@
 using System;
 using Framework;
+using Framework.Extensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,6 +45,7 @@ namespace Core.Player
             Gizmos.color = Color.cyan;
 
             Vector3 origin = controller.body.transform.position;
+            origin = origin.AddY(1.4f);
             Vector3 end = origin + direction * 2f;
             Gizmos.DrawLine(origin, end);
             Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 150, 0) * Vector3.forward;

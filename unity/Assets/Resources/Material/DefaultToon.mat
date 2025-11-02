@@ -7,18 +7,18 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DefaultOutline
-  m_Shader: {fileID: 4800000, guid: ff7f2aca5d3f42edbad9a22bab9bebe6, type: 3}
+  m_Name: DefaultToon
+  m_Shader: {fileID: 4800000, guid: 78ba6c2256ec3954188411a3a2382dc8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - CLIP_SPACE
+  - _FOG
+  - _TOON_RECEIVE_SHADOWS
   m_InvalidKeywords:
+  - CLIP_SPACE
   - _ADDITIONAL_LIGHTS_ENABLED
   - _ENVIRONMENT_LIGHTING_ENABLED
-  - _FOG
   - _FRESNEL
-  - _TOON_RECEIVE_SHADOWS
   - _ZWRITE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -108,8 +108,8 @@ Material:
     - _Cull: 2
     - _CustomNormals: 0
     - _Cutoff: 0.5
-    - _DepthOffsetFactor: -6.15
-    - _DepthOffsetUnits: -6.95
+    - _DepthOffsetFactor: 0.51
+    - _DepthOffsetUnits: 0.82
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -130,7 +130,7 @@ Material:
     - _Parallax: 0.005
     - _PureShadowColor: 0
     - _QueueOffset: 0
-    - _Ramp0: -0.22
+    - _Ramp0: -0.19
     - _Ramp1: 0.5
     - _RampSmoothness: 1.12
     - _RampTriple: 0
@@ -141,7 +141,7 @@ Material:
     - _Reflections: 0
     - _RimStep: 0.686
     - _RimStepSmooth: 0.4
-    - _Scale: 0.05
+    - _Scale: 0.1
     - _ShadowMask: 0
     - _ShadowStep: 0.708
     - _ShadowStepSmooth: 0.248
