@@ -207,6 +207,7 @@ MonoBehaviour:
       data:
         interactionDistance: 1.5
         interactionRadius: 1
+        interactionAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!81 &1748281298581342933
 AudioListener:
   m_ObjectHideFlags: 0
