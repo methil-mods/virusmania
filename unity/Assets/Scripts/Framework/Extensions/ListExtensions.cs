@@ -11,5 +11,4 @@ namespace Framework.Extensions
             return source.OfType<T>().FirstOrDefault();
         }
     }
-
 }

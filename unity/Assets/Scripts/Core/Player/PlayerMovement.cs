@@ -33,14 +33,14 @@ namespace Core.Player
             Vector3 velocityChange = currentVelocity - rb.linearVelocity;
             velocityChange.y = 0;
             rb.AddForce(velocityChange, ForceMode.VelocityChange);
-
-            // ✅ Met à jour la direction
+            
             if (currentVelocity.sqrMagnitude > 0.001f)
                 direction = currentVelocity.normalized;
         }
 
         public override void OnDrawGizmos(PlayerController controller)
         {
+            if (direction == Vector3.zero) return;
             Gizmos.color = Color.cyan;
 
             Vector3 origin = controller.body.transform.position;

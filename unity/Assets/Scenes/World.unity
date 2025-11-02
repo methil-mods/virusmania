@@ -595,6 +595,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2837795028405338189, guid: 3f24c5145ef554bf4b1e473d4ee6d8c9, type: 3}
+      propertyPath: managedReferences[9208438514658574535].interactionRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837795028405338189, guid: 3f24c5145ef554bf4b1e473d4ee6d8c9, type: 3}
+      propertyPath: managedReferences[9208438514658574535].interactionDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4380091940914327690, guid: 3f24c5145ef554bf4b1e473d4ee6d8c9, type: 3}
       propertyPath: m_Name
       value: Player
