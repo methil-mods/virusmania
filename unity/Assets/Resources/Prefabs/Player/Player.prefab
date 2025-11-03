@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041574615185197897}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6926313559994323409}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &7202077102157196803
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -156,8 +156,9 @@ MonoBehaviour:
       type: {class: PlayerInteraction, ns: Core.Player, asm: Assembly-CSharp}
       data:
         interactionDistance: 1.5
-        interactionRadius: 1
+        interactionRadius: 0.4
         interactionAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+        interactionHoldAction: {fileID: -9041382681871478144, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!81 &1748281298581342933
 AudioListener:
   m_ObjectHideFlags: 0

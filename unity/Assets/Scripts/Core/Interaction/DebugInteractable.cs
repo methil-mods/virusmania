@@ -12,5 +12,10 @@ namespace Core.Interaction
         {
             Debug.Log("Interacting with " + gameObject.name);
         }
+        
+        public void InteractHold(PlayerController playerController)
+        {
+            Debug.Log("Interacting hold with " + gameObject.name);
+        }
     }
 }

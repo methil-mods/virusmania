@@ -39,6 +39,15 @@
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
                     "expectedControlType": "",
                     "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LongInteract",
+                    "type": "Button",
+                    "id": "26028281-9f9f-4b46-a9d3-43be26f1a0e5",
+                    "expectedControlType": "",
+                    "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
                 },
@@ -449,6 +458,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d54d7675-44c0-4a82-89da-002ccd50105b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "LongInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c72d16c5-f89c-49d2-a653-4e96ce168601",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LongInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
