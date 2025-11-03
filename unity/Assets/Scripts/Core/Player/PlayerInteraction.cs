@@ -11,8 +11,10 @@ namespace Core.Player
     public class PlayerInteraction : Updatable<PlayerController>
     {
         private PlayerMovement _playerMovement;
+        [Header("Interaction Settings")]
         [SerializeField] private float interactionDistance = 2f;
         [SerializeField] private float interactionRadius = 0.5f;
+        [Header("Interaction Input")]
         [SerializeField] private InputActionReference interactionAction;
 
         public override void Start(PlayerController controller)

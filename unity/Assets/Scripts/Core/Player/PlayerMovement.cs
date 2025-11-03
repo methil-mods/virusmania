@@ -9,14 +9,15 @@ namespace Core.Player
     [Serializable]
     public class PlayerMovement : Updatable<PlayerController>
     {
+        [Header("Movement Settings")]
         [SerializeField] private float speed = 5f;
         [SerializeField] private float acceleration = 10f;
+        [Header("Movement Input")]
         [SerializeField] private InputActionReference moveAction;
 
         private Rigidbody rb;
         private Vector3 currentVelocity;
-
-        // ✅ Variable publique pour la direction
+        
         [NonSerialized] public Vector3 direction = Vector3.zero;
 
         public override void Start(PlayerController controller)

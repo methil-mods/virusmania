@@ -7,9 +7,12 @@ namespace Core.Brief
 {
     public class BriefInterface : MonoBehaviour
     {
+        [Header("Panel References")]
         public RectTransform briefPanel;
+        [Header("Text References")]
         public TextMeshProUGUI briefNameText;
         public TextMeshProUGUI briefDescriptionText;
+        [Header("Button References")]
         public Button briefEndButton;
 
         public void Start()
