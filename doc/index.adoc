@@ -1,0 +1,12 @@
+= VirusMania Documentation
+
+[#gameplay]
+== Gameplay
+
+For this game jam, our goal is to work primarly on the gameplay, developping it and making it fun
+and enjoyable. To do that, we decide to sacrifice the game naration and history to have more time
+to spend on the gameplay loop, actions and diversity.
+
+You can find all the details about the gameplay in on the decated xref:./gameplay/index.adoc[Gameplay section]
+of this documentation.
+
