@@ -9,5 +9,10 @@ namespace Core.Item
         [Header("Item base property")]
         public string itemName;
         public string itemDescription;
+
+        public virtual HoldItem GetHoldItem()
+        {
+            return new HoldItem(this);
+        }
     }
 }

@@ -1,7 +1,9 @@
 using System;
 using Core.Interaction;
+using Core.Item;
 using Framework;
 using Framework.Extensions;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +18,23 @@ namespace Core.Player
         [SerializeField] private float interactionRadius = 0.5f;
         [Header("Interaction Input")]
         [SerializeField] private InputActionReference interactionAction;
+
+        private HoldItem _holdingItem;
+        public bool HasItem => _holdingItem != null;
+        
+        public HoldItem RemoveItem()
+        {
+            var item = _holdingItem;
+            _holdingItem = null;
+            return item;
+        }
+        
+        public bool GiveItem(HoldItem newItem)
+        {
+            if (_holdingItem != null) return false;
+            _holdingItem = newItem;
+            return true;
+        }
 
         public override void Start(PlayerController controller)
         {
@@ -36,8 +55,6 @@ namespace Core.Player
 
         public void Interact(PlayerController controller)
         {
-            Debug.LogWarning("Interacting...");
-            
             Vector3 origin = controller.body.transform.position;
             origin = origin.AddY(1.4f);
             Vector3 center = origin + _playerMovement.direction * interactionDistance;
@@ -48,7 +65,7 @@ namespace Core.Player
                 IInteractable interactable = hit.GetComponent<IInteractable>();
                 if (interactable != null)
                 {
-                    interactable.Interact();
+                    interactable.Interact(controller);
                 }
             }
         }
@@ -61,6 +78,20 @@ namespace Core.Player
             origin = origin.AddY(1.4f);
             Vector3 center = origin + _playerMovement.direction * interactionDistance;
             Gizmos.DrawWireSphere(center, interactionRadius);
+            
+            
+            if (_holdingItem != null && _holdingItem.Item != null)
+            {
+                GUIStyle style = new GUIStyle
+                {
+                    normal = new GUIStyleState { textColor = Color.yellow },
+                    alignment = TextAnchor.MiddleCenter,
+                    fontStyle = FontStyle.Bold
+                };
+#if UNITY_EDITOR
+                UnityEditor.Handles.Label(origin, _holdingItem.Item.itemName, style);
+#endif
+            }
         }
     }
 }

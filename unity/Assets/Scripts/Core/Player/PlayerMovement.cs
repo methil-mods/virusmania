@@ -25,10 +25,8 @@ namespace Core.Player
             if (moveAction == null) Debug.LogError("No player move action set in PlayerMovement");
             moveAction.action.Enable();
             
-            if (controller.body == null) Debug.LogError("No body set in PlayerController");
-            
-            rb = controller.body.GetComponent<Rigidbody>();
-            if (rb == null) Debug.LogError("No rigid body set in PlayerController body gameobject");
+            rb = controller.GetComponent<Rigidbody>();
+            if (rb == null) Debug.LogError("No rigid body set in PlayerController gameobject");
         }
 
         public override void FixedUpdate(PlayerController controller)

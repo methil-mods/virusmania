@@ -1,3 +1,4 @@
+using Core.Player;
 using UnityEngine;
 
 namespace Core.Interaction
@@ -7,7 +8,7 @@ namespace Core.Interaction
     /// </summary>
     public class DebugInteractable : MonoBehaviour, IInteractable
     {
-        public void Interact()
+        public void Interact(PlayerController playerController)
         {
             Debug.Log("Interacting with " + gameObject.name);
         }
