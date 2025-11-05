@@ -1,4 +1,3 @@
-using Core.Interaction;
 using UnityEngine;
 
 namespace Core.Item

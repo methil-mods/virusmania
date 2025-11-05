@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62aa5f3e24c34ef09489cc741430ff22, type: 3}
-  m_Name: TestItem
+  m_Name: ItemVirusT3ST
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.Item
-  itemName: TestItem
+  itemName: VirusT3ST
   itemDescription: 

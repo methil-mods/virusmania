@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c37c0fcf5c407ebf7a8b7af942d200, type: 3}
-  m_Name: ItemDatabase
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.ItemDatabase
-  Database:
+  m_Script: {fileID: 11500000, guid: f59fdae6dbb84ffab15f63827f438cd5, type: 3}
+  m_Name: VirusT3ST Recipe
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.Merge.MergeRecipe
+  inputItems:
   - {fileID: 11400000, guid: 39502d78a92174d59bded3c162ba419e, type: 2}
   - {fileID: 11400000, guid: 2efb76b9ef93843b3816f1e68cbaaec1, type: 2}
-  - {fileID: 11400000, guid: eef873dfaef0e4d03b1fd9a4b02f1464, type: 2}
+  resultItem: {fileID: 11400000, guid: eef873dfaef0e4d03b1fd9a4b02f1464, type: 2}
