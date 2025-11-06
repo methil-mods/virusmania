@@ -45,4 +45,17 @@ Simply the amount of time you have to create the virus
 [#breif-the-ressources]
 === The ressources
 
-A non exaustive list of all the ressources you will need.
+The ressources is bassicaly a list of ressources or materials.
+The list represent the amount of base materials you will need.
+
+[#execution]
+== The execution
+
+This phase is where you are going to create the virus. This step is compose of few basics one, first pickup one of the few virus base
+available in the lab. Then you will have to mutate and transform the base virus into the desired one. To do so you have a list of tools
+that you can use.
+
+- A syntetizer : It will syntetize mutation agents
+- A --- : It will allow merging mutation agents with viruses
+- A workbench : You can mix agents, viruses, and any chimical.
+
