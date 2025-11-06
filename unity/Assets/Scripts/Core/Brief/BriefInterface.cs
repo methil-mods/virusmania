@@ -7,12 +7,15 @@ namespace Core.Brief
 {
     public class BriefInterface : MonoBehaviour
     {
-        [Header("Panel References")]
+        [Header("Actual Brief Panel References")]
+        public RectTransform actualBriefPanel;
+        public TextMeshProUGUI actualBriefTitle;
+        public TextMeshProUGUI actualBriefDescription;
+        
+        [Header("New Brief Panel References")]
         public RectTransform briefPanel;
-        [Header("Text References")]
         public TextMeshProUGUI briefNameText;
         public TextMeshProUGUI briefDescriptionText;
-        [Header("Button References")]
         public Button briefEndButton;
 
         public void Start()
@@ -21,12 +24,25 @@ namespace Core.Brief
             briefEndButton.onClick.AddListener(HideBriefPanel);
         }
 
+        public void Update()
+        {
+            if (BriefController.Instance.actualBrief == null)
+            {
+                actualBriefPanel.gameObject.SetActive(false);
+            }
+            else
+            {
+                actualBriefPanel.gameObject.SetActive(true);
+                actualBriefTitle.text = BriefController.Instance.actualBrief.briefTitle;
+                actualBriefDescription.text = BriefController.Instance.actualBrief.briefDescription;
+            }
+        }
+
         public void SetupNewBriefShow(Brief brief)
         {
             briefPanel.gameObject.SetActive(true);
             briefNameText.text = brief.briefTitle;
             briefDescriptionText.text = brief.briefDescription;
-            
         }
 
         public void HideBriefPanel()

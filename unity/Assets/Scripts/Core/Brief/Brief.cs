@@ -8,5 +8,6 @@ namespace Core.Brief
         public Sprite briefSprite;
         public string briefTitle;
         public string briefDescription;
+        public Item.Item wantedItem;
     }
 }
