@@ -14,9 +14,9 @@ namespace Core.Interaction
         [SerializeField] private List<Item.Item> startItems;
 
         [Header("Fusion System")]
-        [SerializeField] private float mergeHoldTime = 5f;   // Durée à maintenir
-        [SerializeField] private float cooldownSpeed = 1f;   // Vitesse de décrémentation du timer
-        [SerializeField] private float holdReleaseDelay = 0.1f; // Délai max entre 2 appels de InteractHold
+        [SerializeField] private float mergeHoldTime = 5f;
+        [SerializeField] private float cooldownSpeed = 1f;
+        [SerializeField] private float holdReleaseDelay = 0.1f;
 
         [Header("Runtime")]
         public List<HoldItem> HoldingItems = new List<HoldItem>();
@@ -39,15 +39,11 @@ namespace Core.Interaction
 
         private void Update()
         {
-            // Détecte si le joueur a "relâché" (aucun appel récent à InteractHold)
             if (Time.time - lastHoldTime > holdReleaseDelay)
                 isBeingHeld = false;
 
-            // Si on ne maintient pas, le compteur redescend tout seul
             if (!isBeingHeld && holdTimer > 0f)
-            {
                 holdTimer = Mathf.Max(0f, holdTimer - Time.deltaTime * cooldownSpeed);
-            }
         }
 
         public void Interact(PlayerController playerController)
@@ -63,8 +59,6 @@ namespace Core.Interaction
                     if (removedItem != null)
                         HoldingItems.Add(removedItem);
                 }
-                else
-                    Debug.Log("Le support est plein !");
             }
             else
             {
@@ -80,13 +74,12 @@ namespace Core.Interaction
 
         public void InteractHold(PlayerController playerController)
         {
-            // Marque qu'on tient toujours le bouton
             isBeingHeld = true;
             lastHoldTime = Time.time;
 
             if (HoldingItems.Count < 2)
             {
-                holdTimer = 0f; // Pas assez d’items
+                holdTimer = 0f;
                 return;
             }
 
@@ -107,19 +100,23 @@ namespace Core.Interaction
 
             if (mergedItem != null)
             {
-                Debug.Log($"Fusion réussie : {mergedItem.itemName} !");
                 HoldingItems.Clear();
                 HoldingItems.Add(mergedItem.GetHoldItem());
-            }
-            else
-            {
-                Debug.Log("Aucune recette valide trouvée.");
             }
         }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
+            Vector3 titlePos = transform.position + Vector3.up * 3f;
+            GUIStyle titleStyle = new GUIStyle
+            {
+                normal = new GUIStyleState { textColor = Color.cyan },
+                alignment = TextAnchor.MiddleCenter,
+                fontStyle = FontStyle.Bold
+            };
+            UnityEditor.Handles.Label(titlePos, gameObject.name, titleStyle);
+
             if (HoldingItems != null && HoldingItems.Count > 0)
             {
                 Vector3 basePos = transform.position + Vector3.up * 2f;
@@ -144,7 +141,7 @@ namespace Core.Interaction
             if (Application.isPlaying && HoldingItems.Count >= 2)
             {
                 float progress = Mathf.Clamp01(holdTimer / mergeHoldTime);
-                UnityEditor.Handles.Label(transform.position + Vector3.up * 3f,
+                UnityEditor.Handles.Label(transform.position + Vector3.up * 3.5f,
                     $"Fusion: {(progress * 100f):F0}%", new GUIStyle
                     {
                         normal = new GUIStyleState { textColor = Color.cyan },
