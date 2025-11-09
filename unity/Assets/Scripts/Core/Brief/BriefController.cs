@@ -1,6 +1,7 @@
 using System;
 using Core.Item;
 using Framework.Controller;
+using Framework.Extensions;
 using UnityEngine;
 
 namespace Core.Brief
@@ -19,7 +20,7 @@ namespace Core.Brief
         
         public void NewBrief()
         {
-            Brief newBrief = BriefDatabase.Instance.GetRandom();
+            Brief newBrief = BriefDatabase.Instance.Database.GetRandom();
             actualBrief = newBrief;
             briefInterface.SetupNewBriefShow(newBrief);
         }

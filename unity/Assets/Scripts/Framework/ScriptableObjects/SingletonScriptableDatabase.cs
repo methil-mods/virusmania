@@ -10,13 +10,8 @@ namespace Framework.ScriptableObjects
         [SerializeField]
         public List<TData> Database;
 
-        public TData GetRandom()
-        {
-            if (Database == null || Database.Count == 0) return default;
-            return Database[Random.Range(0, Database.Count)];
-        }
-
-#if UNITY_EDITOR
+#if UNITY_EDITOR 
+        // Crazy function, cannot work without editor functions in Editor/GenericSingletonDatabaseEditor
         public void GetAllData()
         {
             Database = new List<TData>();
