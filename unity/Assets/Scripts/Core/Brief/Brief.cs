@@ -9,5 +9,8 @@ namespace Core.Brief
         public string briefTitle;
         public string briefDescription;
         public Item.Item wantedItem;
+
+        [Min(0)]
+        public int moneyGiven;
     }
 }

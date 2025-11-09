@@ -11,11 +11,13 @@ namespace Core.Brief
         public RectTransform actualBriefPanel;
         public TextMeshProUGUI actualBriefTitle;
         public TextMeshProUGUI actualBriefDescription;
+        public TextMeshProUGUI actualBriefMoneyGiven;
         
         [Header("New Brief Panel References")]
         public RectTransform briefPanel;
         public TextMeshProUGUI briefNameText;
         public TextMeshProUGUI briefDescriptionText;
+        public TextMeshProUGUI briefMoneyGivenText;
         public Button briefEndButton;
 
         public void Start()
@@ -35,6 +37,7 @@ namespace Core.Brief
                 actualBriefPanel.gameObject.SetActive(true);
                 actualBriefTitle.text = BriefController.Instance.actualBrief.briefTitle;
                 actualBriefDescription.text = BriefController.Instance.actualBrief.briefDescription;
+                actualBriefMoneyGiven.text = $"${BriefController.Instance.actualBrief.moneyGiven}";
             }
         }
 
@@ -43,6 +46,7 @@ namespace Core.Brief
             briefPanel.gameObject.SetActive(true);
             briefNameText.text = brief.briefTitle;
             briefDescriptionText.text = brief.briefDescription;
+            briefMoneyGivenText.text = $"${brief.moneyGiven}";
         }
 
         public void HideBriefPanel()
