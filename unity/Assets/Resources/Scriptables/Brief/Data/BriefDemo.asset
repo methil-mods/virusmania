@@ -16,3 +16,4 @@ MonoBehaviour:
   briefTitle: BRIEF DE TEST
   briefDescription: Je veux absolument un virus T3ST
   wantedItem: {fileID: 11400000, guid: eef873dfaef0e4d03b1fd9a4b02f1464, type: 2}
+  moneyGiven: 15

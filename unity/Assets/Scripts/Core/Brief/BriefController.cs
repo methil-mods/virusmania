@@ -1,5 +1,6 @@
 using System;
 using Core.Item;
+using Core.Money;
 using Framework.Controller;
 using Framework.Extensions;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace Core.Brief
         {
             if (actualBrief != null && actualBrief.wantedItem == itemToValidate.Item)
             {
+                MoneyController.Instance.AddMoney(actualBrief.moneyGiven);
                 actualBrief = null;
                 NewBrief();
                 return true;

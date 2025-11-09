@@ -8,10 +8,12 @@ namespace Core.Money
     {
         [SerializeField] private TextMeshProUGUI moneyText;
 
-        private void OnEnable()
+        private void Start()
         {
             if (MoneyController.Instance != null)
             {
+                // We don't care about amount, it's just for the callback of the money controller
+                UpdateMoneyText(0);
                 MoneyController.Instance.OnMoneyAdded += UpdateMoneyText;
                 MoneyController.Instance.OnMoneyRemoved += UpdateMoneyText;
             }
@@ -26,19 +28,12 @@ namespace Core.Money
             }
         }
 
-        private void Start()
-        {
-            if (MoneyController.Instance != null)
-            {
-                // We don't care about amount, it's just for the callback of the money controller
-                UpdateMoneyText(0);
-            }
-        }
-
         private void UpdateMoneyText(int amount)
         {
+            Debug.Log("UpdateMoneyText called on MoneyController, amount: " + amount);
             if (MoneyController.Instance != null && moneyText != null)
             {
+                Debug.Log("UpdateMoneyText called on MoneyController, new money: " + MoneyController.Instance.money);
                 moneyText.text = MoneyController.Instance.money.ToString() + " Money";
             }
         }
