@@ -15,3 +15,5 @@ MonoBehaviour:
   itemName: BacteriaT4ST
   itemDescription: 
   itemPrefab: {fileID: 207211337200041120, guid: 5db51300b3c6f4020b196d15afacb933, type: 3}
+  itemIcon: {fileID: 0}
+  price: 2
