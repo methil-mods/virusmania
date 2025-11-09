@@ -12,5 +12,8 @@ namespace Core.Brief
 
         [Min(0)]
         public int moneyGiven;
+
+        [Min(0)]
+        public int timeForBrief;
     }
 }
