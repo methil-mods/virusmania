@@ -139,7 +139,7 @@ MonoBehaviour:
   outlineMode: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineWidth: 6
-  sortingLayer: 0
+  sortingLayer: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -828,7 +828,7 @@ MonoBehaviour:
   outlineMode: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineWidth: 6
-  sortingLayer: 0
+  sortingLayer: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -1154,7 +1154,7 @@ MonoBehaviour:
   outlineMode: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineWidth: 6
-  sortingLayer: 0
+  sortingLayer: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
