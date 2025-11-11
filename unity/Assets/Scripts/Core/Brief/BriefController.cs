@@ -19,6 +19,7 @@ namespace Core.Brief
             NewBrief();
         }
         
+        
         public void NewBrief()
         {
             Brief newBrief = BriefDatabase.Instance.Database.GetRandom();

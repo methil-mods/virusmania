@@ -22,7 +22,6 @@ namespace Core.Brief
 
         public void Start()
         {
-            briefPanel.gameObject.SetActive(false);
             briefEndButton.onClick.AddListener(HideBriefPanel);
         }
 
@@ -37,21 +36,30 @@ namespace Core.Brief
                 actualBriefPanel.gameObject.SetActive(true);
                 actualBriefTitle.text = BriefController.Instance.actualBrief.briefTitle;
                 actualBriefDescription.text = BriefController.Instance.actualBrief.briefDescription;
-                actualBriefMoneyGiven.text = $"${BriefController.Instance.actualBrief.moneyGiven}";
+                actualBriefMoneyGiven.text = $"{BriefController.Instance.actualBrief.moneyGiven} $";
             }
         }
 
         public void SetupNewBriefShow(Brief brief)
         {
+            briefPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
             briefPanel.gameObject.SetActive(true);
+            
+            LeanTween.scale(briefPanel.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .4f)
+                .setEase(LeanTweenType.easeSpring);
             briefNameText.text = brief.briefTitle;
             briefDescriptionText.text = brief.briefDescription;
-            briefMoneyGivenText.text = $"${brief.moneyGiven}";
+            briefMoneyGivenText.text = $"{brief.moneyGiven} $";
         }
 
         public void HideBriefPanel()
         {
-            briefPanel.gameObject.SetActive(false);
+            LeanTween.scale(briefPanel.GetComponent<RectTransform>(), new Vector3(0f, 0f, 0f), .4f)
+                .setEase(LeanTweenType.easeOutCirc)
+                .setOnComplete((() =>
+                {
+                    briefPanel.gameObject.SetActive(false);
+                }));
         }
     }
 }
