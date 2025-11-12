@@ -34,7 +34,7 @@ namespace Core.Money
             if (MoneyController.Instance != null && moneyText != null)
             {
                 Debug.Log("UpdateMoneyText called on MoneyController, new money: " + MoneyController.Instance.money);
-                moneyText.text = MoneyController.Instance.money.ToString() + " Money";
+                moneyText.text = MoneyController.Instance.money.ToString() + " $";
             }
         }
     }

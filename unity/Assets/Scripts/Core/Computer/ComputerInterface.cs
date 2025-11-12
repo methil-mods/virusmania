@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.Input;
 using UnityEngine;
 using UnityEngine.UI;
 using Framework.Controller;
@@ -8,33 +9,17 @@ namespace Core.Computer
 {
     public class ComputerInterface : InterfaceController<ComputerInterface>
     {
-        public List<ComputerApplication> applications;
-
-        protected void Start()
+        public void Start()
         {
             base.Start();
-            
-            foreach (var app in applications)
-            {
-                app.applicationPanel.SetActive(false);
-                app.applicationButton.onClick.AddListener(() => ShowPanel(app));
-            }
-        }
 
-        private void ShowPanel(ComputerApplication app)
-        {
-            foreach (var otherApp in applications)
-            {
-                otherApp.applicationPanel.SetActive(false);
-            }
-            app.applicationPanel.SetActive(true);
-        }
-    }
+            this.OnPanelOpen += () => { 
+                InputDatabase.Instance.moveAction.action.Disable();
+            };
 
-    [Serializable]
-    public class ComputerApplication
-    {
-        public Button applicationButton;
-        public GameObject applicationPanel;
+            this.OnPanelClose += () => { 
+                InputDatabase.Instance.moveAction.action.Enable();
+            };
+        }
     }
 }
