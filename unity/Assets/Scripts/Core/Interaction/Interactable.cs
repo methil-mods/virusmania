@@ -34,7 +34,7 @@ namespace Core.Interaction
 
                 _interactionIndicator.SetActive(true);
                 Vector3 parentScale = transform.parent != null ? transform.parent.lossyScale : Vector3.one;
-                float desiredWorldScale = 0.004f;
+                float desiredWorldScale = 0.0024f;
                 Vector3 targetScale = new Vector3(
                     desiredWorldScale / parentScale.x,
                     desiredWorldScale / parentScale.y,

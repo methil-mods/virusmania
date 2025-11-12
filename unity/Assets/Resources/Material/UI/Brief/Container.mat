@@ -40,9 +40,9 @@ Material:
     - _CornerRadius: 0.092
     - _EnableBorder: 1
     - _Frequency: 14.93
-    - _NoiseAmplitude: 0.0323
-    - _NoiseScale: 5.9
-    - _NoiseSpeed: 2
+    - _NoiseAmplitude: 0.0294
+    - _NoiseScale: 2.7
+    - _NoiseSpeed: 1.18
     - _OutlineEnabled: 1
     - _Roundness: 0.456
     - _Speed: 1.82
