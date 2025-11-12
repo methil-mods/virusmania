@@ -18,7 +18,6 @@ Shader "Custom/MethilGlassShader"
         { 
             "RenderType" = "Transparent" 
             "Queue" = "Transparent"
-            "RenderPipeline" = "UniversalPipeline"
         }
 
         Pass
