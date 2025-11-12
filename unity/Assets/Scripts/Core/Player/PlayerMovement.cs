@@ -1,4 +1,5 @@
 using System;
+using Core.Input;
 using Framework;
 using Framework.Extensions;
 using UnityEngine;
@@ -12,8 +13,9 @@ namespace Core.Player
         [Header("Movement Settings")]
         [SerializeField] private float speed = 5f;
         [SerializeField] private float acceleration = 10f;
-        [Header("Movement Input")]
-        [SerializeField] private InputActionReference moveAction;
+        
+        private InputActionReference _moveAction;
+        
         [Header("Animation Settings")]
         [SerializeField] private Animator animator;
 
@@ -24,10 +26,12 @@ namespace Core.Player
 
         public override void Start(PlayerController controller)
         {
-            if (moveAction == null) Debug.LogError("No player move action set in PlayerMovement");
+            _moveAction = InputDatabase.Instance.moveAction;
+            
+            if (_moveAction == null) Debug.LogError("No player move action set in PlayerMovement");
             if (animator == null) Debug.LogError("No animator set in PlayerMovement");
             
-            moveAction.action.Enable();
+            _moveAction.action.Enable();
             
             rb = controller.GetComponent<Rigidbody>();
             if (rb == null) Debug.LogError("No rigid body set in PlayerController gameobject");
@@ -35,7 +39,7 @@ namespace Core.Player
 
         public override void FixedUpdate(PlayerController controller)
         {
-            Vector2 input = moveAction.action.ReadValue<Vector2>();
+            Vector2 input = _moveAction.action.ReadValue<Vector2>();
             Vector3 targetVelocity = new Vector3(input.x, 0, input.y) * speed;
             currentVelocity = Vector3.Lerp(currentVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
             animator.SetFloat("Speed", currentVelocity.magnitude);
