@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5952187330353500092}
   - component: {fileID: 5012343843508859137}
-  - component: {fileID: 5601112937384505454}
   m_Layer: 5
   m_Name: Computer
   m_TagString: Untagged
@@ -46,36 +45,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662543444941030830}
   m_CullTransparentMesh: 1
---- !u!114 &5601112937384505454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662543444941030830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 678c92572cc724845a460c87117f5353, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5589341141494286470
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,21 +158,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 5952187330353500092}
     m_Modifications:
     - target: {fileID: 1164081426181042791, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164081426181042791, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2369895580373373835}
-    - target: {fileID: 1164081426181042791, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164081426181042791, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Core.Computer.ComputerInterface, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3080816067947760712, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -288,13 +245,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathoNet
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8761590432339827910, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6404121309589756652, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2744548138962202794}
   m_SourcePrefab: {fileID: 100100000, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
 --- !u!224 &2052985022105796947 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3080816067947760712, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
   m_PrefabInstance: {fileID: 3944285638903713051}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7952486689272535031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6404121309589756652, guid: 4fd3c145fc4604a759fe59ab662f1c95, type: 3}
+  m_PrefabInstance: {fileID: 3944285638903713051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2744548138962202794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7952486689272535031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 2100000, guid: 6ee060578a79b4a1e9e06fb9f5e0620f, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
