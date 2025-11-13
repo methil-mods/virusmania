@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd697b4f13904650aeff79b89b6d0e14, type: 3}
+  m_Name: HumanWeeknesses
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Threats.ThreatTypeDatabase
+  databaseName: HumanWeeknesses
+  threatTypes:
+  - {fileID: 11400000, guid: 814894de4cd124859afee9f6118c8afe, type: 2}
+  - {fileID: 11400000, guid: 2333fc3a48e38470b97e4e91ed198c87, type: 2}
+  - {fileID: 11400000, guid: f0c0de43ab7cb404da148712550cd5b7, type: 2}
+  - {fileID: 11400000, guid: 04caaa2611eb8418baa1535e25ceae30, type: 2}
+  - {fileID: 11400000, guid: c6641637d8c8341ebb11dc07439fe841, type: 2}
+  - {fileID: 11400000, guid: 56ee31564e4a54c7a99060782fb9febb, type: 2}
+  - {fileID: 11400000, guid: 325a43ed30d924d3aa23addaff1d8c5e, type: 2}
+  - {fileID: 11400000, guid: 4c00971bedb504786860021fdd234e45, type: 2}
+  - {fileID: 11400000, guid: a2bbe2cbfab4e460a9a18646f7c05f32, type: 2}
+  transmissionFactors:
+  - {fileID: 11400000, guid: dedcbf15433c94584b4541b6ceb0b347, type: 2}
+  - {fileID: 11400000, guid: 7f35239f29d104b819b328f9307dbf7f, type: 2}
+  - {fileID: 11400000, guid: e6f68db490d67483193141918c9d24bc, type: 2}
+  - {fileID: 11400000, guid: a247468dfce024b859fcd5e1660fe5ef, type: 2}
+  - {fileID: 11400000, guid: 1608c9a5e8e5c4c85b87922a11c676bd, type: 2}
+  - {fileID: 11400000, guid: 50048839ac9274525b34f50de53f206a, type: 2}
