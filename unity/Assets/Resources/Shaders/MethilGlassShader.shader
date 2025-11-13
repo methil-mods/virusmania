@@ -132,5 +132,5 @@ Shader "Custom/MethilGlassShader"
         }
     }
 
-    FallBack "Universal Render Pipeline/Lit"
+    FallBack "Hidden/InternalErrorShader"
 }

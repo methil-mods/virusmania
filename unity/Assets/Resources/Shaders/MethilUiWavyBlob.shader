@@ -39,7 +39,11 @@ Shader "UI/MethilUiWavyBlob"
             struct Attributes { float4 positionOS : POSITION; float2 uv : TEXCOORD0; };
             struct Varyings { float4 positionHCS : SV_POSITION; float2 uv : TEXCOORD0; };
 
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
+
             CBUFFER_START(UnityPerMaterial)
+                float4 _MainTex_ST;
                 float4 _FillColor;
                 float4 _BorderColor;
                 float _BorderThickness;
@@ -138,10 +142,16 @@ Shader "UI/MethilUiWavyBlob"
                 
                 float mainShape = smoothstep(antiAlias, 0.0, distMainNoisy);
             
+                // Sample the texture color
+                float4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
+                
+                // Use texture color for fill, _FillColor just modulates it
+                float4 fillColor = texColor * _FillColor;
+                
                 float4 col = _BorderColor * shadowRing;
-                col = lerp(col, _FillColor, mainShape);
-                col.a = saturate(shadowRing * _BorderColor.a + mainShape * _FillColor.a);
-            
+                col = lerp(col, fillColor, mainShape);
+                col.a = saturate(shadowRing * _BorderColor.a + mainShape * fillColor.a);
+                
                 col.rgb = pow(col.rgb, 1.0 / 2.2);
                 return col;
             }

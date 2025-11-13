@@ -1,12 +1,16 @@
 using Core.Player;
 using Core.Prefab;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core.Interaction
 {
     public abstract class Interactable : MonoBehaviour
     {
         private GameObject _interactionIndicator;
+
+        public UnityAction InInteraction;
+        public UnityAction OutInteraction;
 
         public void Start()
         {
@@ -28,6 +32,7 @@ namespace Core.Interaction
 
         public virtual void InInteractZone()
         {
+            InInteraction?.Invoke();
             if (_interactionIndicator != null)
             {
                 LeanTween.cancel(_interactionIndicator);
@@ -46,6 +51,7 @@ namespace Core.Interaction
 
         public void HideIndicator()
         {
+            OutInteraction?.Invoke();
             if (_interactionIndicator != null && _interactionIndicator.activeSelf)
             {
                 LeanTween.cancel(_interactionIndicator);
