@@ -14,14 +14,13 @@ namespace Core.Computer.PathoNet
         public TextMeshProUGUI itemName;
         public TextMeshProUGUI itemPrice;
         private Item.Item itemData;
-        private PathoNetItemReceiver pathoNetItemReceiver;
+        private PathoNetInterface _pathoInterface;
 
-        public void Setup(Item.Item item, PathoNetItemReceiver itemReceiver)
+        public void Setup(Item.Item item, PathoNetInterface pathoInterface)
         {
             itemData = item;
-            
-            pathoNetItemReceiver = itemReceiver;
-            
+            _pathoInterface = pathoInterface;
+
             if (itemImage != null)
                 itemImage.sprite = item.itemIcon;
 
@@ -34,21 +33,13 @@ namespace Core.Computer.PathoNet
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Buy();
+            AddToCart();
         }
 
-        private void Buy()
+        private void AddToCart()
         {
-            if (pathoNetItemReceiver.CanAddItem() && MoneyController.Instance.CanRemoveMoney(itemData.price))
-            {
-                Debug.Log("Acheté : " + itemData.itemName);
-                MoneyController.Instance.RemoveMoney(itemData.price);
-                pathoNetItemReceiver.AddItem(new HoldItem(itemData));
-            }
-            else
-            {
-                Debug.Log("Ne peut pas acheté : " + itemData.itemName);
-            }
+            if (MoneyController.Instance.CanRemoveMoney(itemData.price))
+                _pathoInterface.AddItemToCart(itemData);
         }
     }
 }

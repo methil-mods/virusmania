@@ -21,8 +21,8 @@ namespace Core.Interaction
         {
             base.Start();
 
-            OnItemAdded.AddListener(_ => ResetFusion());
-            OnItemRemoved.AddListener(_ => ResetFusion());
+            OnItemAdded += (_ => ResetFusion());
+            OnItemRemoved += (_ => ResetFusion());
         }
 
         private void Update()

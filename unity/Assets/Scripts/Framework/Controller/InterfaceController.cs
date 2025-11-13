@@ -20,27 +20,23 @@ namespace Framework.Controller
 
         public virtual bool CanOpen() => true;
 
-        public void OpenPanel()
+        public virtual void OpenPanel()
         {
             if (!CanOpen() || panel == null) return;
-            panel.SetActive(true);
             OnPanelOpen?.Invoke();
+            panel.SetActive(true);
         }
 
-        public void ClosePanel()
+        public virtual void ClosePanel()
         {
             if (!PanelIsActive()) return;
-            if (panel == null)
-            {
-                OnPanelClose?.Invoke();
-                return;
-            }
+            if (panel == null) return;
             
             OnPanelClose?.Invoke();
             panel.SetActive(false);
         }
 
-        private bool PanelIsActive()
+        protected bool PanelIsActive()
         {
             return panel.activeSelf;
         }

@@ -18,8 +18,8 @@ namespace Core.Interaction
             maxHoldableItems = 1;
             base.Start();
 
-            OnItemAdded.AddListener(StartCooking);
-            OnItemRemoved.AddListener(StopCooking);
+            OnItemAdded += (StartCooking);
+            OnItemRemoved += (StopCooking);
         }
 
         private void Update()

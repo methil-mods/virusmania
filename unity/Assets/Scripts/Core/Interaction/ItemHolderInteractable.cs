@@ -17,9 +17,9 @@ namespace Core.Interaction
         [SerializeField] protected Vector3 itemOffset = new Vector3(0, 1f, 0.5f);
 
         [Header("Events")]
-        public UnityEvent<HoldItem> OnItemAdded;
-        public UnityEvent<HoldItem> OnItemRemoved;
-        public UnityEvent OnItemsChanged;
+        public UnityAction<HoldItem> OnItemAdded;
+        public UnityAction<HoldItem> OnItemRemoved;
+        public UnityAction OnItemsChanged;
 
         [Header("Runtime")]
         public List<HoldItem> HoldingItems = new List<HoldItem>();

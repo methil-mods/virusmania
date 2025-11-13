@@ -1,7 +1,24 @@
+using UnityEngine;
+
 namespace Core.Interaction
 {
     public class PathoNetItemReceiver : ItemHolderInteractable
     {
-        // TODO: Maybe add logics for animation etc...
+        public Animator flapAnimator;
+
+        public void Start()
+        {
+            base.Start();
+            
+            OnItemAdded += (test) =>
+            {
+                TriggerFlapAnimation();
+            };
+        }
+
+        public void TriggerFlapAnimation()
+        {
+            flapAnimator.SetTrigger("Open");
+        }
     }
 }
