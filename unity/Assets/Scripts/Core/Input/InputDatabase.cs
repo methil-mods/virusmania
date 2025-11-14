@@ -16,6 +16,7 @@ namespace Core.Input
 
         public void DisableInputs()
         {
+            Debug.Log("-- Disable Inputs --");
             moveAction.action.Disable();
             interactionAction.action.Disable();
             interactionHoldAction.action.Disable();
@@ -23,6 +24,7 @@ namespace Core.Input
 
         public void EnableInputs()
         {
+            Debug.Log("-- Enable Inputs --");
             moveAction.action.Enable();
             interactionAction.action.Enable();
             interactionHoldAction.action.Enable();

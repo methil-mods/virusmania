@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Core.UI
 {
-    public class ButtonOffsetAnimator : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+    public class ButtonOffsetAnimator : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private Material _targetMaterial;
         private Color _originalColor;
@@ -18,9 +18,19 @@ namespace Core.UI
         void Start()
         {
             RawImage img = GetComponent<RawImage>();
-            img.material = new Material(img.material);
-            _targetMaterial = img.material;
-            _originalColor = img.color;
+            if (img != null)
+            {
+                img.material = new Material(img.material);
+                _targetMaterial = img.material;
+                _originalColor = img.color;
+            }
+            else
+            {
+                Image normalImage = GetComponent<Image>();
+                normalImage.material = new Material(normalImage.material);
+                _targetMaterial = normalImage.material;
+                _originalColor = normalImage.color;
+            }
 
             _originalOffsetX = _targetMaterial.GetFloat("_BorderOffsetX");
             _originalOffsetY = _targetMaterial.GetFloat("_BorderOffsetY");
@@ -34,17 +44,6 @@ namespace Core.UI
         public void OnPointerExit(PointerEventData eventData)
         {
             AnimateOffsets(_originalOffsetX, _originalOffsetY);
-            AnimateColor(_originalColor);
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            AnimateColor(_originalColor * pressDarken);
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            AnimateColor(_originalColor);
         }
 
         private void AnimateOffsets(float targetX, float targetY)
@@ -58,18 +57,6 @@ namespace Core.UI
             LeanTween.value(gameObject, currentY, targetY, duration)
                      .setEase(easeType)
                      .setOnUpdate(val => _targetMaterial.SetFloat("_BorderOffsetY", val));
-        }
-
-        private void AnimateColor(Color target)
-        {
-            RawImage img = GetComponent<RawImage>();
-            Color current = img.color;
-            LeanTween.value(gameObject, 0f, 1f, duration)
-                     .setEase(easeType)
-                     .setOnUpdate(t =>
-                     {
-                         img.color = Color.Lerp(current, target, t);
-                     });
         }
     }
 }

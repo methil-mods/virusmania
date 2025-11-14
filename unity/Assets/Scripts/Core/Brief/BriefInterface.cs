@@ -1,4 +1,6 @@
 using System;
+using Core.Input;
+using Core.PostProcess;
 using Core.Timer;
 using TMPro;
 using UnityEngine;
@@ -45,6 +47,9 @@ namespace Core.Brief
 
         public void SetupNewBriefShow(Brief brief)
         {
+            PostProcessController.Instance.OnShowPanelPostProcess();
+            InputDatabase.Instance.DisableInputs();
+            
             briefPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
             briefPanel.gameObject.SetActive(true);
             
@@ -55,6 +60,7 @@ namespace Core.Brief
             briefMoneyGivenText.text = $"{brief.moneyGiven} $";
             
             _tempNewBrief = brief;
+            
         }
 
         public void PutNewBrief()
@@ -72,6 +78,8 @@ namespace Core.Brief
         
         public void HideBriefPanel()
         {
+            PostProcessController.Instance.OnHidePanelPostProcess();
+            InputDatabase.Instance.EnableInputs();
             LeanTween.scale(briefPanel.GetComponent<RectTransform>(), new Vector3(0f, 0f, 0f), .4f)
                 .setEase(LeanTweenType.easeOutCirc)
                 .setOnComplete((() =>

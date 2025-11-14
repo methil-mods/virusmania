@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Core.Analysis;
 using Core.Item;
 using Core.Item.Merge;
 using Core.Player;
@@ -91,6 +93,7 @@ namespace Core.Interaction
         private void AnalyzeItem()
         {
             Debug.Log("Analyzing item");
+            AnalysisInterface.Instance.ShowAnalysis(HoldingItems.First());
         }
 
         private void ResetAnalysis()

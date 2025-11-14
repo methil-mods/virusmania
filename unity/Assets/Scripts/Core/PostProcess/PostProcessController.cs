@@ -16,8 +16,10 @@ namespace Core.PostProcess
         private Vignette vignetteEffect;
         private int vignetteTweenId = -1;
 
-        public void Start()
+        protected override void Awake()
         {
+            base.Awake();
+            
             if (postProcessVolume != null && postProcessVolume.profile != null)
             {
                 postProcessVolume.profile.TryGet<DepthOfField>(out depthOfFieldEffect);
