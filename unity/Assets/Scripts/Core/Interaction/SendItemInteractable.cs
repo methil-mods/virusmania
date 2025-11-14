@@ -3,6 +3,7 @@ using Core.Player;
 using Framework.Extensions;
 using UnityEngine;
 using Core.Item.Holder;
+using Core.Timer;
 
 namespace Core.Interaction
 {
@@ -24,6 +25,7 @@ namespace Core.Interaction
         {
             if (BriefController.Instance.TryToCompleteBrief(sendItem))
             {
+                TimerController.Instance.StopTimer();
                 Debug.Log("Send Item -> Validate brief !");
             }
             else

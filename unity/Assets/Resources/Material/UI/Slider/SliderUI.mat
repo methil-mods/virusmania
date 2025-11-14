@@ -38,7 +38,7 @@ Material:
     - _CornerRadius: 0.2
     - _EnableBorder: 1
     - _FillAmount: 1
-    - _InnerFillAmount: 0.055357434
+    - _InnerFillAmount: 1.6723e-41
     - _NoiseAmplitude: 0.03
     - _NoiseScale: 1
     - _NoiseSpeed: 4
