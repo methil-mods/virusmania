@@ -21,8 +21,8 @@ namespace Core.Brief
         
         public void NewBrief()
         {
+            actualBrief = null;
             Brief newBrief = BriefDatabase.Instance.Database.GetRandom();
-            actualBrief = newBrief;
             briefInterface.SetupNewBriefShow(newBrief);
         }
 

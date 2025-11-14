@@ -1,4 +1,5 @@
 using System;
+using Core.Timer;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,9 +21,11 @@ namespace Core.Brief
         public TextMeshProUGUI briefMoneyGivenText;
         public Button briefEndButton;
 
+        private Brief _tempNewBrief;
+
         public void Start()
         {
-            briefEndButton.onClick.AddListener(HideBriefPanel);
+            briefEndButton.onClick.AddListener(PutNewBrief);
         }
 
         public void Update()
@@ -50,8 +53,23 @@ namespace Core.Brief
             briefNameText.text = brief.briefTitle;
             briefDescriptionText.text = brief.briefDescription;
             briefMoneyGivenText.text = $"{brief.moneyGiven} $";
+            
+            _tempNewBrief = brief;
         }
 
+        public void PutNewBrief()
+        {
+            BriefController.Instance.actualBrief = _tempNewBrief;
+            TimerController.Instance.LaunchTimer(_tempNewBrief.timeForBrief, (() =>
+            {
+                Debug.LogWarning("NEED TO SET LOOSE");
+                // TODO : Logics to loose
+            }));
+            _tempNewBrief = null;
+            
+            HideBriefPanel();
+        }
+        
         public void HideBriefPanel()
         {
             LeanTween.scale(briefPanel.GetComponent<RectTransform>(), new Vector3(0f, 0f, 0f), .4f)
