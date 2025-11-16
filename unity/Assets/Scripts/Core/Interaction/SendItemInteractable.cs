@@ -1,3 +1,4 @@
+using System.Linq;
 using Core.Brief;
 using Core.Player;
 using Framework.Extensions;
@@ -12,9 +13,15 @@ namespace Core.Interaction
         [SerializeField]
         private Animator threadMillAnimator;
         
-        public void SendItem(HoldItem sendItem)
+        public void SendItem()
         {
-            if (BriefController.Instance.TryToCompleteBrief(sendItem))
+            HoldItem holdItem = HoldingItems.Count > 0 ? HoldingItems.First() : null;
+            threadMillAnimator.SetBool("Roll", true);
+            LeanTween.delayedCall(2.084f, () => { 
+                threadMillAnimator.SetBool("Roll", false);
+                
+            });
+            if (BriefController.Instance.TryToCompleteBrief(holdItem))
             {
                 TimerController.Instance.StopTimer();
                 Debug.Log("Send Item -> Validate brief !");

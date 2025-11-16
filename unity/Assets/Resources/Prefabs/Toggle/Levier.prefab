@@ -208,7 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Interaction.SendItemButtonInteractable
   interactionIndicatorOffset: {x: 0, y: 0, z: 0}
-  sendItemButtonAnimator: {fileID: 0}
+  sendItemButtonAnimator: {fileID: 9076937084796268477}
+  sendItemInteractable: {fileID: 0}
 --- !u!95 &9076937084796268477
 Animator:
   serializedVersion: 7
@@ -250,5 +251,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.086982, z: 1}
+  m_Center: {x: 0, y: 0.5434908, z: 0}

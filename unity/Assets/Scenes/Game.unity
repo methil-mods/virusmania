@@ -576,6 +576,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7827196158835540653, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7827196158835540653, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 82a014d94a9f647bd8da39b92417e396, type: 2}
+    - target: {fileID: 7827196158835540653, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a19a7e6de302e4056914e6622646e88b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -966,18 +978,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7657892797529303990, guid: f5ef8a483b1414673bdaaa2a8fd701d0, type: 3}
-      propertyPath: m_Size.y
-      value: 2.086982
-      objectReference: {fileID: 0}
-    - target: {fileID: 7657892797529303990, guid: f5ef8a483b1414673bdaaa2a8fd701d0, type: 3}
-      propertyPath: m_Center.y
-      value: 0.5434908
-      objectReference: {fileID: 0}
     - target: {fileID: 7699887340119986944, guid: f5ef8a483b1414673bdaaa2a8fd701d0, type: 3}
-      propertyPath: sendItemButtonAnimator
+      propertyPath: sendItemInteractable
       value: 
-      objectReference: {fileID: 1162568192}
+      objectReference: {fileID: 1625202714}
     - target: {fileID: 8353461327774266897, guid: f5ef8a483b1414673bdaaa2a8fd701d0, type: 3}
       propertyPath: m_Name
       value: Levier
@@ -1027,11 +1031,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5ef8a483b1414673bdaaa2a8fd701d0, type: 3}
---- !u!95 &1162568192 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9076937084796268477, guid: f5ef8a483b1414673bdaaa2a8fd701d0, type: 3}
-  m_PrefabInstance: {fileID: 1162568190}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1171008354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,6 +1215,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce074d8c802044bb0898437f0113afa8, type: 2}
   itemParent: {fileID: 0}
   itemOffset: {x: 0, y: 1.5, z: 0}
+--- !u!114 &1625202714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5286097561731613120, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+  m_PrefabInstance: {fileID: 773956487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d287dc1c7654bebbd2c81d56178c537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Interaction.SendItemInteractable
 --- !u!4 &1672755168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7323051772842731245, guid: fb81a1931f426486ea63e75533d51578, type: 3}
@@ -3473,9 +3483,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2622382265136369208, guid: 04e0254db51e848b68a4aba664192e60, type: 3}
+      propertyPath: sortingLayer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3620641216417474253, guid: 04e0254db51e848b68a4aba664192e60, type: 3}
       propertyPath: m_Name
       value: ComputerInteractable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536004851194306688, guid: 04e0254db51e848b68a4aba664192e60, type: 3}
+      propertyPath: outlineWidth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536004851194306688, guid: 04e0254db51e848b68a4aba664192e60, type: 3}
+      propertyPath: sortingLayer
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5863949021749593980, guid: 04e0254db51e848b68a4aba664192e60, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3516,6 +3538,10 @@ PrefabInstance:
     - target: {fileID: 5863949021749593980, guid: 04e0254db51e848b68a4aba664192e60, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999569192306626792, guid: 04e0254db51e848b68a4aba664192e60, type: 3}
+      propertyPath: sortingLayer
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
