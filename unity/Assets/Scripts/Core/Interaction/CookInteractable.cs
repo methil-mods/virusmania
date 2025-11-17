@@ -9,6 +9,7 @@ namespace Core.Interaction
     {
         [Header("Cooking System")]
         [SerializeField] private float cookTime = 5f;
+        [SerializeField] private Animator bainMarieAnimator;
 
         private float cookTimer = 0f;
         private bool isCooking = false;
@@ -21,6 +22,15 @@ namespace Core.Interaction
 
             OnItemAdded += (StartCooking);
             OnItemRemoved += (StopCooking);
+
+            InInteraction += () =>
+            {
+                bainMarieAnimator.SetBool("Opened", true);
+            };
+            OutInteraction += () =>
+            {
+                bainMarieAnimator.SetBool("Opened", false);
+            };
         }
 
         private void Update()
