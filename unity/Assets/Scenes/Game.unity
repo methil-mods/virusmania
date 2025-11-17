@@ -532,6 +532,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 135158897682574519, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: outlineMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3740455095373494851, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
       propertyPath: m_Name
       value: Treadmill
@@ -576,18 +580,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7827196158835540653, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7827196158835540653, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 82a014d94a9f647bd8da39b92417e396, type: 2}
-    - target: {fileID: 7827196158835540653, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: a19a7e6de302e4056914e6622646e88b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1461,7 +1453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4335651849463270532, guid: 6a50a9868ee874455a6b17f350931ba6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -73.2969
+      value: -66.415
       objectReference: {fileID: 0}
     - target: {fileID: 6022193505504300322, guid: 6a50a9868ee874455a6b17f350931ba6, type: 3}
       propertyPath: m_IsActive

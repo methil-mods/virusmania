@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Core.Brief;
 using Core.Player;
@@ -10,8 +11,8 @@ namespace Core.Interaction
 {
     public class SendItemInteractable : ItemHolderInteractable
     {
-        [SerializeField]
-        private Animator threadMillAnimator;
+        [SerializeField] private Animator threadMillAnimator;
+        [SerializeField] private Vector3 objectDestination;
         
         public void SendItem()
         {
@@ -19,8 +20,15 @@ namespace Core.Interaction
             threadMillAnimator.SetBool("Roll", true);
             LeanTween.delayedCall(2.084f, () => { 
                 threadMillAnimator.SetBool("Roll", false);
-                
             });
+            
+            if (holdItem == null) return;
+
+            LeanTween.moveLocalX(spawnedPrefabs.First(), objectDestination.x, 1.6f).setOnComplete(() =>
+            {
+                RemoveItem(holdItem);
+            });
+            
             if (BriefController.Instance.TryToCompleteBrief(holdItem))
             {
                 TimerController.Instance.StopTimer();
@@ -35,6 +43,15 @@ namespace Core.Interaction
         public override void InteractHold(PlayerController playerController)
         {
             // Debug.Log("Interacting hold with " + gameObject.name);
+        }
+
+        protected override void OnDrawGizmos()
+        {
+            base.OnDrawGizmos();
+            
+            Vector3 objectRelativeDestination = (itemParent != null ? itemParent.position : transform.position) + objectDestination;
+            Gizmos.color = Color.brown;
+            Gizmos.DrawSphere(objectRelativeDestination, 0.05f);
         }
     }
 }

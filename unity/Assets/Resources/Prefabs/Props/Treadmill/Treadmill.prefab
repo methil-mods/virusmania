@@ -76,6 +76,18 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.005028915
       objectReference: {fileID: 0}
+    - target: {fileID: -236412653614841994, guid: fb088a9de04f949f19cd31fb88433a9f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -236412653614841994, guid: fb088a9de04f949f19cd31fb88433a9f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 82a014d94a9f647bd8da39b92417e396, type: 2}
+    - target: {fileID: -236412653614841994, guid: fb088a9de04f949f19cd31fb88433a9f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a19a7e6de302e4056914e6622646e88b, type: 2}
     - target: {fileID: 919132149155446097, guid: fb088a9de04f949f19cd31fb88433a9f, type: 3}
       propertyPath: m_Name
       value: Anime-Tapis_fixe_02
@@ -94,6 +106,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fb088a9de04f949f19cd31fb88433a9f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4292950066644952772}
+    - targetCorrespondingSourceObject: {fileID: 4767400413853537203, guid: fb088a9de04f949f19cd31fb88433a9f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 135158897682574519}
   m_SourcePrefab: {fileID: 100100000, guid: fb088a9de04f949f19cd31fb88433a9f, type: 3}
 --- !u!4 &1706134060191816240 stripped
 Transform:
@@ -145,6 +160,31 @@ MonoBehaviour:
   sortingLayer: 15
   precomputeOutline: 0
   outlineChildren: 1
+  bakeKeys: []
+  bakeValues: []
+--- !u!1 &5912922798075588200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767400413853537203, guid: fb088a9de04f949f19cd31fb88433a9f, type: 3}
+  m_PrefabInstance: {fileID: 1164143799326277083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &135158897682574519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912922798075588200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Outline
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 6
+  sortingLayer: 36
+  precomputeOutline: 0
+  outlineChildren: 0
   bakeKeys: []
   bakeValues: []
 --- !u!1001 &4551359966732371730
@@ -284,11 +324,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Interaction.SendItemInteractable
   interactionIndicatorOffset: {x: 0, y: 0, z: 0}
-  maxHoldableItems: 3
+  maxHoldableItems: 1
   startItems: []
   itemParent: {fileID: 0}
-  itemOffset: {x: -0.72, y: 0.82, z: 0}
+  itemOffset: {x: -0.72, y: 0.95, z: 0}
   threadMillAnimator: {fileID: 725704203956378693}
+  objectDestination: {x: 2, y: 0.95, z: 0}
 --- !u!65 &4481736173760594992
 BoxCollider:
   m_ObjectHideFlags: 0
