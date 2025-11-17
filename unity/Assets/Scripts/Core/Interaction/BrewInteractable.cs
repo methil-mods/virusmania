@@ -14,6 +14,7 @@ namespace Core.Interaction
         [SerializeField] private float mergeHoldTime = 5f;
         [SerializeField] private float cooldownSpeed = 1f;
         [SerializeField] private float holdReleaseDelay = 0.1f;
+        [SerializeField] private Animator mixingTableAnimator;
 
         public Image holdInteractImage;
 
@@ -35,7 +36,10 @@ namespace Core.Interaction
         private void Update()
         {
             if (Time.time - lastHoldTime > holdReleaseDelay)
+            {
                 isBeingHeld = false;
+                mixingTableAnimator.SetBool("IsWorking", false);
+            }
 
             if (!isBeingHeld && holdTimer > 0f)
                 holdTimer = Mathf.Max(0f, holdTimer - Time.deltaTime * cooldownSpeed);
@@ -63,6 +67,7 @@ namespace Core.Interaction
         public override void InteractHold(PlayerController playerController)
         {
             isBeingHeld = true;
+            mixingTableAnimator.SetBool("IsWorking", true);
             lastHoldTime = Time.time;
 
             if (HoldingItems.Count < 2)
@@ -78,6 +83,7 @@ namespace Core.Interaction
                 TryMergeItems();
                 holdTimer = 0f;
                 isBeingHeld = false;
+                mixingTableAnimator.SetBool("IsWorking", false);
             }
         }
 
@@ -100,6 +106,7 @@ namespace Core.Interaction
         {
             holdTimer = 0f;
             isBeingHeld = false;
+            mixingTableAnimator.SetBool("IsWorking", false);
             lastHoldTime = -999f;
         }
 

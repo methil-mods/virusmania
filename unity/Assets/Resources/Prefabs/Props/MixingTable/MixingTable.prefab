@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c5df509411e2d4ed6919850998b6b53b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.012
+      value: -7.996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5df509411e2d4ed6919850998b6b53b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.099999905
+      value: -0.107
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c5df509411e2d4ed6919850998b6b53b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -290,7 +290,7 @@ MonoBehaviour:
   outlineMode: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineWidth: 6
-  sortingLayer: 15
+  sortingLayer: 3
   precomputeOutline: 0
   outlineChildren: 0
   bakeKeys: []

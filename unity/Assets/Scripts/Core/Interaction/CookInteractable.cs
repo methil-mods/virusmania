@@ -10,6 +10,7 @@ namespace Core.Interaction
         [Header("Cooking System")]
         [SerializeField] private float cookTime = 5f;
         [SerializeField] private Animator bainMarieAnimator;
+        [SerializeField] private ParticleSystem bainMarieParticle;
 
         private float cookTimer = 0f;
         private bool isCooking = false;
@@ -17,6 +18,7 @@ namespace Core.Interaction
 
         public override void Start()
         {
+            bainMarieParticle.Stop();
             maxHoldableItems = 1;
             base.Start();
 
@@ -58,6 +60,7 @@ namespace Core.Interaction
         {
             currentItem = item;
             isCooking = true;
+            bainMarieParticle.Play();
             cookTimer = 0f;
         }
 
@@ -65,6 +68,7 @@ namespace Core.Interaction
         {
             isCooking = false;
             cookTimer = 0f;
+            bainMarieParticle.Stop();
             currentItem = null;
         }
 
