@@ -13,6 +13,8 @@ namespace Core.Input
         [Header("Interaction Input")]
         public InputActionReference interactionAction;
         public InputActionReference interactionHoldAction;
+        
+        public InputActionReference pauseAction;
 
         public void DisableInputs()
         {
