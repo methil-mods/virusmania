@@ -643,10 +643,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 135158897682574519, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
-      propertyPath: outlineMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3740455095373494851, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
       propertyPath: m_Name
       value: Treadmill
@@ -690,6 +686,22 @@ PrefabInstance:
     - target: {fileID: 4081128484757905657, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034735850036882248, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034735850036882248, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034735850036882248, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034735850036882248, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
