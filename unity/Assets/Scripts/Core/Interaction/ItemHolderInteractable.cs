@@ -11,25 +11,21 @@ namespace Core.Interaction
 {
     public class ItemHolderInteractable : Interactable
     {
-        [Header("Configuration")]
         [SerializeField] protected int maxHoldableItems = 3;
         [SerializeField] protected List<Item.Item> startItems;
         [SerializeField] protected Transform itemParent;
         [SerializeField] protected Vector3 itemOffset = new Vector3(0, 1f, 0.5f);
 
-        [Header("Events")]
         public UnityAction<HoldItem> OnItemAdded;
         public UnityAction<HoldItem> OnItemRemoved;
         public UnityAction OnItemsChanged;
 
-        [Header("Runtime")]
         public List<HoldItem> HoldingItems = new List<HoldItem>();
         protected List<GameObject> spawnedPrefabs = new List<GameObject>();
 
         public override void Start()
         {
             base.Start();
-
             if (startItems != null && startItems.Count > 0)
             {
                 foreach (var item in startItems)
@@ -63,7 +59,7 @@ namespace Core.Interaction
             {
                 if (HoldingItems.Count > 0)
                 {
-                    HoldItem itemToGive = HoldingItems[^1];
+                    HoldItem itemToGive = HoldingItems[HoldingItems.Count - 1];
                     bool givedItem = playerInteraction.GiveItem(itemToGive);
                     if (givedItem)
                         RemoveItem(itemToGive);
@@ -74,17 +70,16 @@ namespace Core.Interaction
         public virtual void AddItem(HoldItem holdItem)
         {
             if (holdItem == null || holdItem.Item == null || !CanAddItem()) return;
-            HoldingItems.Add(holdItem);
+            HoldingItems.Insert(0, holdItem);
 
             if (holdItem.Item.itemPrefab != null)
             {
                 Transform parent = itemParent != null ? itemParent : transform;
                 GameObject spawned = Instantiate(holdItem.Item.itemPrefab, parent);
-                spawnedPrefabs.Add(spawned);
+                spawnedPrefabs.Insert(0, spawned);
             }
 
             UpdateItemPositions();
-
             OnItemAdded?.Invoke(holdItem);
             OnItemsChanged?.Invoke();
         }
@@ -103,7 +98,6 @@ namespace Core.Interaction
                 }
 
                 UpdateItemPositions();
-
                 OnItemRemoved?.Invoke(holdItem);
                 OnItemsChanged?.Invoke();
             }
@@ -113,14 +107,12 @@ namespace Core.Interaction
         {
             Debug.Log("Interacting hold with " + gameObject.name);
         }
-        
+
         protected virtual void UpdateItemPositions()
         {
             if (spawnedPrefabs == null || spawnedPrefabs.Count == 0) return;
-
             int count = spawnedPrefabs.Count;
             Transform parent = itemParent != null ? itemParent : transform;
-
             Vector3 basePos = parent.position + itemOffset;
 
             if (count == 1)
@@ -134,7 +126,7 @@ namespace Core.Interaction
             }
             else
             {
-                float radius = 0.5f; // adjust spacing
+                float radius = 0.5f;
                 float angleStep = 360f / count;
 
                 for (int i = 0; i < count; i++)
@@ -142,10 +134,11 @@ namespace Core.Interaction
                     float angle = angleStep * i * Mathf.Deg2Rad;
                     Vector3 offset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
                     spawnedPrefabs[i].transform.position = basePos + offset;
-                    spawnedPrefabs[i].transform.LookAt(basePos); // optional: make them face center
+                    spawnedPrefabs[i].transform.LookAt(basePos);
                 }
             }
         }
+
 #if UNITY_EDITOR
         protected virtual void OnDrawGizmos()
         {
@@ -190,6 +183,5 @@ namespace Core.Interaction
             }
         }
 #endif
-
     }
 }

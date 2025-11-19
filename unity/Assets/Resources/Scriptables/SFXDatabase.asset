@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80c55e98f31484aadff62d2b2f51fcf, type: 3}
+  m_Name: SFXDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::Core.SFX.SFXDatabase
+  musicClip1: {fileID: 8300000, guid: 3ff5f4b0a75244ab9b7a399405f1a559, type: 3}
+  openCookClip: {fileID: 8300000, guid: 5b0262874eea2404bbb07fbf25bc39f0, type: 3}
+  musicVolume: 45
+  interactionVolume: 50
+  uiVolume: 50
+  musicAudioGroup: {fileID: 7991936147937119767, guid: 604ac0d04edec495699de9c4e179e4f2, type: 2}
+  interactionAudioGroup: {fileID: 7429595621716809040, guid: 604ac0d04edec495699de9c4e179e4f2, type: 2}
+  userInterfaceAudioGroup: {fileID: 5587516021890078226, guid: 604ac0d04edec495699de9c4e179e4f2, type: 2}

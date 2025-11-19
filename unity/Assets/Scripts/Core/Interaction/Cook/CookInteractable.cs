@@ -2,6 +2,7 @@ using Core.Item;
 using Core.Item.Cook;
 using UnityEngine;
 using Core.Item.Holder;
+using Core.SFX;
 
 namespace Core.Interaction
 {
@@ -33,6 +34,11 @@ namespace Core.Interaction
             {
                 bainMarieAnimator.SetBool("Opened", false);
             };
+        }
+
+        public void PlayOpenClip()
+        {
+            SFXController.Instance.PlayInteraction(SFXDatabase.instance.openCookClip);
         }
 
         private void Update()
