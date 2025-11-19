@@ -1,4 +1,4 @@
-Shader "Custom/MethilToon_ForwardPlus_Fixed"
+Shader "Custom/MethilToonShader"
 {
     Properties
     {
@@ -7,6 +7,11 @@ Shader "Custom/MethilToon_ForwardPlus_Fixed"
         _Steps ("Lighting Steps", Float) = 3
         _Brightness ("Brightness", Range(0,2)) = 1
         _MinLight ("Min Light Level", Range(0,1)) = 0.12
+        
+        [Header(Bloom)]
+        _BloomMask ("Bloom Mask (R channel)", 2D) = "black" {}
+        _BloomIntensity ("Bloom Intensity", Range(0,10)) = 1
+        _BloomColor ("Bloom Color Tint", Color) = (1,1,1,1)
     }
 
     SubShader
@@ -49,12 +54,18 @@ Shader "Custom/MethilToon_ForwardPlus_Fixed"
 
             TEXTURE2D(_MainTex);
             SAMPLER(sampler_MainTex);
+            TEXTURE2D(_BloomMask);
+            SAMPLER(sampler_BloomMask);
 
             float4 _MainTex_ST;
             float4 _BaseColor;
             float _Steps;
             float _Brightness;
             float _MinLight;
+            
+            float4 _BloomMask_ST;
+            float _BloomIntensity;
+            float4 _BloomColor;
 
             Varyings vert(Attributes IN)
             {
@@ -126,6 +137,14 @@ Shader "Custom/MethilToon_ForwardPlus_Fixed"
                 accumLight = max(accumLight, float3(_MinLight, _MinLight, _MinLight));
 
                 float3 finalCol = baseColor * accumLight;
+                
+                // ===== BLOOM MASK =====
+                float2 bloomUV = TRANSFORM_TEX(IN.uv, _BloomMask);
+                float bloomMask = SAMPLE_TEXTURE2D(_BloomMask, sampler_BloomMask, bloomUV).r;
+                float3 bloomEmission = bloomMask * _BloomIntensity * _BloomColor.rgb * baseColor;
+                
+                finalCol += bloomEmission;
+                
                 return float4(finalCol, _BaseColor.a);
             }
             ENDHLSL

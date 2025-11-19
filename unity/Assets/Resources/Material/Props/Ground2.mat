@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ground
+  m_Name: Ground2
   m_Shader: {fileID: 4800000, guid: b9174516b9e2452f83c0d5ada817b1a4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -67,7 +67,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 652f921b25de6444ab9468d715ebdffc, type: 3}
-        m_Scale: {x: 13, y: 14}
+        m_Scale: {x: 15, y: 16}
         m_Offset: {x: 0.5, y: 0.5}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
