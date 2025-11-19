@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1764224293438226461}
   - component: {fileID: 8084185714976244066}
   - component: {fileID: 2957337501120921373}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5518036505906220071}
   - component: {fileID: 8628829526974921705}
   - component: {fileID: 5963548146322781626}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,6 +312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedPotion
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 116d817648c954792af60cd92f9f9e8b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -325,6 +329,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 116d817648c954792af60cd92f9f9e8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4918285204711572692}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 116d817648c954792af60cd92f9f9e8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 701372776436816774}
   m_SourcePrefab: {fileID: 100100000, guid: 116d817648c954792af60cd92f9f9e8b, type: 3}
 --- !u!4 &5776728032281565873 stripped
 Transform:
@@ -356,3 +363,26 @@ MonoBehaviour:
   outlineChildren: 0
   bakeKeys: []
   bakeValues: []
+--- !u!136 &701372776436816774
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6584508006877052939}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0033314326
+  m_Height: 0.012322959
+  m_Direction: 1
+  m_Center: {x: -0.0000000022118911, y: 0.0068629086, z: 0.000000011292286}

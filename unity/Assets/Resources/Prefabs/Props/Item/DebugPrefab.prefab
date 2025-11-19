@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 553514072603186012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DebugPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2680619143655266588}
   - component: {fileID: 2908717983996255415}
   - component: {fileID: 6136679078367676763}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

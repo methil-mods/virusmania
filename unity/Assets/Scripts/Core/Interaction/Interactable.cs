@@ -35,7 +35,7 @@ namespace Core.Interaction
             }
         }
 
-        public virtual void InInteractZone()
+        public virtual void InInteractZone(PlayerController playerController)
         {
             InInteraction?.Invoke();
             if (_interactionIndicator != null)
@@ -54,7 +54,7 @@ namespace Core.Interaction
             }
         }
 
-        public void HideIndicator()
+        public void HideIndicator(PlayerController playerController)
         {
             OutInteraction?.Invoke();
             if (_interactionIndicator != null && _interactionIndicator.activeSelf)

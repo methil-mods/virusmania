@@ -72,7 +72,7 @@ namespace Core.Player
             {
                 if (hit.TryGetComponent<Interactable>(out var interactable))
                 {
-                    interactable.InInteractZone();
+                    interactable.InInteractZone(controller);
                     currentFrameInteractables.Add(interactable);
                     break;
                 }
@@ -82,7 +82,7 @@ namespace Core.Player
             {
                 if (!currentFrameInteractables.Contains(oldInteractable))
                 {
-                    oldInteractable.HideIndicator();
+                    oldInteractable.HideIndicator(controller);
                 }
             }
 
