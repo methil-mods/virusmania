@@ -31,7 +31,8 @@ namespace Core.Player
         private HoldItem _holdingItem;
         private GameObject _spawnedHeldItem;
         private bool _isInteractingHeld;
-
+        
+        public HoldItem HoldingItem => _holdingItem;
         public bool HasItem => _holdingItem != null;
         
         private HashSet<Interactable> _interactablesInRange = new HashSet<Interactable>();

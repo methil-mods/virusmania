@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BonesHealth
   m_EditorClassIdentifier: Assembly-CSharp::Core.Threats.ThreatType
   threatTypeName: 
-  threatTypeIcon: {fileID: 21300000, guid: 70141d51621e24facbca9196bbde84b4, type: 3}
+  threatTypeIcon: {fileID: 21300000, guid: 4ecaaa6a3a7e8427cb35afabdb96cad2, type: 3}

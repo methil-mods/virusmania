@@ -28,7 +28,7 @@ namespace Core.Interaction
         
         public override void AddItem(HoldItem holdItem)
         {
-            if (holdItem == null || holdItem.Item == null || !CanAddItem()) return;
+            if (holdItem == null || holdItem.Item == null) return;
             
             TriggerFlapAnimation();
             

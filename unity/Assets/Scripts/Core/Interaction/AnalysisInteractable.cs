@@ -4,6 +4,7 @@ using Core.Analysis;
 using Core.Item;
 using Core.Item.Merge;
 using Core.Player;
+using Framework.Extensions;
 using UnityEngine;
 using UnityEngine.Splines.Interpolators;
 using UnityEngine.UI;
@@ -68,6 +69,42 @@ namespace Core.Interaction
             holdInteractImage.material.SetFloat("_InnerFillAmount", Mathf.Lerp(
                 holdInteractImage.material.GetFloat("_InnerFillAmount"), holdTimer / mergeHoldTime * 100 / 100, .1f
             ));
+        }
+
+        public override void InInteractZone(PlayerController playerController)
+        {
+            if (this.HoldingItems.Count > 0) base.InInteractZone(playerController);
+            
+            PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
+            if (playerInteraction == null) return;
+            
+            if (playerInteraction.HasItem)
+            {
+                if (playerInteraction.HoldingItem.Item is VirusItem virusItem)
+                {
+                    base.InInteractZone(playerController);
+                }
+            }
+        }
+        
+        public override bool CanPlayerAddItem(PlayerController playerController)
+        {
+            PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
+            if (playerInteraction == null) return false;
+
+            if (playerInteraction.HasItem)
+            {
+                if (playerInteraction.HoldingItem.Item is VirusItem virusItem)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override void InteractHold(PlayerController playerController)

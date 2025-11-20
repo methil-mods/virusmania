@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a3cdbaced44ee2af4b3b149070675c, type: 3}
   m_Name: Vector-Borne
   m_EditorClassIdentifier: Assembly-CSharp::Core.Threats.ThreatType
-  treatTypeName: Indirect Contact
+  threatTypeName: Vector Transmission
+  threatTypeIcon: {fileID: 21300000, guid: 4bb3872d1614d4fb1b4ca54db6a21279, type: 3}

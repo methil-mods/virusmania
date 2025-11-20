@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.SFX.SFXDatabase
   musicClip1: {fileID: 8300000, guid: 3ff5f4b0a75244ab9b7a399405f1a559, type: 3}
   openCookClip: {fileID: 8300000, guid: 5b0262874eea2404bbb07fbf25bc39f0, type: 3}
+  boilingCookClip: {fileID: 8300000, guid: 6a466d2d2cf8149c0a0a66a812a44197, type: 3}
+  endCookClip: {fileID: 8300000, guid: 7a2c44a4b5ad14583a9d9eed618cd5e0, type: 3}
   musicVolume: 45
   interactionVolume: 50
   uiVolume: 50

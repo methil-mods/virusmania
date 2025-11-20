@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: InfectionResistance
   m_EditorClassIdentifier: Assembly-CSharp::Core.Threats.ThreatType
   threatTypeName: 
-  threatTypeIcon: {fileID: 21300000, guid: 70141d51621e24facbca9196bbde84b4, type: 3}
+  threatTypeIcon: {fileID: 21300000, guid: b13f8eb53fd8745a399ed1b0ae745c87, type: 3}

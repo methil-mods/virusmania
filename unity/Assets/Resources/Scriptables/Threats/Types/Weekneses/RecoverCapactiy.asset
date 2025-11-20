@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RecoverCapactiy
   m_EditorClassIdentifier: Assembly-CSharp::Core.Threats.ThreatType
   threatTypeName: 
-  threatTypeIcon: {fileID: 21300000, guid: 70141d51621e24facbca9196bbde84b4, type: 3}
+  threatTypeIcon: {fileID: 21300000, guid: 39d79753f1e0b421c811d80dc2b11215, type: 3}

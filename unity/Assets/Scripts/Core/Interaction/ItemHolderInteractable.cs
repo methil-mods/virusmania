@@ -36,7 +36,7 @@ namespace Core.Interaction
             }
         }
 
-        public virtual bool CanAddItem()
+        public virtual bool CanPlayerAddItem(PlayerController playerController)
         {
             return HoldingItems.Count < maxHoldableItems;
         }
@@ -48,7 +48,7 @@ namespace Core.Interaction
 
             if (playerInteraction.HasItem)
             {
-                if (CanAddItem())
+                if (CanPlayerAddItem(playerController))
                 {
                     HoldItem removedItem = playerInteraction.RemoveItem();
                     if (removedItem != null)
@@ -69,7 +69,7 @@ namespace Core.Interaction
 
         public virtual void AddItem(HoldItem holdItem)
         {
-            if (holdItem == null || holdItem.Item == null || !CanAddItem()) return;
+            if (holdItem == null || holdItem.Item == null) return;
             HoldingItems.Insert(0, holdItem);
 
             if (holdItem.Item.itemPrefab != null)

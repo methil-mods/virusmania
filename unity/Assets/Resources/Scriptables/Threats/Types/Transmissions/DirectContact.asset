@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a3cdbaced44ee2af4b3b149070675c, type: 3}
   m_Name: DirectContact
   m_EditorClassIdentifier: Assembly-CSharp::Core.Threats.ThreatType
-  treatTypeName: Direct Contact
+  threatTypeName: Direct Contact
+  threatTypeIcon: {fileID: 21300000, guid: 518cd3cb6753b4007a99b05de92ef0d2, type: 3}

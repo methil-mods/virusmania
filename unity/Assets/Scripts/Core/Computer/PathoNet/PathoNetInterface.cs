@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Core.Item;
 using Core.Item.Holder;
 using Core.Money;
+using Core.Player;
 using UnityEngine.Events;
 
 namespace Core.Computer.PathoNet
@@ -75,8 +76,7 @@ namespace Core.Computer.PathoNet
                 var item = kvp.Key;
                 var go = kvp.Value;
 
-                if (pathoItemReceiver.CanAddItem())
-                    pathoItemReceiver.AddItem(new HoldItem(item));
+                pathoItemReceiver.AddItem(new HoldItem(item));
 
                 Destroy(go);
             }

@@ -12,6 +12,7 @@ namespace Core.Interaction
         [SerializeField] private float cookTime = 5f;
         [SerializeField] private Animator bainMarieAnimator;
         [SerializeField] private ParticleSystem bainMarieParticle;
+        [SerializeField] private AudioSource boilingCookSource;
 
         private float cookTimer = 0f;
         private bool isCooking = false;
@@ -34,6 +35,8 @@ namespace Core.Interaction
             {
                 bainMarieAnimator.SetBool("Opened", false);
             };
+            
+            boilingCookSource.clip = SFXDatabase.instance.boilingCookClip;
         }
 
         public void PlayOpenClip()
@@ -58,6 +61,7 @@ namespace Core.Interaction
             {
                 RemoveItem(currentItem);
                 AddItem(cooked.GetHoldItem());
+                SFXController.Instance.PlayInteraction(SFXDatabase.instance.endCookClip);
                 StopCooking(currentItem);
             }
         }
@@ -67,6 +71,9 @@ namespace Core.Interaction
             currentItem = item;
             isCooking = true;
             bainMarieParticle.Play();
+            boilingCookSource.Play();
+            LeanTween.value(0f, 1f, 0.1f)
+                .setOnUpdate(f => boilingCookSource.volume = f);
             cookTimer = 0f;
         }
 
@@ -75,6 +82,9 @@ namespace Core.Interaction
             isCooking = false;
             cookTimer = 0f;
             bainMarieParticle.Stop();
+            LeanTween.value(1f, 0f, 1f)
+                .setOnUpdate(f => boilingCookSource.volume = f)
+                .setOnComplete((() => boilingCookSource.Stop()));
             currentItem = null;
         }
 
