@@ -8,30 +8,19 @@ namespace Core.Analysis
     public class ThreatOfDiseasePrefab : MonoBehaviour
     {
         public Image threatIconImage;
-        public RectTransform threatImpactContainer;
+        public TextMeshProUGUI threatLevelText;
 
         public void Setup(Sprite _threatIconImage, int threatLevel)
         {
             threatIconImage.sprite = _threatIconImage;
-            foreach (Transform child in threatImpactContainer)
-            {
-                Destroy(child.gameObject);
-            }
-
+            threatLevelText.text = threatLevel.ToString();
             if (threatLevel > 0)
             {
-                for (int i = 0; i < threatLevel; i++)
-                {
-                    Instantiate(PrefabDatabase.Instance.analysisThreatPlusPrefab, threatImpactContainer);                    
-                }
+                threatLevelText.color = Color.green;
             }
-
-            if (threatLevel < 0)
+            else
             {
-                for (int i = threatLevel; i < 0; i++)
-                {
-                    Instantiate(PrefabDatabase.Instance.analysisThreatMinusPrefab, threatImpactContainer);                    
-                }
+                threatLevelText.color = Color.red;
             }
         }
     }

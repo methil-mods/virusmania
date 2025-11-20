@@ -38,6 +38,7 @@ namespace Core.Interaction
             {
                 Transform parent = itemParent != null ? itemParent : transform;
                 GameObject spawned = Instantiate(holdItem.Item.itemPrefab, parent);
+                spawned.GetComponent<Collider>().enabled = true;
                 spawned.AddComponent<Rigidbody>();
                 spawnedPrefabs.Insert(0, spawned);
                 UpdateItemPosition(spawned);

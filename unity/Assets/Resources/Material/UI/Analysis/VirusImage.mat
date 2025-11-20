@@ -32,7 +32,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.052
-    - _AspectRatio: 1
+    - _AspectRatio: 1.02
     - _BorderOffset: 0
     - _BorderOffsetX: 0.021
     - _BorderOffsetY: -0.04
