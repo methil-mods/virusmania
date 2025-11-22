@@ -1,5 +1,6 @@
 using Core.Input;
 using Core.PostProcess;
+using Core.Scene;
 using Framework.Controller;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -62,6 +63,11 @@ namespace Core
                 }));
 
             OnPanelClose?.Invoke();
+        }
+
+        public void LoadMainMenu()
+        {
+            SceneTransitor.Instance.LoadScene(0);
         }
 
 #if UNITY_EDITOR
