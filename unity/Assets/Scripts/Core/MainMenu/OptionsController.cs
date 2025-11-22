@@ -26,6 +26,8 @@ namespace Core.MainMenu
         {
             Init();
             optionPanel.gameObject.SetActive(true);
+            if (MainMenuController.Instance != null)
+                LeanTween.scale(MainMenuController.Instance.gameObject, new Vector3(0f, 0f, 0f), 0.6f).setEaseSpring();
             LeanTween.moveLocal(optionPanel.gameObject, startPos, duration)
                 .setEaseSpring();
         }
@@ -33,6 +35,8 @@ namespace Core.MainMenu
         public void CloseOption()
         {
             Init();
+            if (MainMenuController.Instance != null)
+                LeanTween.scale(MainMenuController.Instance.gameObject, new Vector3(1f, 1f, 1f), 0.6f).setEaseSpring();
             LeanTween.moveLocal(optionPanel.gameObject, offscreenPos, duration)
                 .setEaseSpring()
                 .setOnComplete(() => optionPanel.gameObject.SetActive(false));
