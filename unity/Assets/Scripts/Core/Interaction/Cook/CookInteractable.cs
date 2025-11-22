@@ -36,13 +36,13 @@ namespace Core.Interaction
                 bainMarieAnimator.SetBool("Opened", false);
             };
             
-            boilingCookSource.clip = SFXDatabase.instance.boilingCookClip;
+            boilingCookSource.clip = SFXDatabase.Instance.boilingCookClip;
         }
         
 
         public void PlayOpenClip()
         {
-            SFXController.Instance.PlayInteraction(SFXDatabase.instance.openCookClip);
+            SFXController.Instance.PlayInteraction(SFXDatabase.Instance.openCookClip);
         }
 
         private void Update()
@@ -62,7 +62,7 @@ namespace Core.Interaction
             {
                 RemoveItem(currentItem);
                 AddItem(cooked.GetHoldItem());
-                SFXController.Instance.PlayInteraction(SFXDatabase.instance.endCookClip);
+                SFXController.Instance.PlayInteraction(SFXDatabase.Instance.endCookClip);
                 StopCooking(currentItem);
             }
         }

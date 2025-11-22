@@ -1,9 +1,9 @@
-using UnityEditor;
+using Framework.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Audio;
 
 [CreateAssetMenu(fileName = "SFXDatabase", menuName = "SFX/SFXDatabase")]
-public class SFXDatabase : ScriptableSingleton<SFXDatabase>
+public class SFXDatabase : SingletonScriptableObject<SFXDatabase>
 {
     [Header("Audio Clip Database")]
     public AudioClip musicClip1;

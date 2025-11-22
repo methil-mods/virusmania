@@ -32,7 +32,7 @@ namespace Core.Interaction
             {
                 HoldItem removedItem = playerInteraction.RemoveItem();
                 animator.SetTrigger("TriggerTrash");
-                audioSource.PlayOneShot(SFXDatabase.instance.triggerTrashClip);
+                audioSource.PlayOneShot(SFXDatabase.Instance.triggerTrashClip);
             }
         }
 

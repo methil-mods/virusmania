@@ -26,8 +26,8 @@ namespace Core.SFX
 
         private void Start()
         {
-            SFXDatabase.instance.SetupSound();
-            PlayMusic(SFXDatabase.instance.musicClip1);
+            SFXDatabase.Instance.SetupSound();
+            PlayMusic(SFXDatabase.Instance.musicClip1);
         }
 
         private AudioSource CreateInteractionSource()
@@ -35,7 +35,7 @@ namespace Core.SFX
             var go = new GameObject("InteractionSFX");
             go.transform.SetParent(transform);
             var s = go.AddComponent<AudioSource>();
-            s.outputAudioMixerGroup = SFXDatabase.instance.interactionAudioGroup;
+            s.outputAudioMixerGroup = SFXDatabase.Instance.interactionAudioGroup;
             interactionPool.Add(s);
             return s;
         }
@@ -45,7 +45,7 @@ namespace Core.SFX
             var go = new GameObject("UISFX");
             go.transform.SetParent(transform);
             var s = go.AddComponent<AudioSource>();
-            s.outputAudioMixerGroup = SFXDatabase.instance.userInterfaceAudioGroup;
+            s.outputAudioMixerGroup = SFXDatabase.Instance.userInterfaceAudioGroup;
             uiPool.Add(s);
             return s;
         }

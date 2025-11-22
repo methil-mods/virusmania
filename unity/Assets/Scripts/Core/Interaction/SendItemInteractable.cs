@@ -103,7 +103,8 @@ namespace Core.Interaction
         public override void InteractHold(PlayerController playerController)
         {
         }
-
+        
+#if UNITY_EDITOR
         protected override void OnDrawGizmos()
         {
             base.OnDrawGizmos();
@@ -112,5 +113,6 @@ namespace Core.Interaction
             Gizmos.color = Color.brown;
             Gizmos.DrawSphere(objectRelativeDestination, 0.05f);
         }
+#endif
     }
 }
