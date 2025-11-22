@@ -19,7 +19,7 @@ namespace Core.Interaction
 
             computerScreenRenderer.material = new Material(computerScreenRenderer.material);
             _computerScreenMaterial =  computerScreenRenderer.material;
-            _computerScreenMaterial.SetVector("_TurnWhiteEffect", new Vector2(0f, 0f));
+            _computerScreenMaterial.SetVector("_TurnWhiteEffect", new Vector2(0f, 0.05f));
             
             InInteraction += () =>
             {
