@@ -19,6 +19,9 @@ namespace Core.Player
         [Header("Animation Settings")]
         [SerializeField] private Animator animator;
 
+        [Header("Audio")]
+        [SerializeField] private AudioSource walkSource;
+
         private Rigidbody rb;
         private Vector3 currentVelocity;
         
@@ -27,14 +30,10 @@ namespace Core.Player
         public override void Start(PlayerController controller)
         {
             _moveAction = InputDatabase.Instance.moveAction;
-            
-            if (_moveAction == null) Debug.LogError("No player move action set in PlayerMovement");
-            if (animator == null) Debug.LogError("No animator set in PlayerMovement");
-            
             _moveAction.action.Enable();
-            
             rb = controller.GetComponent<Rigidbody>();
-            if (rb == null) Debug.LogError("No rigid body set in PlayerController gameobject");
+            walkSource.loop = true;
+            walkSource.clip = SFXDatabase.Instance.walkClip;
         }
 
         public override void FixedUpdate(PlayerController controller)
@@ -47,11 +46,19 @@ namespace Core.Player
             velocityChange.y = 0;
             rb.AddForce(velocityChange, ForceMode.VelocityChange);
 
-            if (currentVelocity.sqrMagnitude > 0.001f)
+            if (currentVelocity.sqrMagnitude > 0.01f)
             {
+                if (!walkSource.isPlaying) walkSource.Play();
+            }
+            else
+            {
+                if (walkSource.isPlaying) walkSource.Stop();
+            }
+            if (currentVelocity.sqrMagnitude > 0.001f) {
                 direction = currentVelocity.normalized;
                 Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
                 rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, acceleration * Time.fixedDeltaTime));
+            } else {
             }
         }
 
@@ -59,7 +66,6 @@ namespace Core.Player
         {
             if (direction == Vector3.zero) return;
             Gizmos.color = Color.cyan;
-
             Vector3 origin = controller.body.transform.position;
             origin = origin.AddY(1.4f);
             Vector3 end = origin + direction * 2f;

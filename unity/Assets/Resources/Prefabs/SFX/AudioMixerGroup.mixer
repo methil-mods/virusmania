@@ -14,6 +14,48 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-7096418329074811893
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: eefaea8586fcd417db822d6988db8fb1
+  m_EffectName: ParamEQ
+  m_MixLevel: 46304e2132a304081a38b2a9602e25ad
+  m_Parameters:
+  - m_ParameterName: Center freq
+    m_GUID: 43796eb3a32ba41e59e4562da695be70
+  - m_ParameterName: Octave range
+    m_GUID: 42f3ac6ac55ec4179a05f9b55e52d5f3
+  - m_ParameterName: Frequency gain
+    m_GUID: 953a2717a61d64eff8688aba77638653
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-1697879305698289567
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 88934835c26ed4b3093163b2deaee85a
+  m_EffectName: Compressor
+  m_MixLevel: 1c419b05f494a4b5bbd7748395dbf0c1
+  m_Parameters:
+  - m_ParameterName: Threshold
+    m_GUID: f4aaeade82fb946f89ec3c56e402dfd3
+  - m_ParameterName: Attack
+    m_GUID: d1530ddbcfa244b7fa8ee845f6654b8a
+  - m_ParameterName: Release
+    m_GUID: 3ba9f209b4d6c4b8d899796092e80e3f
+  - m_ParameterName: Make up gain
+    m_GUID: bfb321a18d25d43f5b1192e0e320490f
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -91,8 +133,15 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: adc9075c29d04425e91d24c44d9f8583
   m_FloatValues:
+    bfb321a18d25d43f5b1192e0e320490f: 0
+    43796eb3a32ba41e59e4562da695be70: 48
     fd61f3347079e4003b2ba6aae2a34bdd: -0.002441872
-    06aa487e728a24851b5fb708cbf3689f: 0
+    953a2717a61d64eff8688aba77638653: 0.28
+    3ba9f209b4d6c4b8d899796092e80e3f: 20
+    42f3ac6ac55ec4179a05f9b55e52d5f3: 3.46
+    d1530ddbcfa244b7fa8ee845f6654b8a: 10
+    06aa487e728a24851b5fb708cbf3689f: -80
+    f4aaeade82fb946f89ec3c56e402dfd3: -22.3
   m_TransitionOverrides: {}
 --- !u!243 &5587516021890078226
 AudioMixerGroupController:
@@ -142,6 +191,8 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -7487351210360843325}
+  - {fileID: -1697879305698289567}
+  - {fileID: -7096418329074811893}
   m_UserColorIndex: 5
   m_Mute: 0
   m_Solo: 0

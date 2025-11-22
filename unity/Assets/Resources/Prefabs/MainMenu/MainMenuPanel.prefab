@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2161016547327898855}
   - component: {fileID: 5543488707010654265}
   - component: {fileID: 5404850793624123874}
+  - component: {fileID: 5264301823955367203}
   m_Layer: 5
   m_Name: GoOnNewScene
   m_TagString: Untagged
@@ -146,6 +147,18 @@ MonoBehaviour:
   duration: 0.2
   easeType: 6
   pressDarken: 0.7
+--- !u!114 &5264301823955367203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319398648773824452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec4c6f741164c9bbff8cf06fbb7326b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.SFX.UI.UIButtonHoverSFX
 --- !u!1 &491492790793820703
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +173,7 @@ GameObject:
   - component: {fileID: 6819921803682828633}
   - component: {fileID: 3958711188952104448}
   - component: {fileID: 6835630008904312285}
+  - component: {fileID: 8742911642231638069}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -306,6 +320,18 @@ MonoBehaviour:
   duration: 0.2
   easeType: 6
   pressDarken: 0.7
+--- !u!114 &8742911642231638069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491492790793820703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec4c6f741164c9bbff8cf06fbb7326b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.SFX.UI.UIButtonHoverSFX
 --- !u!1 &1572669806519482862
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +345,7 @@ GameObject:
   - component: {fileID: 1426914507589122042}
   - component: {fileID: 5884871832729985769}
   - component: {fileID: 6520703768463704469}
+  - component: {fileID: 1428802414266422179}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -452,6 +479,18 @@ MonoBehaviour:
   duration: 0.2
   easeType: 6
   pressDarken: 0.7
+--- !u!114 &1428802414266422179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572669806519482862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec4c6f741164c9bbff8cf06fbb7326b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.SFX.UI.UIButtonHoverSFX
 --- !u!1 &2218316326762767018
 GameObject:
   m_ObjectHideFlags: 0

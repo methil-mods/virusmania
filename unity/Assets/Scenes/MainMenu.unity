@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &102184962
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1401.842
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 486.7529
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461258224988305534, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651186454260085738, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
+      propertyPath: m_Name
+      value: SFXController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aecdece35b19341329d1f584a21a2e35, type: 3}
 --- !u!1 &298495722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1192,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409378884}
   m_CullTransparentMesh: 1
+--- !u!1 &1499463732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2410404190957192723, guid: 2b8ef7e6166964326ba64f6879f74a36, type: 3}
+  m_PrefabInstance: {fileID: 2567050233493645441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1499463739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499463732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec4c6f741164c9bbff8cf06fbb7326b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.SFX.UI.UIButtonHoverSFX
 --- !u!1 &1740162211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1679,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2410404190957192723, guid: 2b8ef7e6166964326ba64f6879f74a36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1499463739}
   m_SourcePrefab: {fileID: 100100000, guid: 2b8ef7e6166964326ba64f6879f74a36, type: 3}
 --- !u!1001 &7630569316636260766
 PrefabInstance:
@@ -1785,3 +1862,4 @@ SceneRoots:
   - {fileID: 612818985}
   - {fileID: 801723440}
   - {fileID: 1295097922632904383}
+  - {fileID: 102184962}
