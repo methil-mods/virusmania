@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Core.Item.Holder;
 using Core.Player;
 using Framework.Extensions;
@@ -8,6 +9,20 @@ namespace Core.Interaction
     public class PathoNetItemReceiver : ItemHolderInteractable
     {
         public Animator flapAnimator;
+        
+        private Queue<HoldItem> itemQueue = new Queue<HoldItem>();
+
+
+        public override void InInteractZone(PlayerController playerController)
+        {
+            PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
+            if (playerInteraction == null) return;
+            
+            if (!playerInteraction.HasItem)
+            {
+                if (this.HoldingItems.Count > 0) base.InInteractZone(playerController);
+            }
+        }
         
         public override void Interact(PlayerController playerController)
         {
@@ -25,13 +40,19 @@ namespace Core.Interaction
                 }
             }
         }
-        
+
         public override void AddItem(HoldItem holdItem)
         {
             if (holdItem == null || holdItem.Item == null) return;
-            
+
             TriggerFlapAnimation();
-            
+
+            if (HoldingItems.Count >= maxHoldableItems)
+            {
+                itemQueue.Enqueue(holdItem);
+                return;
+            }
+
             HoldingItems.Insert(0, holdItem);
 
             if (holdItem.Item.itemPrefab != null)
@@ -48,6 +69,30 @@ namespace Core.Interaction
             OnItemsChanged?.Invoke();
         }
 
+        public override void RemoveItem(HoldItem holdItem)
+        {
+            if (holdItem == null) return;
+            int index = HoldingItems.IndexOf(holdItem);
+            if (index >= 0)
+            {
+                HoldingItems.RemoveAt(index);
+                if (index < spawnedPrefabs.Count && spawnedPrefabs[index] != null)
+                {
+                    Destroy(spawnedPrefabs[index]);
+                    spawnedPrefabs.RemoveAt(index);
+                }
+
+                OnItemRemoved?.Invoke(holdItem);
+                OnItemsChanged?.Invoke();
+
+                if (itemQueue.Count > 0)
+                {
+                    HoldItem nextItem = itemQueue.Dequeue();
+                    AddItem(nextItem);
+                }
+            }
+        }
+
         public void TriggerFlapAnimation()
         {
             flapAnimator.SetTrigger("Open");
@@ -56,14 +101,13 @@ namespace Core.Interaction
         private void UpdateItemPosition(GameObject itemPrefab)
         {
             if (spawnedPrefabs == null || spawnedPrefabs.Count == 0) return;
-            int count = spawnedPrefabs.Count;
             Transform parent = itemParent != null ? itemParent : transform;
             Vector3 basePos = parent.position + itemOffset;
 
             itemPrefab.transform.position = basePos;
             itemPrefab.transform.LookAt(basePos);
         }
-        
+
         protected override void UpdateItemPositions()
         {
             return;
