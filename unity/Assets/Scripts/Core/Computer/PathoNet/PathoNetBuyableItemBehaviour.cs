@@ -4,6 +4,7 @@ using Core.Item;
 using Core.Money;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
@@ -19,10 +20,12 @@ namespace Core.Computer.PathoNet
         public Button addItemButton;
         public Button removeItemButton;
         
-        private Item.Item itemData;
+        public Item.Item itemData;
         private PathoNetInterface _pathoInterface;
         public int amount = 0;
 
+        private UnityAction _onUpdateInterface;
+        
         public void Start()
         {
             amount = 0;
@@ -45,6 +48,7 @@ namespace Core.Computer.PathoNet
             if (itemPrice != null)
                 itemPrice.text = "$" + item.price;
             
+            _onUpdateInterface += pathoInterface.UpdateInterface;
             UpdateAmountText();
         }
 
@@ -63,6 +67,7 @@ namespace Core.Computer.PathoNet
         public void UpdateAmountText()
         {
             itemAmount.text = amount.ToString();
+            _onUpdateInterface?.Invoke();
         }
     }
 }

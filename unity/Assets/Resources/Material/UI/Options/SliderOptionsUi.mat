@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ItemPathoNetItem
-  m_Shader: {fileID: 4800000, guid: 661f0f48a63a476fb9b0250fe80ea0ca, type: 3}
+  m_Name: SliderOptionsUi
+  m_Shader: {fileID: 4800000, guid: e4af9354f6c74cb0988f5a2d51b62d31, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -32,18 +32,20 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.052
-    - _AspectRatio: 4
-    - _BorderOffset: 0.1484
-    - _BorderOffsetX: 0
-    - _BorderOffsetY: -0.023
-    - _BorderThickness: 0.035
+    - _AspectRatio: 14.5
+    - _BorderOffset: 0
+    - _BorderOffsetX: 0.004
+    - _BorderOffsetY: -0.037
+    - _BorderThickness: 0.063
     - _ColorMask: 15
-    - _CornerRadius: 0.088
+    - _CornerRadius: 0.278
     - _EnableBorder: 1
+    - _FillAmount: 1
     - _Frequency: 14.93
-    - _NoiseAmplitude: 0.0184
-    - _NoiseScale: 6.9
-    - _NoiseSpeed: 1.09
+    - _InnerFillAmount: 0.695
+    - _NoiseAmplitude: 0.029
+    - _NoiseScale: 3.9
+    - _NoiseSpeed: 2.5
     - _OutlineEnabled: 1
     - _Roundness: 0.456
     - _Speed: 1.82
@@ -54,9 +56,10 @@ Material:
     - _StencilWriteMask: 255
     - _Thickness: 0
     m_Colors:
-    - _BorderColor: {r: 0.007843138, g: 0.34901962, b: 0, a: 1}
+    - _BorderColor: {r: 0.07454684, g: 0.6132076, b: 0, a: 1}
     - _Color1: {r: 0, g: 1, b: 0.08719444, a: 1}
     - _Color2: {r: 0, g: 0.5849056, b: 0.004974266, a: 1}
-    - _FillColor: {r: 0.16272295, g: 1, b: 0.0990566, a: 1}
+    - _FillColor: {r: 0.75756073, g: 1, b: 0.7311321, a: 1}
+    - _InnerFillColor: {r: 0.19215703, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

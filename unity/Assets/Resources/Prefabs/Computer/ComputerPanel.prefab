@@ -1037,6 +1037,7 @@ MonoBehaviour:
   pathoBuyableItemContainer: {fileID: 4615478375236789413}
   buyButton: {fileID: 7313806904101639008}
   pathoItemReceiver: {fileID: 0}
+  dollarAmountText: {fileID: 5934063320061192740}
 --- !u!1 &8505429509318885023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,6 +1717,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50dfa56bb12b843c0bfcc0922188e090, type: 3}
+--- !u!114 &5934063320061192740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7521464581809119603, guid: 50dfa56bb12b843c0bfcc0922188e090, type: 3}
+  m_PrefabInstance: {fileID: 4196117943056468823}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &7473918942260816927 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6738276353319298888, guid: 50dfa56bb12b843c0bfcc0922188e090, type: 3}

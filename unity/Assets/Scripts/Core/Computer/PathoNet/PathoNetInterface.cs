@@ -6,6 +6,7 @@ using Core.Item;
 using Core.Item.Holder;
 using Core.Money;
 using Core.Player;
+using TMPro;
 using UnityEngine.Events;
 
 namespace Core.Computer.PathoNet
@@ -17,6 +18,8 @@ namespace Core.Computer.PathoNet
         public Button buyButton;
         [SerializeField] private PathoNetItemReceiver pathoItemReceiver;
         public UnityAction OnBuyCart;
+
+        public TextMeshProUGUI dollarAmountText;
 
         protected void Start()
         {
@@ -30,6 +33,59 @@ namespace Core.Computer.PathoNet
                 if (buyableBehaviour != null)
                     buyableBehaviour.Setup(item, this);
             }
+            
+            buyButton.onClick.AddListener(BuyCart);
         }
+
+        public void UpdateInterface()
+        {
+            int total = 0;
+
+            foreach (Transform child in pathoBuyableItemContainer)
+            {
+                var buyable = child.GetComponent<PathoNetBuyableItemBehaviour>();
+                if (buyable != null && buyable.itemData != null)
+                    total += buyable.amount * buyable.itemData.price;
+            }
+
+            dollarAmountText.text = "$" + total;
+        }
+
+        public void BuyCart()
+        {
+            int total = 0;
+            List<PathoNetBuyableItemBehaviour> itemsToBuy = new List<PathoNetBuyableItemBehaviour>();
+
+            foreach (Transform child in pathoBuyableItemContainer)
+            {
+                var buyable = child.GetComponent<PathoNetBuyableItemBehaviour>();
+                if (buyable != null && buyable.itemData != null && buyable.amount > 0)
+                {
+                    itemsToBuy.Add(buyable);
+                    total += buyable.amount * buyable.itemData.price;
+                }
+            }
+
+            if (!MoneyController.Instance.CanRemoveMoney(total))
+            {
+                MoneyController.Instance.OnMoneyInsufficient?.Invoke();
+                return;
+            }
+
+            MoneyController.Instance.RemoveMoney(total);
+
+            foreach (var buyable in itemsToBuy)
+            {
+                for (int i = 0; i < buyable.amount; i++)
+                    pathoItemReceiver.AddItem(buyable.itemData.GetHoldItem());
+        
+                buyable.amount = 0;
+                buyable.UpdateAmountText();
+            }
+
+            UpdateInterface();
+            OnBuyCart?.Invoke();
+        }
+
     }
 }

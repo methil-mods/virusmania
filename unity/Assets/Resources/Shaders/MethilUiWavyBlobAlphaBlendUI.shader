@@ -118,7 +118,7 @@ Shader "UI/MethilUiWavyBlob_DoubleFill"
                 float aspectRatio = max(_AspectRatio, 0.01);
                 p.x *= aspectRatio;
             
-                float padding = _BorderThickness + _NoiseAmplitude * 1.5;
+                float padding = _BorderThickness + _NoiseAmplitude;
                 float2 halfSize = float2((0.5 - padding) * aspectRatio, 0.5 - padding);
             
                 float2 shadowOffset = float2(_BorderOffsetX * aspectRatio, _BorderOffsetY);
