@@ -11,6 +11,8 @@ public class SFXDatabase : ScriptableSingleton<SFXDatabase>
     public AudioClip openCookClip;
     public AudioClip boilingCookClip;
     public AudioClip endCookClip;
+
+    public AudioClip triggerTrashClip; 
     
     [Header("Volume and Audio Group")]
     [Range(0, 100)] public float musicVolume;
