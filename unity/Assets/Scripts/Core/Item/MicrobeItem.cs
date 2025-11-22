@@ -8,14 +8,5 @@ namespace Core.Item
     [CreateAssetMenu(fileName = "MicrobeItem", menuName = "Item/MicrobeItem")]
     public class MicrobeItem : Item
     {
-        [SerializeField]
-        public ThreatParameter[] threatParameters;
-    }
-
-    [Serializable]
-    public class ThreatParameter
-    {
-        public ThreatType threatType;
-        public int threatImpact;
     }
 }

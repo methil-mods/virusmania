@@ -8,13 +8,7 @@ namespace Core.Item.Merge
     {
         public override HoldItem GetResultItem()
         {
-            HoldVirusItem holdVirusItem = resultItem.GetHoldItem() as HoldVirusItem;
-
-            foreach (MicrobeItem microbe in this.inputItems)
-            {
-                holdVirusItem?.AddMicrobe(microbe);
-            }
-            
+            HoldItem holdVirusItem = resultItem.GetHoldItem();
             return holdVirusItem;
         }
     }

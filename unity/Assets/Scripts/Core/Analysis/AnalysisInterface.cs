@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using Core.Input;
+using Core.Item;
 using Core.Item.Holder;
 using Core.PostProcess;
 using Core.Prefab;
@@ -26,13 +28,13 @@ namespace Core.Analysis
                 Destroy(child.gameObject);
             }
 
-            if (holdItemAnalyzed is HoldVirusItem holdVirusItem)
+            if (holdItemAnalyzed is HoldVirusItem holdVirusItem && holdVirusItem.Item is VirusItem holdVirusItemData)
             {
-                List<ThreatImpact> threatImpacts = holdVirusItem.GetThreatImpacts();
+                List<ThreatParameter> threatImpacts = holdVirusItemData.threatParameters.ToList();
                 foreach (var impact in threatImpacts)
                 {
                     var threatPrefab = Instantiate(PrefabDatabase.Instance.analysisThreatPrefab, diseaseThreatContainer);
-                    threatPrefab.GetComponent<ThreatOfDiseasePrefab>().Setup(impact.ThreatType.threatTypeIcon, impact.ThreatLevel);
+                    threatPrefab.GetComponent<ThreatOfDiseasePrefab>().Setup(impact.threatType.threatTypeIcon, impact.threatImpact);
                 }
             }
             
