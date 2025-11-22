@@ -36,8 +36,19 @@ Shader "UI/MethilUiWavyBlob"
             #pragma fragment frag
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            struct Attributes { float4 positionOS : POSITION; float2 uv : TEXCOORD0; };
-            struct Varyings { float4 positionHCS : SV_POSITION; float2 uv : TEXCOORD0; };
+            struct Attributes 
+            { 
+                float4 positionOS : POSITION; 
+                float2 uv : TEXCOORD0; 
+                float4 color : COLOR;  // Ajout de la couleur des vertices
+            };
+            
+            struct Varyings 
+            { 
+                float4 positionHCS : SV_POSITION; 
+                float2 uv : TEXCOORD0; 
+                float4 color : COLOR;  // Passer la couleur au fragment shader
+            };
 
             TEXTURE2D(_MainTex);
             SAMPLER(sampler_MainTex);
@@ -98,6 +109,7 @@ Shader "UI/MethilUiWavyBlob"
                 Varyings OUT;
                 OUT.positionHCS = TransformObjectToHClip(IN.positionOS);
                 OUT.uv = IN.uv;
+                OUT.color = IN.color;  // Transmettre la couleur de l'Image UI
                 return OUT;
             }
 
@@ -142,11 +154,9 @@ Shader "UI/MethilUiWavyBlob"
                 
                 float mainShape = smoothstep(antiAlias, 0.0, distMainNoisy);
             
-                // Sample the texture color
+                // Sample texture et multiplier par TOUTES les couleurs (texture, shader property, et Image UI)
                 float4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
-                
-                // Use texture color for fill, _FillColor just modulates it
-                float4 fillColor = texColor * _FillColor;
+                float4 fillColor = texColor * _FillColor * IN.color;  // Ajout de IN.color
                 
                 float4 col = _BorderColor * shadowRing;
                 col = lerp(col, fillColor, mainShape);
