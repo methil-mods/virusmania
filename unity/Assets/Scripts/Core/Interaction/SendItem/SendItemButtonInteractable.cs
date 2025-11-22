@@ -1,4 +1,5 @@
 using Core.Player;
+using Core.SFX;
 using UnityEngine;
 
 namespace Core.Interaction
@@ -20,6 +21,11 @@ namespace Core.Interaction
                 sendItemInteractable.SendItem();
             }
             Debug.Log("Interacting with " + playerController.gameObject.name);
+        }
+
+        public void PlayLeverSound()
+        {
+            SFXController.Instance.PlayInteraction(SFXDatabase.Instance.leverClip);
         }
 
         public override void InteractHold(PlayerController playerController)

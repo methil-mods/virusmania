@@ -17,6 +17,7 @@ MonoBehaviour:
   boilingCookClip: {fileID: 8300000, guid: 6a466d2d2cf8149c0a0a66a812a44197, type: 3}
   endCookClip: {fileID: 8300000, guid: 7a2c44a4b5ad14583a9d9eed618cd5e0, type: 3}
   triggerTrashClip: {fileID: 8300000, guid: 1bf0831af84f14b649b377ee7ecac1fe, type: 3}
+  leverClip: {fileID: 8300000, guid: 7dcccd023281c4b92b92cbad0d53e2c5, type: 3}
   musicVolume: 45
   interactionVolume: 50
   uiVolume: 50

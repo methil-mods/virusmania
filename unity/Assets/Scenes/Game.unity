@@ -291,8 +291,8 @@ Transform:
   m_GameObject: {fileID: 116973274}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: -9.59, y: 2.2705, z: 6.0301}
-  m_LocalScale: {x: 14.373797, y: 5.04075, z: 0.1339}
+  m_LocalPosition: {x: -9.59, y: 2.2705, z: 5.9797}
+  m_LocalScale: {x: 14.273218, y: 5.04075, z: 0.1339}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1765636086}
@@ -695,8 +695,8 @@ Transform:
   m_GameObject: {fileID: 283311582}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9918, y: 2.2705, z: 13.0469}
-  m_LocalScale: {x: 13.034753, y: 5.04075, z: 0.1339}
+  m_LocalPosition: {x: -3.011, y: 2.2705, z: 13.0469}
+  m_LocalScale: {x: 13.075165, y: 5.04075, z: 0.1339}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1765636086}
@@ -859,8 +859,8 @@ Transform:
   m_GameObject: {fileID: 366085825}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: 3.56, y: 2.2705, z: 8.6213}
-  m_LocalScale: {x: 9.191209, y: 5.04075, z: 0.1339}
+  m_LocalPosition: {x: 3.56, y: 2.2705, z: 8.5701}
+  m_LocalScale: {x: 9.088193, y: 5.04075, z: 0.1339}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1765636086}
@@ -2717,8 +2717,8 @@ Transform:
   m_GameObject: {fileID: 1335211255}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: 12.6, y: 2.2705, z: -4.0023}
-  m_LocalScale: {x: 16.003115, y: 5.04075, z: 0.1339}
+  m_LocalPosition: {x: 12.6, y: 2.2705, z: -3.939}
+  m_LocalScale: {x: 16.12954, y: 5.04075, z: 0.1339}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1765636086}
@@ -5146,10 +5146,6 @@ PrefabInstance:
     - target: {fileID: 2368320434815124073, guid: 60c0d246ca51c46eb9494bb2491ac51c, type: 3}
       propertyPath: m_Name
       value: PausePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616832472715597608, guid: 60c0d246ca51c46eb9494bb2491ac51c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5464947118560254306, guid: 60c0d246ca51c46eb9494bb2491ac51c, type: 3}
       propertyPath: m_Pivot.x
