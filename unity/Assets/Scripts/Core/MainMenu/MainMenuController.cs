@@ -33,6 +33,8 @@ namespace Core.MainMenu
         
         public void GoOnNewScene()
         {
+            LeanTween.scale(this.gameObject, new Vector3(0f, 0f, 0f), 0.6f).setEaseSpring();
+            
             LeanTween.value(maskImage.gameObject, (float value) => {
                 maskImage.material.SetFloat("_MaskSize", value);
             }, maskImage.material.GetFloat("_MaskSize"), 0f, 0.6f).setEaseSpring();

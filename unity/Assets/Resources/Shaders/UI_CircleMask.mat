@@ -31,7 +31,7 @@ Material:
     m_Floats:
     - _BorderWidth: 0.01
     - _ColorMask: 15
-    - _MaskSize: 0.386
+    - _MaskSize: 0.44
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0

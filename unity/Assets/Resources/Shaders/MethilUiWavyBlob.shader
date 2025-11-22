@@ -21,6 +21,13 @@ Shader "UI/MethilUiWavyBlob"
         [Toggle] _EnableBorder ("Enable Border", Float) = 1
         
         _AspectRatio ("Aspect Ratio (W/H)", Float) = 1.0
+
+        _StencilComp ("Stencil Comparison", Float) = 8
+        _Stencil ("Stencil ID", Float) = 0
+        _StencilOp ("Stencil Operation", Float) = 0
+        _StencilWriteMask ("Stencil Write Mask", Float) = 255
+        _StencilReadMask ("Stencil Read Mask", Float) = 255
+        _ColorMask ("Color Mask", Float) = 15
     }
 
     SubShader
@@ -28,6 +35,16 @@ Shader "UI/MethilUiWavyBlob"
         Tags {"Queue"="Transparent" "RenderType"="Transparent"}
         Cull Off ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
+
+        Stencil
+        {
+            Ref [_Stencil]
+            Comp [_StencilComp]
+            Pass [_StencilOp]
+            ReadMask [_StencilReadMask]
+            WriteMask [_StencilWriteMask]
+        }
+        ColorMask [_ColorMask]
 
         Pass
         {
@@ -40,14 +57,15 @@ Shader "UI/MethilUiWavyBlob"
             { 
                 float4 positionOS : POSITION; 
                 float2 uv : TEXCOORD0; 
-                float4 color : COLOR;  // Ajout de la couleur des vertices
+                float4 color : COLOR;
             };
             
             struct Varyings 
             { 
                 float4 positionHCS : SV_POSITION; 
                 float2 uv : TEXCOORD0; 
-                float4 color : COLOR;  // Passer la couleur au fragment shader
+                float4 color : COLOR;
+                float4 worldPosition : TEXCOORD1;  // Added for RectMask2D clipping
             };
 
             TEXTURE2D(_MainTex);
@@ -67,7 +85,14 @@ Shader "UI/MethilUiWavyBlob"
                 float _NoiseSpeed;
                 float _EnableBorder;
                 float _AspectRatio;
+                float4 _ClipRect;  // Added for RectMask2D clipping
             CBUFFER_END
+
+            float UnityGet2DClipping(float2 position, float4 clipRect)
+            {
+                float2 inside = step(clipRect.xy, position.xy) * step(position.xy, clipRect.zw);
+                return inside.x * inside.y;
+            }
 
             // --- Hash + Smooth noise ---
             float hash(float2 p) { return frac(sin(dot(p, float2(127.1,311.7))) * 43758.5453); }
@@ -109,7 +134,8 @@ Shader "UI/MethilUiWavyBlob"
                 Varyings OUT;
                 OUT.positionHCS = TransformObjectToHClip(IN.positionOS);
                 OUT.uv = IN.uv;
-                OUT.color = IN.color;  // Transmettre la couleur de l'Image UI
+                OUT.color = IN.color;
+                OUT.worldPosition = IN.positionOS;  // Store world position for clipping
                 return OUT;
             }
 
@@ -156,13 +182,16 @@ Shader "UI/MethilUiWavyBlob"
             
                 // Sample texture et multiplier par TOUTES les couleurs (texture, shader property, et Image UI)
                 float4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
-                float4 fillColor = texColor * _FillColor * IN.color;  // Ajout de IN.color
+                float4 fillColor = texColor * _FillColor * IN.color;
                 
                 float4 col = _BorderColor * shadowRing;
                 col = lerp(col, fillColor, mainShape);
                 col.a = saturate(shadowRing * _BorderColor.a + mainShape * fillColor.a);
                 
                 col.rgb = pow(col.rgb, 1.0 / 2.2);
+
+                col.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
+                
                 return col;
             }
             ENDHLSL

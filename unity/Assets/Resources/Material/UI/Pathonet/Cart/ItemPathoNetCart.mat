@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pathonet
+  m_Name: ItemPathoNetCart
   m_Shader: {fileID: 4800000, guid: 661f0f48a63a476fb9b0250fe80ea0ca, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -34,11 +34,10 @@ Material:
     - _Amplitude: 0.052
     - _AspectRatio: 1
     - _BorderOffset: 0.1484
-    - _BorderOffsetX: 0.004
+    - _BorderOffsetX: 0
     - _BorderOffsetY: -0.023
-    - _BorderThickness: 0.032
-    - _ColorMask: 15
-    - _CornerRadius: 0.047
+    - _BorderThickness: 0.035
+    - _CornerRadius: 0.088
     - _EnableBorder: 1
     - _Frequency: 14.93
     - _NoiseAmplitude: 0.0184
@@ -47,16 +46,11 @@ Material:
     - _OutlineEnabled: 1
     - _Roundness: 0.456
     - _Speed: 1.82
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
     - _Thickness: 0
     m_Colors:
     - _BorderColor: {r: 0.007843138, g: 0.34901962, b: 0, a: 1}
     - _Color1: {r: 0, g: 1, b: 0.08719444, a: 1}
     - _Color2: {r: 0, g: 0.5849056, b: 0.004974266, a: 1}
-    - _FillColor: {r: 0.11645913, g: 1, b: 0, a: 1}
+    - _FillColor: {r: 0.16272295, g: 1, b: 0.0990566, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

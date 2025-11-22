@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ItemPathoNetItem
+  m_Name: QuitPatho
   m_Shader: {fileID: 4800000, guid: 661f0f48a63a476fb9b0250fe80ea0ca, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,16 +32,16 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.052
-    - _AspectRatio: 0.3
-    - _BorderOffset: 0.1484
-    - _BorderOffsetX: 0.042
-    - _BorderOffsetY: -0.023
-    - _BorderThickness: 0.035
-    - _CornerRadius: 0.088
+    - _AspectRatio: 2
+    - _BorderOffset: 0.1825
+    - _BorderOffsetX: 0.022
+    - _BorderOffsetY: -0.051
+    - _BorderThickness: 0.07
+    - _CornerRadius: 0.154
     - _EnableBorder: 1
     - _Frequency: 14.93
-    - _NoiseAmplitude: 0.0184
-    - _NoiseScale: 6.9
+    - _NoiseAmplitude: 0.0756
+    - _NoiseScale: 3.2
     - _NoiseSpeed: 1.09
     - _OutlineEnabled: 1
     - _Roundness: 0.456
@@ -51,6 +51,6 @@ Material:
     - _BorderColor: {r: 0.007843138, g: 0.34901962, b: 0, a: 1}
     - _Color1: {r: 0, g: 1, b: 0.08719444, a: 1}
     - _Color2: {r: 0, g: 0.5849056, b: 0.004974266, a: 1}
-    - _FillColor: {r: 0.16272295, g: 1, b: 0.0990566, a: 1}
+    - _FillColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
