@@ -1,3 +1,4 @@
+using Core.MergeLibrary;
 using Core.Player;
 
 namespace Core.Interaction
@@ -6,6 +7,7 @@ namespace Core.Interaction
     {
         public override void Interact(PlayerController playerController)
         {
+            MergeLibraryInterface.Instance.OpenPanel();
             // Silence...
         }
 
