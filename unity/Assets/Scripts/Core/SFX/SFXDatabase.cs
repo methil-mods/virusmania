@@ -5,7 +5,12 @@ using UnityEngine.Audio;
 [CreateAssetMenu(fileName = "SFXDatabase", menuName = "SFX/SFXDatabase")]
 public class SFXDatabase : SingletonScriptableObject<SFXDatabase>
 {
-    [Header("Audio Clip Database")]
+    [Header("UI Audio Clip Database")]
+    public AudioClip popUiClip;
+    
+    [Header("World Audio Clip Database")]
+    public AudioClip walkClip;
+    
     public AudioClip musicClip1;
 
     public AudioClip openCookClip;
@@ -15,6 +20,8 @@ public class SFXDatabase : SingletonScriptableObject<SFXDatabase>
     public AudioClip triggerTrashClip;
 
     public AudioClip leverClip;
+
+    public AudioClip flapOpenClip;
     
     [Header("Volume and Audio Group")]
     [Range(0, 100)] public float musicVolume;
