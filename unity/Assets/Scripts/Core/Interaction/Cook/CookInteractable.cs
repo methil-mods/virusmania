@@ -38,6 +38,7 @@ namespace Core.Interaction
             
             boilingCookSource.clip = SFXDatabase.instance.boilingCookClip;
         }
+        
 
         public void PlayOpenClip()
         {

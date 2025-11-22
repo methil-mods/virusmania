@@ -35,6 +35,20 @@ namespace Core.Interaction
                 }
             }
         }
+        
+        public override void InInteractZone(PlayerController playerController)
+        {
+            PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
+            if (playerInteraction == null) return;
+            
+            if (playerInteraction.HasItem)
+            {
+                if (this.HoldingItems.Count < maxHoldableItems) base.InInteractZone(playerController);
+            } else
+            {
+                if (this.HoldingItems.Count > 0) base.InInteractZone(playerController);
+            }
+        }
 
         public virtual bool CanPlayerAddItem(PlayerController playerController)
         {

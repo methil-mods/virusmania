@@ -155,11 +155,16 @@ namespace Core.Player
         {
             if (_holdingItem?.Item?.itemPrefab == null || holdingItemTransform == null)
                 return;
+            
+            Vector3 prefabEuler = _holdingItem.Item.itemPrefab.transform.rotation.eulerAngles;
+            Vector3 holdEuler = holdingItemTransform.rotation.eulerAngles;
+
+            Quaternion finalRot = Quaternion.Euler(prefabEuler.x, holdEuler.y, holdEuler.z);
 
             _spawnedHeldItem = UnityEngine.Object.Instantiate(
                 _holdingItem.Item.itemPrefab,
                 holdingItemTransform.position,
-                holdingItemTransform.rotation,
+                finalRot,
                 holdingItemTransform
             );
         }

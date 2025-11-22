@@ -24,6 +24,20 @@ namespace Core.Interaction
             alarmLight.color = Color.white;
             alarmRenderer.material.color = Color.white;
         }
+        
+        public override void InInteractZone(PlayerController playerController)
+        {
+            PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
+            if (playerInteraction == null) return;
+            
+            if (playerInteraction.HasItem)
+            {
+                if (this.HoldingItems.Count < maxHoldableItems) base.InInteractZone(playerController);
+            } else if (this.HoldingItems.Count > 0)
+            {
+                base.InInteractZone(playerController);
+            }
+        }
 
         public void SendItem()
         {

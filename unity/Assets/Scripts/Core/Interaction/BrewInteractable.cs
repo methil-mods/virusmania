@@ -4,6 +4,7 @@ using Core.Item.Merge;
 using Core.Player;
 using UnityEngine;
 using Core.Item.Holder;
+using Framework.Extensions;
 using UnityEngine.UI;
 
 namespace Core.Interaction
@@ -62,6 +63,23 @@ namespace Core.Interaction
             holdInteractImage.material.SetFloat("_InnerFillAmount", Mathf.Lerp(
                 holdInteractImage.material.GetFloat("_InnerFillAmount"), holdTimer / mergeHoldTime * 100 / 100, .1f
             ));
+        }
+
+        public override void InInteractZone(PlayerController playerController)
+        {
+            if (this.HoldingItems.Count == maxHoldableItems) base.InInteractZone(playerController);
+            
+            PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
+            if (playerInteraction == null) return;
+            
+            if (playerInteraction.HasItem)
+            {
+                base.InInteractZone(playerController);
+            }
+            else
+            {
+                if (this.HoldingItems.Count > 0) base.InInteractZone(playerController);
+            }
         }
 
         public override void InteractHold(PlayerController playerController)

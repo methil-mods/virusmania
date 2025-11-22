@@ -12,6 +12,17 @@ namespace Core.Interaction
         [SerializeField]
         private AudioSource audioSource;
         
+        public override void InInteractZone(PlayerController playerController)
+        {
+            PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
+            if (playerInteraction == null) return;
+            
+            if (playerInteraction.HasItem)
+            {
+                base.InInteractZone(playerController);
+            }
+        }
+        
         public override void Interact(PlayerController playerController)
         {
             PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
