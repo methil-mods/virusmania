@@ -24,25 +24,59 @@ namespace Core.Brief
         public Button briefEndButton;
 
         private Brief _tempNewBrief;
+        private Vector2 _originalActualBriefPosition;
+        private Brief _lastDisplayedBrief;
+        private bool _isActualBriefVisible = false;
 
         public void Start()
         {
             briefEndButton.onClick.AddListener(PutNewBrief);
+            _originalActualBriefPosition = actualBriefPanel.anchoredPosition;
+            actualBriefPanel.gameObject.SetActive(false);
         }
 
         public void Update()
         {
             if (BriefController.Instance.actualBrief == null)
             {
-                actualBriefPanel.gameObject.SetActive(false);
+                if (_isActualBriefVisible)
+                {
+                    _lastDisplayedBrief = null;
+                    HideActualBriefWithAnimation();
+                }
             }
             else
             {
-                actualBriefPanel.gameObject.SetActive(true);
+                if (_lastDisplayedBrief != BriefController.Instance.actualBrief)
+                {
+                    _lastDisplayedBrief = BriefController.Instance.actualBrief;
+                    ShowActualBriefWithAnimation();
+                }
+                
                 actualBriefTitle.text = BriefController.Instance.actualBrief.briefTitle;
                 actualBriefDescription.text = BriefController.Instance.actualBrief.briefDescription;
                 actualBriefMoneyGiven.text = $"{BriefController.Instance.actualBrief.moneyGiven} $";
             }
+        }
+        
+        private void ShowActualBriefWithAnimation()
+        {
+            _isActualBriefVisible = true;
+            actualBriefPanel.gameObject.SetActive(true);
+            actualBriefPanel.anchoredPosition = new Vector2(_originalActualBriefPosition.x - 1000f, _originalActualBriefPosition.y);
+            LeanTween.moveX(actualBriefPanel, _originalActualBriefPosition.x, .6f)
+                .setEase(LeanTweenType.easeSpring);
+        }
+        
+        private void HideActualBriefWithAnimation()
+        {
+            _isActualBriefVisible = false;
+            LeanTween.moveX(actualBriefPanel, _originalActualBriefPosition.x - 1000f, .4f)
+                .setEase(LeanTweenType.easeSpring)
+                .setOnComplete((() =>
+                {
+                    actualBriefPanel.gameObject.SetActive(false);
+                }));
         }
 
         public void SetupNewBriefShow(Brief brief)
@@ -55,6 +89,7 @@ namespace Core.Brief
             
             LeanTween.scale(briefPanel.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .4f)
                 .setEase(LeanTweenType.easeSpring);
+            
             briefNameText.text = brief.briefTitle;
             briefDescriptionText.text = brief.briefDescription;
             briefMoneyGivenText.text = $"{brief.moneyGiven} $";
@@ -69,7 +104,6 @@ namespace Core.Brief
             TimerController.Instance.LaunchTimer(_tempNewBrief.timeForBrief, (() =>
             {
                 Debug.LogWarning("NEED TO SET LOOSE");
-                // TODO : Logics to loose
             }));
             _tempNewBrief = null;
             
