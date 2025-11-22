@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.VirusItem
   itemName: DiseaseMax
   itemDescription: 
-  itemPrefab: {fileID: 207211337200041120, guid: 5db51300b3c6f4020b196d15afacb933, type: 3}
+  itemPrefab: {fileID: 5751178801092067253, guid: d2e991282a2164ef3b6db059b18a0cd0, type: 3}
   itemIcon: {fileID: 0}
   price: 0
+  virusIcon: {fileID: 0}
