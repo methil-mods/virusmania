@@ -54,7 +54,10 @@ namespace Core.Interaction
 
         public override void Interact(PlayerController playerController)
         {
-            ComputerInterface.Instance.OpenPanel();
+            if(ComputerInterface.Instance != null)
+                ComputerInterface.Instance.OpenPanel();
+            else
+                Debug.LogWarning("Computer Interactor does not exist <- Instantiate it maybe ?");
         }
 
         public override void InteractHold(PlayerController playerController)

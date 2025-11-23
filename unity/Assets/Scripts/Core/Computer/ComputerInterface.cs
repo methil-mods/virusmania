@@ -24,7 +24,8 @@ namespace Core.Computer
             
             panel.GetComponent<RectTransform>().localScale = Vector3.zero;
             
-            PostProcessController.Instance.OnShowPanelPostProcess();
+            if (PostProcessController.Instance != null) 
+                PostProcessController.Instance.OnShowPanelPostProcess();
             InputDatabase.Instance.DisableInputs();
             
             LeanTween.cancel(panel);
@@ -40,7 +41,8 @@ namespace Core.Computer
             if (!PanelIsActive()) return;
             if (panel == null) return;
             
-            PostProcessController.Instance.OnHidePanelPostProcess();
+            if (PostProcessController.Instance != null) 
+                PostProcessController.Instance.OnHidePanelPostProcess();
             InputDatabase.Instance.EnableInputs();
             
             LeanTween.cancel(panel);
