@@ -50,6 +50,7 @@ Shader "Custom/MethilToonShader"
                 float3 normalWS    : TEXCOORD1;
                 float2 uv          : TEXCOORD2;
                 float4 positionCS  : TEXCOORD3;
+                float fogFactor    : TEXCOORD4;
             };
 
             TEXTURE2D(_MainTex);
@@ -76,6 +77,7 @@ Shader "Custom/MethilToonShader"
                 OUT.positionCS = vertexInput.positionCS;
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = TRANSFORM_TEX(IN.uv, _MainTex);
+                OUT.fogFactor = ComputeFogFactor(vertexInput.positionCS.z);
                 return OUT;
             }
 
@@ -144,6 +146,8 @@ Shader "Custom/MethilToonShader"
                 float3 bloomEmission = bloomMask * _BloomIntensity * _BloomColor.rgb * baseColor;
                 
                 finalCol += bloomEmission;
+                
+                finalCol = MixFog(finalCol, IN.fogFactor);
                 
                 return float4(finalCol, _BaseColor.a);
             }
