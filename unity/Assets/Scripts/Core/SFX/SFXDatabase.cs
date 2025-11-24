@@ -26,6 +26,9 @@ public class SFXDatabase : SingletonScriptableObject<SFXDatabase>
     public AudioClip leverClip;
 
     public AudioClip flapOpenClip;
+
+    public AudioClip redAlarmClip;
+    public AudioClip greenAlarmClip;
     
     [Header("Volume and Audio Group")]
     [Range(0, 100)] public float musicVolume;

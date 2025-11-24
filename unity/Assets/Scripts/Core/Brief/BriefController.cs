@@ -26,6 +26,18 @@ namespace Core.Brief
             briefInterface.SetupNewBriefShow(newBrief);
         }
 
+        public bool CanCompleteBrief(HoldItem itemToValidate)
+        {
+            if (actualBrief != null && actualBrief.wantedItem == itemToValidate.Item)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
         public bool TryToCompleteBrief(HoldItem itemToValidate)
         {
             if (actualBrief != null && actualBrief.wantedItem == itemToValidate.Item)

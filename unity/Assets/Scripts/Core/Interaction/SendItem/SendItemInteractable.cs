@@ -5,6 +5,7 @@ using Core.Player;
 using Framework.Extensions;
 using UnityEngine;
 using Core.Item.Holder;
+using Core.SFX;
 using Core.Timer;
 
 namespace Core.Interaction
@@ -55,22 +56,32 @@ namespace Core.Interaction
                 RemoveItem(holdItem);
             });
 
-            if (BriefController.Instance.TryToCompleteBrief(holdItem))
+            if (BriefController.Instance.CanCompleteBrief(holdItem))
             {
-                alarmRenderer.material.color = Color.green;
-                StartBlink(Color.green);
                 TimerController.Instance.StopTimer();
-                Debug.Log("Send Item -> Validate brief !");
+                LeanTween.delayedCall(1.4f, () =>
+                {
+                    alarmRenderer.material.color = Color.green;
+                    SFXController.Instance.PlayInteraction(SFXDatabase.Instance.greenAlarmClip);
+                    StartBlink(Color.green, () =>
+                    {
+                        BriefController.Instance.TryToCompleteBrief(holdItem);
+                    });
+                    Debug.Log("Send Item -> Validate brief !");
+                });
             }
             else
             {
-                alarmRenderer.material.color = Color.red;
-                StartBlink(Color.red);
-                Debug.Log("Send Item -> Brief not validated...");
+                LeanTween.delayedCall(1.4f, () =>
+                {
+                    SFXController.Instance.PlayInteraction(SFXDatabase.Instance.redAlarmClip);
+                    alarmRenderer.material.color = Color.red;
+                    StartBlink(Color.red);
+                    Debug.Log("Send Item -> Brief not validated...");
+                });
             }
         }
-
-        private void StartBlink(Color color)
+        private void StartBlink(Color color, System.Action callback = null)
         {
             LeanTween.cancel(gameObject);
 
@@ -98,7 +109,9 @@ namespace Core.Interaction
             seq.append(() => alarmLight.intensity = 0);
             seq.append(() => alarmLight.color = Color.white);
             seq.append(() => alarmRenderer.material.color = Color.white);
+            seq.append(() => callback?.Invoke());
         }
+
 
         public override void InteractHold(PlayerController playerController)
         {

@@ -23,6 +23,8 @@ MonoBehaviour:
   triggerTrashClip: {fileID: 8300000, guid: 1bf0831af84f14b649b377ee7ecac1fe, type: 3}
   leverClip: {fileID: 8300000, guid: 7dcccd023281c4b92b92cbad0d53e2c5, type: 3}
   flapOpenClip: {fileID: 8300000, guid: 5b0262874eea2404bbb07fbf25bc39f0, type: 3}
+  redAlarmClip: {fileID: 8300000, guid: 08b4bc0c8d679458282252fe9436ec87, type: 3}
+  greenAlarmClip: {fileID: 8300000, guid: 08b4bc0c8d679458282252fe9436ec87, type: 3}
   musicVolume: 45
   interactionVolume: 100
   uiVolume: 50
