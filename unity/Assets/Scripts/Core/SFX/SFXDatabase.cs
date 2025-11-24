@@ -5,6 +5,9 @@ using UnityEngine.Audio;
 [CreateAssetMenu(fileName = "SFXDatabase", menuName = "SFX/SFXDatabase")]
 public class SFXDatabase : SingletonScriptableObject<SFXDatabase>
 {
+    [Header("Splashscreen")]
+    public AudioClip splashScreen;
+    
     [Header("UI Audio Clip Database")]
     public AudioClip popUiClip;
     public AudioClip clickUiClip;

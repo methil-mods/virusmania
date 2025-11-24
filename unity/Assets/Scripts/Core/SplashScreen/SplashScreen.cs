@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Core.Scene;
+using Core.SFX;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,11 @@ namespace Core.SplashScreen
         public void LoadMainMenu()
         {
             StartCoroutine(LoadMainMenuCoroutine());
+        }
+
+        public void LaunchSound()
+        {
+            SFXController.Instance.PlayUI(SFXDatabase.Instance.splashScreen);
         }
 
         public IEnumerator LoadMainMenuCoroutine()

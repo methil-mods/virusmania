@@ -26,6 +26,7 @@ namespace Core.SFX
 
         private void Start()
         {
+            DontDestroyOnLoad(gameObject);
             SFXDatabase.Instance.SetupSound();
             PlayMusic(SFXDatabase.Instance.musicClip1);
         }
