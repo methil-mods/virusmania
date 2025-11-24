@@ -1,6 +1,7 @@
 using System;
 using Core.Scene;
 using Framework.Controller;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,10 +30,17 @@ namespace Core.MainMenu
             Application.Quit();
         }
         
-        public int newScene;
+        
+        public string newSceneName;
         
         public void GoOnNewScene()
         {
+            var newScene = SceneDatabase.Instance.GetSceneByName(newSceneName);
+            if(newScene != null)
+                SceneTransitor.Instance.LoadScene(newScene);
+            else 
+                Debug.LogError($"Scene not found in database: {newSceneName}");
+            
             LeanTween.scale(this.gameObject, new Vector3(0f, 0f, 0f), 0.6f).setEaseSpring();
             
             LeanTween.value(maskImage.gameObject, (float value) => {

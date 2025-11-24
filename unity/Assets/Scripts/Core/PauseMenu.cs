@@ -67,7 +67,12 @@ namespace Core
 
         public void LoadMainMenu()
         {
-            SceneTransitor.Instance.LoadScene(0);
+            var sceneName = "MainMenu";
+            var newScene = SceneDatabase.Instance.GetSceneByName(sceneName);
+            if (newScene != null)
+                SceneTransitor.Instance.LoadScene(newScene);
+            else
+                Debug.LogError("Scene not found in database : " + sceneName);
         }
 
 #if UNITY_EDITOR

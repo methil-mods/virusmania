@@ -12,21 +12,21 @@ namespace Core.Scene
     
         public GameObject loadingScreen;
     
-        public void LoadScene(int sceneToLoad){
+        public void LoadScene(Scene sceneToLoad){
             OnLoadNewScene?.Invoke();
             var loadingScreenPrefab = GameObject.Instantiate(loadingScreen);
             loadingScreenPrefab.GetComponent<LoadingScreenController>()
-                .StartToLoadScene(sceneToLoad, () =>
+                .StartToLoadScene(sceneToLoad.sceneKey, () =>
                 {
                     OnEndLoadNewScene?.Invoke();
                 });
         }
     
-        public void LoadScene(int sceneToLoad, Action onEndCallback){
+        public void LoadScene(Scene sceneToLoad, Action onEndCallback){
             OnLoadNewScene?.Invoke();
             var loadingScreenPrefab = GameObject.Instantiate(loadingScreen);
             loadingScreenPrefab.GetComponent<LoadingScreenController>()
-                .StartToLoadScene(sceneToLoad, () =>
+                .StartToLoadScene(sceneToLoad.sceneKey, () =>
                 {
                     onEndCallback?.Invoke();
                     OnEndLoadNewScene?.Invoke();

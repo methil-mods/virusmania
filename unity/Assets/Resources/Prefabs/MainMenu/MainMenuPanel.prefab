@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d7fc12c7d634db484a1ed951c6adaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Scene.SceneTransitionButton
-  newScene: 1
+  sceneName: 
 --- !u!114 &3958711188952104448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
   maskImage3: {fileID: 0}
   maskImage4: {fileID: 0}
   maskImage5: {fileID: 0}
-  newScene: 1
+  newSceneName: Game
 --- !u!1 &5936746963790196915
 GameObject:
   m_ObjectHideFlags: 0

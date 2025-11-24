@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1aaa388ae224effb415e9d67f5f2a81, type: 3}
-  m_Name: ItemBacteriaT3ST
+  m_Name: Microhaemo simplex
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.BacteriaItem
-  itemName: BacteriaT3ST
+  itemName: Microhaemo simplex
   itemDescription: 
-  itemPrefab: {fileID: 6584508006877052939, guid: 9d94a1cbebf3a45b9a0ccd35d39d4de2, type: 3}
+  itemPrefab: {fileID: 6584508006877052939, guid: 257813f18691d450d851599bb845b884, type: 3}
   itemIcon: {fileID: 0}
-  price: 1
-  threatParameters:
-  - threatType: {fileID: 11400000, guid: f0c0de43ab7cb404da148712550cd5b7, type: 2}
-    threatImpact: 3
+  price: 2

@@ -66,13 +66,20 @@ namespace Core.Computer.PathoNet
                 }
             }
 
-            if (!MoneyController.Instance.CanRemoveMoney(total))
+            if (MoneyController.Instance != null)
             {
-                MoneyController.Instance.OnMoneyInsufficient?.Invoke();
-                return;
-            }
+                if (!MoneyController.Instance.CanRemoveMoney(total))
+                {
+                    MoneyController.Instance.OnMoneyInsufficient?.Invoke();
+                    return;
+                }
 
-            MoneyController.Instance.RemoveMoney(total);
+                MoneyController.Instance.RemoveMoney(total);
+            }
+            else
+            {
+                Debug.LogWarning("MoneyController instance is null");
+            }
 
             foreach (var buyable in itemsToBuy)
             {
