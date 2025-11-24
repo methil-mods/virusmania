@@ -5,6 +5,7 @@ using Core.Player;
 using UnityEngine;
 using Core.Item.Holder;
 using Framework.Extensions;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Core.Interaction
@@ -23,6 +24,8 @@ namespace Core.Interaction
         private bool isBeingHeld = false;
         private float lastHoldTime = -999f;
         private bool isSliderVisible = false;
+
+        public UnityAction<Item.Item> onItemMerged;
 
         public override void Start()
         {
@@ -114,7 +117,8 @@ namespace Core.Interaction
             {
                 foreach (var h in new List<HoldItem>(HoldingItems))
                     RemoveItem(h);
-
+                
+                onItemMerged?.Invoke(mergedHoldItem.Item);
                 AddItem(mergedHoldItem);
                 ResetFusion();
             }

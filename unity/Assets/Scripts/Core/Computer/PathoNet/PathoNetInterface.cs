@@ -18,6 +18,7 @@ namespace Core.Computer.PathoNet
         public Button buyButton;
         [SerializeField] private PathoNetItemReceiver pathoItemReceiver;
         public UnityAction OnBuyCart;
+        public UnityAction<Item.Item> OnBuyItem;
 
         public TextMeshProUGUI dollarAmountText;
 
@@ -81,10 +82,13 @@ namespace Core.Computer.PathoNet
                 Debug.LogWarning("MoneyController instance is null");
             }
 
-            foreach (var buyable in itemsToBuy)
+            foreach (PathoNetBuyableItemBehaviour buyable in itemsToBuy)
             {
                 for (int i = 0; i < buyable.amount; i++)
+                {
                     pathoItemReceiver.AddItem(buyable.itemData.GetHoldItem());
+                    OnBuyItem?.Invoke(buyable.itemData);
+                }
         
                 buyable.amount = 0;
                 buyable.UpdateAmountText();

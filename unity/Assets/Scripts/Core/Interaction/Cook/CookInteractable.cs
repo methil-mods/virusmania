@@ -3,6 +3,7 @@ using Core.Item.Cook;
 using UnityEngine;
 using Core.Item.Holder;
 using Core.SFX;
+using UnityEngine.Events;
 
 namespace Core.Interaction
 {
@@ -17,6 +18,8 @@ namespace Core.Interaction
         private float cookTimer = 0f;
         private bool isCooking = false;
         private HoldItem currentItem;
+
+        private UnityAction<Item.Item> onItemCooked;
 
         public override void Start()
         {
@@ -61,6 +64,7 @@ namespace Core.Interaction
             if (cookTimer >= cookTime)
             {
                 RemoveItem(currentItem);
+                onItemCooked?.Invoke(cooked);
                 AddItem(cooked.GetHoldItem());
                 SFXController.Instance.PlayInteraction(SFXDatabase.Instance.endCookClip);
                 StopCooking(currentItem);

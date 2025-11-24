@@ -2,6 +2,7 @@ using Core.Item.Holder;
 using Core.Player;
 using Framework.Extensions;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core.Interaction
 {
@@ -11,6 +12,8 @@ namespace Core.Interaction
         private Animator animator;
         [SerializeField]
         private AudioSource audioSource;
+
+        public UnityAction<Item.Item> onItemRecycled;
         
         public override void InInteractZone(PlayerController playerController)
         {
@@ -31,6 +34,7 @@ namespace Core.Interaction
             if (playerInteraction.HasItem)
             {
                 HoldItem removedItem = playerInteraction.RemoveItem();
+                onItemRecycled?.Invoke(removedItem.Item);
                 animator.SetTrigger("TriggerTrash");
                 audioSource.PlayOneShot(SFXDatabase.Instance.triggerTrashClip);
             }

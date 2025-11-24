@@ -7,6 +7,7 @@ using UnityEngine;
 using Core.Item.Holder;
 using Core.SFX;
 using Core.Timer;
+using UnityEngine.Events;
 
 namespace Core.Interaction
 {
@@ -16,6 +17,8 @@ namespace Core.Interaction
         [SerializeField] private Vector3 objectDestination;
         [SerializeField] private Renderer alarmRenderer;
         [SerializeField] private Light alarmLight;
+
+        public UnityAction<Item.Item> onItemSent;
 
         public override void Start()
         {
@@ -53,6 +56,7 @@ namespace Core.Interaction
 
             LeanTween.moveLocalX(spawnedPrefabs.First(), objectDestination.x, 1.6f).setOnComplete(() =>
             {
+                onItemSent?.Invoke(holdItem.Item);
                 RemoveItem(holdItem);
             });
 

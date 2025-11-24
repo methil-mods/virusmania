@@ -3,10 +3,9 @@ using Core.PostProcess;
 using Core.Scene;
 using Framework.Controller;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using TMPro;
 
-namespace Core
+namespace Core.Pause
 {
     public class PauseMenu : InterfaceController<PauseMenu>
     {
