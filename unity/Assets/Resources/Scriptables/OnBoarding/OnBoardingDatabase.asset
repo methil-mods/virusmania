@@ -13,5 +13,28 @@ MonoBehaviour:
   m_Name: OnBoardingDatabase
   m_EditorClassIdentifier: Assembly-CSharp::Core.OnBoarding.OnBoardingDatabase
   OnBoardings:
-  - OnBoardingName: Buy
-    OnBoardingDescription: Buy 2 bacteries in the screen
+  - onBoardingName: Buy 2 bacteries
+    onBoardingDescription: Buy 2 bacteries in the shop
+    onBoardingHint: 'Go to the computer and interact with it by pressing E. Then,
+      in the shop, purchase two microbes: the Nanoclostre and the Microhaemo.'
+    onBoardingState: 0
+  - onBoardingName: Cook turbo bactery
+    onBoardingDescription: Cook the Nanoclostre
+    onBoardingHint: Now take the Nanoclostre from the cart and cook it by placing
+      it in the bain-marie.
+    onBoardingState: 1
+  - onBoardingName: Merge that shit
+    onBoardingDescription: Merge the bacteries together
+    onBoardingHint: To obtain a virus, take the cooked Nanoclostrum from the bain-marie
+      and place it in the Merge Space. Then add the Microhaemo from the cart, and
+      hold E to merge them.
+    onBoardingState: 2
+  - onBoardingName: Send that item for god pelase
+    onBoardingDescription: Send the Parvovirus B19
+    onBoardingHint: Take the Parvovirus B19 from the treadmill and send it off now!
+    onBoardingState: 3
+  itemToBuy1: {fileID: 11400000, guid: ce074d8c802044bb0898437f0113afa8, type: 2}
+  itemToBuy2: {fileID: 11400000, guid: 1c28912b938e7424fa074e634993fb03, type: 2}
+  itemToCook: {fileID: 11400000, guid: bbb1b3ad4fdfd4ac5a13e8bee1c033e2, type: 2}
+  itemToMerge: {fileID: 11400000, guid: 9e4456c8ba1fd4fa49a9a41ca9b9201e, type: 2}
+  itemToSent: {fileID: 11400000, guid: 9e4456c8ba1fd4fa49a9a41ca9b9201e, type: 2}

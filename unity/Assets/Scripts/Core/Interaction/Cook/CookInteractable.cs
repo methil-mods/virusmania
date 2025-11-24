@@ -19,7 +19,7 @@ namespace Core.Interaction
         private bool isCooking = false;
         private HoldItem currentItem;
 
-        private UnityAction<Item.Item> onItemCooked;
+        public UnityAction<Item.Item> onItemCooked;
 
         public override void Start()
         {

@@ -1,7 +1,6 @@
 using System;
 using Core.Scene;
 using Framework.Controller;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,50 +8,26 @@ namespace Core.MainMenu
 {
     public class MainMenuController : BaseController<MainMenuController>
     {
-        public RawImage maskImage;
-        public RawImage maskImage2;
-        public RawImage maskImage3;
-        public RawImage maskImage4;
-        public RawImage maskImage5;
+        [SerializeField] private RawImage[] maskImages;
+        
+        [NonSerialized]
+        public Material sharedMaterial;
 
-        public void Start()
+        private void Start()
         {
-            var material = new Material(maskImage.material);
-            maskImage.material = material;
-            maskImage2.material = material;
-            maskImage3.material = material;
-            maskImage4.material = material;
-            maskImage5.material = material;
+            sharedMaterial = new Material(maskImages[0].material);
+            for (int i = 0; i < maskImages.Length; i++)
+                maskImages[i].material = sharedMaterial;
         }
 
         public void QuitApplication()
         {
             Application.Quit();
         }
-        
-        
-        public string newSceneName;
-        
-        public void GoOnNewScene()
+
+        public void ShowOnBoardingChoice()
         {
-            var newScene = SceneDatabase.Instance.GetSceneByName(newSceneName);
-            if(newScene != null)
-                SceneTransitor.Instance.LoadScene(newScene);
-            else 
-                Debug.LogError($"Scene not found in database: {newSceneName}");
-            
-            LeanTween.scale(this.gameObject, new Vector3(0f, 0f, 0f), 0.6f).setEaseSpring();
-            
-            LeanTween.value(maskImage.gameObject, (float value) => {
-                maskImage.material.SetFloat("_MaskSize", value);
-            }, maskImage.material.GetFloat("_MaskSize"), 0f, 0.6f).setEaseSpring();
-
-            LeanTween.value(maskImage.gameObject, (Vector3 value) => {
-                maskImage.material.SetVector("_MaskOffset", value);
-            }, maskImage.material.GetVector("_MaskOffset"), new Vector3(0.2f, 0.5f, 0f), 0.6f)
-                .setEaseSpring();
-
-            LeanTween.delayedCall(0.4f, () => { SceneTransitor.Instance.LoadScene(newScene); });
+            OnBoardingMainMenuController.Instance.OpenPanel();
         }
     }
 }

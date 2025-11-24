@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BorderWidth: 0.01
+    - _BorderWidth: 0.015
     - _ColorMask: 15
     - _MaskSize: 0.44
     - _Stencil: 0
@@ -39,7 +39,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _BorderColor: {r: 0.3137255, g: 0.8784314, b: 0, a: 1}
+    - _BorderColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _MaskOffset: {r: 0.1, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
