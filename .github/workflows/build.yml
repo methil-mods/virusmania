@@ -1,0 +1,102 @@
+name: ⌛ Build Project
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  buildForAllSupportedPlatforms:
+    name: 🔨 Build VirusMania for ${{ matrix.targetPlatform }} ✨
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        targetPlatform:
+          - StandaloneWindows
+          - StandaloneWindows64
+          - StandaloneOSX
+          - StandaloneLinux64
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/cache@v3
+        with:
+          path: unity/Library
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
+
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: unity
+          targetPlatform: ${{ matrix.targetPlatform }}
+          buildName: "VirusMania"
+          versioning: Tag
+
+      - name: Zip the build
+        run: |
+          cd unity/build/${{ matrix.targetPlatform }} \
+          && zip -r ../../../VirusMania-${{ matrix.targetPlatform }}.zip .
+
+      - name: Upload the zipped build
+        uses: actions/upload-artifact@v4
+        with:
+          name: VirusMania-Zipped-${{ matrix.targetPlatform }}
+          path: VirusMania-${{ matrix.targetPlatform }}.zip
+
+  release:
+    name: 🚀 Create GitHub Release
+    needs: buildForAllSupportedPlatforms
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get previous tag
+        id: prev_tag
+        run: |
+          PREV_TAG=$(git tag --sort=-creatordate | grep -E '^v[0-9]+' | sed -n '2p')
+          echo "Previous tag: $PREV_TAG"
+          echo "prev_tag=$PREV_TAG" >> $GITHUB_ENV
+
+      - name: Generate changelog
+        id: generate_changelog
+        run: |
+          LOG=$(git log --pretty=format:"- %s" ${{ env.prev_tag }}..HEAD)
+          echo "Changelog<<EOF" >> $GITHUB_ENV
+          echo "$LOG" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: comnoco/create-release-action@v2.0.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: "Release ${{ github.ref_name }}"
+          body: "${{ env.Changelog }}"
+          draft: false
+          prerelease: false
+
+      - name: Upload Assets to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/**/*.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
