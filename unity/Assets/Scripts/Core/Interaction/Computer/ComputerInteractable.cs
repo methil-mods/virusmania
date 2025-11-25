@@ -71,7 +71,7 @@ namespace Core.Interaction
             Vector3 titlePos = transform.position + Vector3.up * 3f;
             GUIStyle titleStyle = new GUIStyle
             {
-                normal = new GUIStyleState { textColor = Color.paleGreen },
+                normal = new GUIStyleState { textColor = new Color(0.5960785f, 0.9843138f, 0.5960785f, 1f) },
                 alignment = TextAnchor.MiddleCenter,
                 fontStyle = FontStyle.Bold
             };

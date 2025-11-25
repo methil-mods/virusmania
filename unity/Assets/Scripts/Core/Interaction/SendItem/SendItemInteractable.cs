@@ -127,7 +127,7 @@ namespace Core.Interaction
             base.OnDrawGizmos();
 
             Vector3 objectRelativeDestination = (itemParent != null ? itemParent.position : transform.position) + objectDestination;
-            Gizmos.color = Color.brown;
+            Gizmos.color = new Color(0.6470588f, 0.1647059f, 0.1647059f, 1f);
             Gizmos.DrawSphere(objectRelativeDestination, 0.05f);
         }
 #endif
