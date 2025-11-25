@@ -55,7 +55,7 @@ namespace Core.MainMenu
             if (MainMenuController.Instance != null)
                 LeanTween.scale(MainMenuController.Instance.gameObject, new Vector3(1f, 1f, 1f), duration).setEaseSpring();
             LeanTween.moveLocal(optionPanel.gameObject, offscreenPos, duration)
-                .setEaseSpring()
+                .setEaseOutCirc()
                 .setOnComplete(() => optionPanel.gameObject.SetActive(false));
         }
     }
