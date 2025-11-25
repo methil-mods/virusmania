@@ -954,7 +954,7 @@ MonoBehaviour:
   m_TransitionColor: {r: 0, g: 0, b: 0, a: 0.5019608}
   m_TransitionColorGlow: 0
   m_TransitionPatternReverse: 0
-  m_TransitionAutoPlaySpeed: -1
+  m_TransitionAutoPlaySpeed: -0.5
   m_TransitionGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
