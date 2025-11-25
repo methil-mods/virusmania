@@ -36,7 +36,7 @@ Material:
     - _BorderOffset: 0.1484
     - _BorderOffsetX: 0.004
     - _BorderOffsetY: -0.023
-    - _BorderThickness: 0.032
+    - _BorderThickness: 0
     - _ColorMask: 15
     - _CornerRadius: 0.047
     - _EnableBorder: 1
@@ -57,6 +57,6 @@ Material:
     - _BorderColor: {r: 0.007843138, g: 0.34901962, b: 0, a: 1}
     - _Color1: {r: 0, g: 1, b: 0.08719444, a: 1}
     - _Color2: {r: 0, g: 0.5849056, b: 0.004974266, a: 1}
-    - _FillColor: {r: 0.11645913, g: 1, b: 0, a: 1}
+    - _FillColor: {r: 0.29411766, g: 1, b: 0.11764706, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

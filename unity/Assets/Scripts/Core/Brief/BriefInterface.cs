@@ -22,6 +22,7 @@ namespace Core.Brief
         public TextMeshProUGUI briefDescriptionText;
         public TextMeshProUGUI briefMoneyGivenText;
         public Button briefEndButton;
+        [SerializeField] protected Image blackPanel;
 
         private Brief _tempNewBrief;
         private Vector2 _originalActualBriefPosition;
@@ -33,6 +34,11 @@ namespace Core.Brief
             briefEndButton.onClick.AddListener(PutNewBrief);
             _originalActualBriefPosition = actualBriefPanel.anchoredPosition;
             actualBriefPanel.gameObject.SetActive(false);
+
+            if (blackPanel != null)
+            {
+                blackPanel.color = new Color(0, 0, 0, 0);
+            }
         }
 
         public void Update()
@@ -90,6 +96,13 @@ namespace Core.Brief
             LeanTween.scale(briefPanel.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .4f)
                 .setEase(LeanTweenType.easeSpring);
             
+            if (blackPanel != null)
+            {
+                LeanTween.cancel(blackPanel.gameObject);
+                LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0f, 0f, 0f, 0.6f), 1f)
+                    .setEaseOutCirc();
+            }
+            
             briefNameText.text = brief.briefTitle;
             briefDescriptionText.text = brief.briefDescription;
             briefMoneyGivenText.text = $"{brief.moneyGiven} $";
@@ -112,6 +125,13 @@ namespace Core.Brief
         
         public void HideBriefPanel()
         {
+            
+            if (blackPanel != null)
+            {
+                LeanTween.cancel(blackPanel.gameObject);
+                LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0f,0f,0f,0f), 1f)
+                    .setEaseOutCirc();
+            }
             PostProcessController.Instance.OnHidePanelPostProcess();
             InputDatabase.Instance.EnableInputs();
             LeanTween.scale(briefPanel.GetComponent<RectTransform>(), new Vector3(0f, 0f, 0f), .4f)

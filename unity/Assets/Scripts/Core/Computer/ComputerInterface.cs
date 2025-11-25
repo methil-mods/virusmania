@@ -31,6 +31,13 @@ namespace Core.Computer
             LeanTween.cancel(panel);
             LeanTween.scale(panel.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .4f)
                 .setEase(LeanTweenType.easeSpring);
+
+            if (blackPanel != null)
+            {
+                LeanTween.cancel(blackPanel.gameObject);
+                LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0, 0, 0, 0.6f), 0.6f)
+                    .setEaseOutCirc();;
+            }
             
             OnPanelOpen?.Invoke();
             panel.SetActive(true);
@@ -44,6 +51,13 @@ namespace Core.Computer
             if (PostProcessController.Instance != null) 
                 PostProcessController.Instance.OnHidePanelPostProcess();
             InputDatabase.Instance.EnableInputs();
+            
+            if (blackPanel != null)
+            {
+                LeanTween.cancel(blackPanel.gameObject);
+                LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0, 0, 0, 0f), 0.6f)
+                    .setEaseOutCirc();;
+            }
             
             LeanTween.cancel(panel);
             LeanTween.scale(panel.GetComponent<RectTransform>(), new Vector3(0f, 0f, 0f), .4f)
