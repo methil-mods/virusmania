@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1802f2fb5ea48d49ea689a8b86bfe96, type: 3}
   m_Name: CursorDatabase
   m_EditorClassIdentifier: Assembly-CSharp::Core.Cursor.CursorDatabase
-  cursorTexture: {fileID: 2800000, guid: a807e91e1006846a6900dc802fc2005c, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 6d98c1204f8584fe5b0bf2721267ede1, type: 3}
   hotspot: {x: 0, y: 0}
   cursorMode: 0
