@@ -18,8 +18,7 @@ namespace Core.MergeLibrary
             {
                 // Left Item
                 var goItem = Instantiate(imageItem, this.transform);
-                if(item.itemIcon != null)
-                    goItem.transform.GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
+                goItem.transform.GetComponent<MergeItem>().SetupItem(item);
 
             }
             
@@ -27,8 +26,7 @@ namespace Core.MergeLibrary
             
             // Right Item
             var goItemRight = Instantiate(imageItem, this.transform);
-            if(itemOnRight.itemIcon != null)
-                goItemRight.transform.GetChild(0).GetComponent<Image>().sprite = itemOnRight.itemIcon;
+            goItemRight.transform.GetComponent<MergeItem>().SetupItem(itemOnRight);
         }
     }
 }

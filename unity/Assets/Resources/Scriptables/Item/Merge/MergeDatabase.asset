@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.Merge.MergeDatabase
   Database:
   - {fileID: 11400000, guid: 84eae57f88d3643989e4ed0952132c41, type: 2}
+  - {fileID: 11400000, guid: c5ac9bbe3e9bb48bfb625bb946f49464, type: 2}

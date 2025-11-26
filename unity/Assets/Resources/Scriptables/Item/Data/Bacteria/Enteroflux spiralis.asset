@@ -10,15 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1aaa388ae224effb415e9d67f5f2a81, type: 3}
-  m_Name: ItemBacteriaT6ST
+  m_Name: Enteroflux spiralis
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.BacteriaItem
-  itemName: BacteriaT6ST
+  itemName: Enteroflux spiralis
   itemDescription: 
   itemPrefab: {fileID: 8741529279835541926, guid: eb93f42ec19d34818a49ce3cc9ebfe2d, type: 3}
   itemIcon: {fileID: 0}
   price: 2
-  threatParameters:
-  - threatType: {fileID: 11400000, guid: a2bbe2cbfab4e460a9a18646f7c05f32, type: 2}
-    threatImpact: 1
-  - threatType: {fileID: 11400000, guid: c6641637d8c8341ebb11dc07439fe841, type: 2}
-    threatImpact: -4
