@@ -35,7 +35,7 @@ namespace Core.MainMenu
             uiSlider.onValueChanged.AddListener(v => SFXDatabase.Instance.UserInterfaceVolume = v);
 
             startPos = optionPanel.localPosition;
-            offscreenPos = startPos + new Vector3(optionPanel.rect.width, 0, 0);
+            offscreenPos = startPos + new Vector3(optionPanel.rect.width*1.5f, 0, 0);
             optionPanel.localPosition = offscreenPos;
             optionPanel.gameObject.SetActive(false);
         }
