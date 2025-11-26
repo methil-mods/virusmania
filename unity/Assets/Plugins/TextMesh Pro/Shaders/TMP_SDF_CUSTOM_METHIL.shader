@@ -39,9 +39,9 @@ Properties {
 
 
 	_UnderlayColor	    ("Drop Shadow Color", Color) = (0,0,0, 0.5)
-	_UnderlayOffsetX	("Drop Shadow OffsetX", Range(-10,10)) = 0
-	_UnderlayOffsetY	("Drop Shadow OffsetY", Range(-10,10)) = 0
-	_UnderlayDilate		("Drop Shadow Dilate", Range(-4,4)) = 0
+	_UnderlayOffsetX	("Drop Shadow OffsetX", Range(-100,100)) = 0
+	_UnderlayOffsetY	("Drop Shadow OffsetY", Range(-100,100)) = 0
+	_UnderlayDilate		("Drop Shadow Dilate", Range(-40,40)) = 0
 	_UnderlaySoftness	("Drop Shadow Softness", Range(0,1)) = 0
 
 	_GlowColor		    ("Color", Color) = (0, 1, 0, 0.5)
@@ -291,9 +291,6 @@ SubShader {
 			float outline = (_OutlineWidth * _ScaleRatioA) * scale;
 			float softness = (_OutlineSoftness * _ScaleRatioA) * scale;
 
-			// Enhanced softness for better anti-aliasing with dilate
-			softness = max(softness, 0.5 / scale);
-
 			half4 faceColor = _FaceColor;
 			half4 outlineColor = _OutlineColor;
 
@@ -341,20 +338,35 @@ SubShader {
 		    #endif
 
 		    #if UNDERLAY_ON
-			// Sample the drop shadow with offset
+			// Sample the shadow distance field at the offset position
 			float shadowC = tex2D(_MainTex, input.texcoord2.xy).a;
-			float shadowSD = (input.texcoord2.w - shadowC) * input.texcoord2.z;
+			float shadowScale = input.texcoord2.z;
+			float shadowBias = input.texcoord2.w;
+			float shadowSD = (shadowBias - shadowC) * shadowScale;
 			
-			// Create shadow colors based on main text but with underlay color
+			// Calculate outline parameters for shadow (same as main text)
+			float shadowOutline = (_OutlineWidth * _ScaleRatioA) * shadowScale;
+			float shadowSoftness = (_UnderlaySoftness * _ScaleRatioC) * shadowScale;
+			shadowSoftness = max(shadowSoftness, 0.5 / shadowScale);
+			
+			// Create shadow with the same outline rendering as main text
 			half4 shadowFaceColor = input.underlayColor;
 			half4 shadowOutlineColor = input.underlayColor;
 			
-			// Get complete shadow (face + outline) matching the main text
-			fixed4 shadowColor = GetCompleteTextColor(shadowSD, input.texcoord2.z, shadowFaceColor, shadowOutlineColor, outline, softness);
+			// Render shadow using GetColor to include outline like main text
+			#if _OUTLINEMODE_OUTER
+			float shadowOuterSD = shadowSD + shadowOutline * 0.5;
+			fixed4 shadowColor = GetColor(shadowOuterSD, shadowFaceColor, shadowOutlineColor, shadowOutline, shadowSoftness);
+			#elif _OUTLINEMODE_INNER
+			float shadowInnerSD = shadowSD - shadowOutline * 0.5;
+			fixed4 shadowColor = GetColor(shadowInnerSD, shadowFaceColor, shadowOutlineColor, shadowOutline, shadowSoftness);
+			#else
+			fixed4 shadowColor = GetColor(shadowSD, shadowFaceColor, shadowOutlineColor, shadowOutline, shadowSoftness);
+			#endif
 			
-			// Blend shadow behind the main text
-			faceColor.rgb = lerp(shadowColor.rgb, faceColor.rgb, faceColor.a);
-			faceColor.a = saturate(faceColor.a + shadowColor.a * (1 - faceColor.a));
+			// Composite shadow behind main text using "over" operator
+			faceColor.rgb = faceColor.rgb + shadowColor.rgb * (1.0 - faceColor.a);
+			faceColor.a = saturate(faceColor.a + shadowColor.a * (1.0 - faceColor.a));
 		    #endif
 
 		    #if UNDERLAY_INNER
@@ -367,7 +379,6 @@ SubShader {
 			faceColor.rgb += glowColor.rgb * glowColor.a;
 		    #endif
 
-		// Alternative implementation to UnityGet2DClipping with support for softness.
 		    #if UNITY_UI_CLIP_RECT
 			half2 m = saturate((_ClipRect.zw - _ClipRect.xy - abs(input.mask.xy)) * input.mask.zw);
 			faceColor *= m.x * m.y;

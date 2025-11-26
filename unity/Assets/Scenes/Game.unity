@@ -4976,6 +4976,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 699867334076267006, guid: 9d5970821a42e4a898f44bf1bc9c6e8b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 925a13b8b00924693b779a2aa5b5b96f, type: 3}
     - target: {fileID: 3636929641883104255, guid: 9d5970821a42e4a898f44bf1bc9c6e8b, type: 3}
       propertyPath: m_Name
       value: MoneyPanel
@@ -5689,6 +5693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimerPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 2613357324954044979, guid: 87bcb61d513384a0382c1822c583a16a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 925a13b8b00924693b779a2aa5b5b96f, type: 3}
     - target: {fileID: 5099078200965943111, guid: 87bcb61d513384a0382c1822c583a16a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

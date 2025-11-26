@@ -37,6 +37,7 @@ namespace Core.Interaction
                 onItemRecycled?.Invoke(removedItem.Item);
                 animator.SetTrigger("TriggerTrash");
                 audioSource.PlayOneShot(SFXDatabase.Instance.triggerTrashClip);
+                HideIndicator(playerController);
             }
         }
 
