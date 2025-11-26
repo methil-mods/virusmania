@@ -1,7 +1,7 @@
-using System;
 using System.Threading.Tasks;
 using Framework.Controller;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core.Timer
 {
@@ -9,39 +9,43 @@ namespace Core.Timer
     {
         public float CurrentTime { get; private set; }
         public float TimerDuration { get; private set; }
-        private bool isRunning;
-        private bool stopRequested;
 
-        public async void LaunchTimer(float duration, Action callback)
+        public UnityAction OnTimerEnd;
+        public UnityAction<float> OnTimerTick;
+
+        private bool _isRunning;
+        private bool _stopRequested;
+
+        public async void LaunchTimer(float duration)
         {
-            if (isRunning) return;
+            if (_isRunning) return;
 
             TimerDuration = duration;
             CurrentTime = 0f;
-            isRunning = true;
-            stopRequested = false;
+            _isRunning = true;
+            _stopRequested = false;
 
             while (CurrentTime < duration)
             {
-                if (stopRequested) break;
+                if (_stopRequested) break;
 
                 await Task.Yield();
                 CurrentTime += Time.deltaTime;
+                OnTimerTick?.Invoke(CurrentTime);
             }
 
-            if (!stopRequested)
-                callback?.Invoke();
+            if (!_stopRequested)
+                OnTimerEnd?.Invoke();
 
-            isRunning = false;
+            _isRunning = false;
             CurrentTime = 0f;
             TimerDuration = 0f;
         }
 
         public void StopTimer()
         {
-            if (!isRunning) return;
-
-            stopRequested = true;
+            if (!_isRunning) return;
+            _stopRequested = true;
         }
     }
 }

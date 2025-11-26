@@ -9,8 +9,6 @@ namespace Core.Item
     [CreateAssetMenu(fileName = "VirusItem", menuName = "Item/VirusItem")]
     public class VirusItem : Item
     {
-        public Sprite virusIcon;
-        
         [SerializeField]
         public ThreatParameter[] threatParameters;
         

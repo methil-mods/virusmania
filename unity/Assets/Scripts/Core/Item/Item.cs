@@ -8,6 +8,7 @@ namespace Core.Item
     {
         [Header("Item base property")]
         public string itemName;
+        [TextArea]
         public string itemDescription;
         public GameObject itemPrefab;
         public Sprite itemIcon;

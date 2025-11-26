@@ -16,7 +16,6 @@ MonoBehaviour:
   itemDescription: A very small single-stranded DNA virus that infects red blood
     cell precursors. Mostly infect childs.
   itemPrefab: {fileID: 5751178801092067253, guid: d2e991282a2164ef3b6db059b18a0cd0, type: 3}
-  itemIcon: {fileID: 21300000, guid: e7f1fca4a048040d5a6fb699e378852d, type: 3}
+  itemIcon: {fileID: 21300000, guid: 9d3c5beb402f34243b7a8d12c2937217, type: 3}
   price: 0
-  virusIcon: {fileID: 21300000, guid: e7f1fca4a048040d5a6fb699e378852d, type: 3}
   threatParameters: []

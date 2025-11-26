@@ -121,10 +121,7 @@ namespace Core.Brief
         {
             
             BriefController.Instance.actualBrief = _tempNewBrief;
-            TimerController.Instance.LaunchTimer(_tempNewBrief.timeForBrief, (() =>
-            {
-                Debug.LogWarning("NEED TO SET LOOSE");
-            }));
+            TimerController.Instance.LaunchTimer(_tempNewBrief.timeForBrief);
             _tempNewBrief = null;
             
             HideBriefPanel();

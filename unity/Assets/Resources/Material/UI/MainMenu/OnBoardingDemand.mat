@@ -47,11 +47,11 @@ Material:
     - _NoiseScale: 5.4
     - _NoiseSpeed: 1.09
     - _OutlineEnabled: 1
-    - _OutlineOffset: 0
-    - _OutlineOffsetX: 0
-    - _OutlineOffsetY: 0
-    - _OutlineSizeMultiplier: 1
-    - _OutlineThickness: 0.05
+    - _OutlineOffset: 0.0283
+    - _OutlineOffsetX: 0.173
+    - _OutlineOffsetY: -0.028
+    - _OutlineSizeMultiplier: 0.55
+    - _OutlineThickness: 0.078
     - _Roundness: 0.456
     - _Speed: 1.82
     - _Stencil: 0
@@ -64,7 +64,7 @@ Material:
     - _BorderColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color1: {r: 0, g: 1, b: 0.08719444, a: 1}
     - _Color2: {r: 0, g: 0.5849056, b: 0.004974266, a: 1}
-    - _FillColor: {r: 0.14509805, g: 1, b: 0.27450982, a: 1}
+    - _FillColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
