@@ -15,7 +15,7 @@ MonoBehaviour:
   splashScreen: {fileID: 8300000, guid: 12891db05142543989047df1345eb4f8, type: 3}
   popUiClip: {fileID: 8300000, guid: 56631044970bc47399b3bb058f69809f, type: 3}
   clickUiClip: {fileID: 8300000, guid: 8c139522accbc480ebd1e4417cb9590e, type: 3}
-  walkClip: {fileID: 8300000, guid: b4159424eeef148bdb7118f8cab52b00, type: 3}
+  walkClip: {fileID: 8300000, guid: 7f17f18f496114c01ab620c1195f87ec, type: 3}
   musicClip1: {fileID: 8300000, guid: 3ff5f4b0a75244ab9b7a399405f1a559, type: 3}
   openCookClip: {fileID: 8300000, guid: 5b0262874eea2404bbb07fbf25bc39f0, type: 3}
   boilingCookClip: {fileID: 8300000, guid: 6a466d2d2cf8149c0a0a66a812a44197, type: 3}
