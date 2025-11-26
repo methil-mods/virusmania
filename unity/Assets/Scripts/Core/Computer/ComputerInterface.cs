@@ -13,6 +13,10 @@ namespace Core.Computer
     {
         public override void Start()
         {
+            if (InputDatabase.Instance == null)
+                Debug.LogError("Input Database is null, or cannot be finded, it will give some errors...");
+            
+            
             base.Start();
 
             panel.GetComponentInChildren<PathoNetInterface>().OnBuyCart += ClosePanel;

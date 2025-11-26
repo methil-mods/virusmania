@@ -6,9 +6,6 @@ namespace Core.Cursor
 {
     public class CursorController : BaseController<CursorController>
     {
-        const int width = 32;
-        const int height = 32;
-
         protected override void Awake()
         {
             base.Awake();
