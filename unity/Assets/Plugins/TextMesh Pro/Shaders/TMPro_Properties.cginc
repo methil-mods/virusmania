@@ -12,6 +12,16 @@ uniform float		_OutlineUVSpeedY;
 uniform fixed4		_OutlineColor;				// RGBA : Color + Opacity
 uniform float		_OutlineWidth;				// v[ 0, 1]
 
+// --- Custom Outline 2 ---
+uniform float       _Outline2Width;             // v[0,1]
+uniform float       _Outline2Softness;          // v[0,1]
+uniform float       _Outline2OffsetX;           // v[-10,10]
+uniform float       _Outline2OffsetY;           // v[-10,10]
+uniform float       _Outline2UVSpeedX;          // v[-5,5]
+uniform float       _Outline2UVSpeedY;          // v[-5,5]
+uniform sampler2D   _Outline2Tex;
+uniform fixed4      _Outline2Color;
+
 uniform float		_Bevel;						// v[ 0, 1]
 uniform float		_BevelOffset;				// v[-1, 1]
 uniform float		_BevelWidth;				// v[-1, 1]

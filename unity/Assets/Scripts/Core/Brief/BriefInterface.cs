@@ -29,8 +29,12 @@ namespace Core.Brief
         private Brief _lastDisplayedBrief;
         private bool _isActualBriefVisible = false;
 
+        private Material _actualBriefMaterial;
+        
         public void Start()
         {
+            _actualBriefMaterial = new Material(actualBriefPanel.GetComponent<Image>().material);
+            actualBriefPanel.GetComponent<Image>().material = _actualBriefMaterial;
             briefEndButton.onClick.AddListener(PutNewBrief);
             _originalActualBriefPosition = actualBriefPanel.anchoredPosition;
             actualBriefPanel.gameObject.SetActive(false);
@@ -53,6 +57,8 @@ namespace Core.Brief
             }
             else
             {
+                _actualBriefMaterial.SetFloat("_AspectRatio", actualBriefPanel.rect.width / actualBriefPanel.rect.height);
+                
                 if (_lastDisplayedBrief != BriefController.Instance.actualBrief)
                 {
                     _lastDisplayedBrief = BriefController.Instance.actualBrief;
@@ -113,6 +119,7 @@ namespace Core.Brief
 
         public void PutNewBrief()
         {
+            
             BriefController.Instance.actualBrief = _tempNewBrief;
             TimerController.Instance.LaunchTimer(_tempNewBrief.timeForBrief, (() =>
             {

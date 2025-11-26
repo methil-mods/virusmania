@@ -1,4 +1,4 @@
-Shader "TextMeshPro/Distance Field Custom Methil" {
+Shader "TextMeshPro/Distance Field Custom Methil Simplified" {
 
 Properties {
 	_FaceTex			("Face Texture", 2D) = "white" {}
@@ -15,48 +15,17 @@ Properties {
 	_OutlineSoftness	("Outline Softness", Range(0,1)) = 0
 	[KeywordEnum(Both, Outer, Inner)] _OutlineMode("Outline Mode", Float) = 0
 
-	_Bevel				("Bevel", Range(0,1)) = 0.5
-	_BevelOffset		("Bevel Offset", Range(-0.5,0.5)) = 0
-	_BevelWidth			("Bevel Width", Range(-.5,0.5)) = 0
-	_BevelClamp			("Bevel Clamp", Range(0,1)) = 0
-	_BevelRoundness		("Bevel Roundness", Range(0,1)) = 0
-
-	_LightAngle			("Light Angle", Range(0.0, 6.2831853)) = 3.1416
-	_SpecularColor	    ("Specular", Color) = (1,1,1,1)
-	_SpecularPower		("Specular", Range(0,4)) = 2.0
-	_Reflectivity		("Reflectivity", Range(5.0,15.0)) = 10
-	_Diffuse			("Diffuse", Range(0,1)) = 0.5
-	_Ambient			("Ambient", Range(1,0)) = 0.5
-
-	_BumpMap 			("Normal map", 2D) = "bump" {}
-	_BumpOutline		("Bump Outline", Range(0,1)) = 0
-	_BumpFace			("Bump Face", Range(0,1)) = 0
-
-	_ReflectFaceColor	("Reflection Color", Color) = (0,0,0,1)
-	_ReflectOutlineColor("Reflection Color", Color) = (0,0,0,1)
-	_Cube 				("Reflection Cubemap", Cube) = "black" { /* TexGen CubeReflect */ }
-	_EnvMatrixRotation	("Texture Rotation", vector) = (0, 0, 0, 0)
-
-
-	_UnderlayColor	    ("Drop Shadow Color", Color) = (0,0,0, 0.5)
-	_UnderlayOffsetX	("Drop Shadow OffsetX", Range(-100,100)) = 0
-	_UnderlayOffsetY	("Drop Shadow OffsetY", Range(-100,100)) = 0
-	_UnderlayDilate		("Drop Shadow Dilate", Range(-40,40)) = 0
-	_UnderlaySoftness	("Drop Shadow Softness", Range(0,1)) = 0
-
-	_GlowColor		    ("Color", Color) = (0, 1, 0, 0.5)
-	_GlowOffset			("Offset", Range(-1,1)) = 0
-	_GlowInner			("Inner", Range(0,1)) = 0.05
-	_GlowOuter			("Outer", Range(0,1)) = 0.05
-	_GlowPower			("Falloff", Range(1, 0)) = 0.75
+	_Outline2Color	    ("Outline 2 Color", Color) = (1,0,0,1)
+	_Outline2Tex		("Outline 2 Texture", 2D) = "white" {}
+	_Outline2UVSpeedX	("Outline 2 UV Speed X", Range(-5, 5)) = 0.0
+	_Outline2UVSpeedY	("Outline 2 UV Speed Y", Range(-5, 5)) = 0.0
+	_Outline2Width		("Outline 2 Thickness", Range(0, 1)) = 0
+	_Outline2Softness	("Outline 2 Softness", Range(0,1)) = 0
+	_Outline2OffsetX	("Outline 2 Offset X", Range(-50,50)) = 0
+	_Outline2OffsetY	("Outline 2 Offset Y", Range(-50,50)) = 0
 
 	_WeightNormal		("Weight Normal", float) = 0
 	_WeightBold			("Weight Bold", float) = 0.5
-
-	_ShaderFlags		("Flags", float) = 0
-	_ScaleRatioA		("Scale RatioA", float) = 1
-	_ScaleRatioB		("Scale RatioB", float) = 1
-	_ScaleRatioC		("Scale RatioC", float) = 1
 
 	_MainTex			("Font Atlas", 2D) = "white" {}
 	_TextureWidth		("Texture Width", float) = 512
@@ -116,11 +85,8 @@ SubShader {
 		#pragma target 3.0
 		#pragma vertex VertShader
 		#pragma fragment PixShader
-		#pragma shader_feature __ BEVEL_ON
-		#pragma shader_feature __ UNDERLAY_ON UNDERLAY_INNER
-		#pragma shader_feature __ GLOW_ON
+		#pragma shader_feature __ OUTLINE2_ON
 		#pragma shader_feature _OUTLINEMODE_BOTH _OUTLINEMODE_OUTER _OUTLINEMODE_INNER
-
 		#pragma multi_compile __ UNITY_UI_CLIP_RECT
 		#pragma multi_compile __ UNITY_UI_ALPHACLIP
 
@@ -145,22 +111,22 @@ SubShader {
 			UNITY_VERTEX_OUTPUT_STEREO
 			float4	position		: SV_POSITION;
 			fixed4	color			: COLOR;
-			float2	atlas			: TEXCOORD0;		// Atlas
-			float4	param			: TEXCOORD1;		// alphaClip, scale, bias, weight
-			float4	mask			: TEXCOORD2;		// Position in object space(xy), pixel Size(zw)
+			float2	atlas			: TEXCOORD0;
+			float4	param			: TEXCOORD1;
+			float4	mask			: TEXCOORD2;
 			float3	viewDir			: TEXCOORD3;
 
-		    #if (UNDERLAY_ON || UNDERLAY_INNER)
-			float4	texcoord2		: TEXCOORD4;		// u,v, scale, bias
-			fixed4	underlayColor	: COLOR1;
-		    #endif
-
 		    float4 textures			: TEXCOORD5;
+		    
+		    #if OUTLINE2_ON
+		    float4	texcoord3		: TEXCOORD6;
+		    float2  outline2UV		: TEXCOORD7;
+		    #endif
 		};
 
-		// Used by Unity internally to handle Texture Tiling and Offset.
 		float4 _FaceTex_ST;
 		float4 _OutlineTex_ST;
+		float4 _Outline2Tex_ST;
 		float _UIMaskSoftnessX;
         float _UIMaskSoftnessY;
         int _UIVertexColorAlwaysGammaSpace;
@@ -189,40 +155,21 @@ SubShader {
 			if (UNITY_MATRIX_P[3][3] == 0) scale = lerp(abs(scale) * (1 - _PerspectiveFilter), scale, abs(dot(UnityObjectToWorldNormal(input.normal.xyz), normalize(WorldSpaceViewDir(vert)))));
 
 			float weight = lerp(_WeightNormal, _WeightBold, bold) / 4.0;
-			weight = (weight + _FaceDilate) * _ScaleRatioA * 0.5;
+			weight = (weight + _FaceDilate) * 0.5;
 
 			float bias =(.5 - weight) + (.5 / scale);
 
-			float alphaClip = (1.0 - _OutlineWidth * _ScaleRatioA - _OutlineSoftness * _ScaleRatioA);
-
-		    #if GLOW_ON
-			alphaClip = min(alphaClip, 1.0 - _GlowOffset * _ScaleRatioB - _GlowOuter * _ScaleRatioB);
-		    #endif
+			float alphaClip = (1.0 - _OutlineWidth * 0.5);
 
 			alphaClip = alphaClip / 2.0 - ( .5 / scale) - weight;
 
-		    #if (UNDERLAY_ON || UNDERLAY_INNER)
-			float4 underlayColor = _UnderlayColor;
-			underlayColor.rgb *= underlayColor.a;
-
-			float bScale = scale;
-			bScale /= 1 + ((_UnderlaySoftness*_ScaleRatioC) * bScale);
-			float bBias = (0.5 - weight) * bScale - 0.5 - ((_UnderlayDilate * _ScaleRatioC) * 0.5 * bScale);
-
-			float x = -(_UnderlayOffsetX * _ScaleRatioC) * _GradientScale / _TextureWidth;
-			float y = -(_UnderlayOffsetY * _ScaleRatioC) * _GradientScale / _TextureHeight;
-			float2 bOffset = float2(x, y);
-		    #endif
-
-			// Generate UV for the Masking Texture
 			float4 clampedRect = clamp(_ClipRect, -2e10, 2e10);
 			float2 maskUV = (vert.xy - clampedRect.xy) / (clampedRect.zw - clampedRect.xy);
 
-			// Support for texture tiling and offset
 			float2 textureUV = input.texcoord1;
 			float2 faceUV = TRANSFORM_TEX(textureUV, _FaceTex);
 			float2 outlineUV = TRANSFORM_TEX(textureUV, _OutlineTex);
-
+			float2 outline2UV = TRANSFORM_TEX(textureUV, _Outline2Tex);
 
             if (_UIVertexColorAlwaysGammaSpace && !IsGammaSpace())
             {
@@ -234,62 +181,42 @@ SubShader {
 			output.param =	float4(alphaClip, scale, bias, weight);
 			const half2 maskSoftness = half2(max(_UIMaskSoftnessX, _MaskSoftnessX), max(_UIMaskSoftnessY, _MaskSoftnessY));
 			output.mask = half4(vert.xy * 2 - clampedRect.xy - clampedRect.zw, 0.25 / (0.25 * maskSoftness + pixelSize.xy));
-			output.viewDir =	mul((float3x3)_EnvMatrix, _WorldSpaceCameraPos.xyz - mul(unity_ObjectToWorld, vert).xyz);
-			#if (UNDERLAY_ON || UNDERLAY_INNER)
-			output.texcoord2 = float4(input.texcoord0 + bOffset, bScale, bBias);
-			output.underlayColor =	underlayColor;
-			#endif
+			output.viewDir =	float3(0,0,0);
 			output.textures = float4(faceUV, outlineUV);
+
+			#if OUTLINE2_ON
+			float x2 = -(_Outline2OffsetX * 0.5) * _GradientScale / _TextureWidth;
+			float y2 = -(_Outline2OffsetY * 0.5) * _GradientScale / _TextureHeight;
+			float2 offset2 = float2(x2, y2);
+			output.texcoord3 = float4(input.texcoord0 + offset2, scale, bias);
+			output.outline2UV = outline2UV;
+			#endif
 
 			return output;
 		}
 
-		// Improved smoothing function for better anti-aliasing
 		float GetSmoothAlpha(float distance, float scale, float bias)
 		{
-			// Increase anti-aliasing window for smoother edges
 			float smoothing = 0.5 / scale;
-			// Add adaptive smoothing based on dilate amount
 			smoothing = max(smoothing, 0.05);
 			return smoothstep(bias - smoothing, bias + smoothing, distance);
-		}
-
-		// Function to render the complete text (face + outline) for drop shadow
-		fixed4 GetCompleteTextColor(float sd, float scale, half4 faceColor, half4 outlineColor, float outline, float softness)
-		{
-			// Enhanced softness for better anti-aliasing
-			softness = max(softness, 0.5 / scale);
-			
-			// Apply outline mode for drop shadow
-			#if _OUTLINEMODE_OUTER
-			float modSD = sd + outline * 0.5;
-			return GetColor(modSD, faceColor, outlineColor, outline, softness);
-			#elif _OUTLINEMODE_INNER
-			float modSD = sd - outline * 0.5;
-			return GetColor(modSD, faceColor, outlineColor, outline, softness);
-			#else
-			return GetColor(sd, faceColor, outlineColor, outline, softness);
-			#endif
 		}
 
 		fixed4 PixShader(pixel_t input) : SV_Target
 		{
 			UNITY_SETUP_INSTANCE_ID(input);
 
-			// Sample with bilinear filtering for smoother results
 			float c = tex2D(_MainTex, input.atlas).a;
 
-		    #ifndef UNDERLAY_ON
 			clip(c - input.param.x);
-		    #endif
 
 			float	scale	= input.param.y;
 			float	bias	= input.param.z;
 			float	weight	= input.param.w;
 			float	sd = (bias - c) * scale;
 
-			float outline = (_OutlineWidth * _ScaleRatioA) * scale;
-			float softness = (_OutlineSoftness * _ScaleRatioA) * scale;
+			float outline = 0.5 * scale;
+			float softness = 0.5 * scale;
 
 			half4 faceColor = _FaceColor;
 			half4 outlineColor = _OutlineColor;
@@ -299,84 +226,56 @@ SubShader {
 			faceColor *= tex2D(_FaceTex, input.textures.xy + float2(_FaceUVSpeedX, _FaceUVSpeedY) * _Time.y);
 			outlineColor *= tex2D(_OutlineTex, input.textures.zw + float2(_OutlineUVSpeedX, _OutlineUVSpeedY) * _Time.y);
 
-			// Apply outline mode modifications with improved smoothing
 			#if _OUTLINEMODE_OUTER
-			// Outer outline only - shift the outline to be completely outside
 			float outerSD = sd + outline * 0.5;
 			faceColor = GetColor(outerSD, faceColor, outlineColor, outline, softness);
 			#elif _OUTLINEMODE_INNER
-			// Inner outline only - shift the outline to be completely inside
 			float innerSD = sd - outline * 0.5;
 			faceColor = GetColor(innerSD, faceColor, outlineColor, outline, softness);
 			#else
-			// Both (default) - centered outline
 			faceColor = GetColor(sd, faceColor, outlineColor, outline, softness);
 			#endif
 
-			// Apply supersampling-like technique for edges to reduce artifacts
-			float edgeSoftness = 0.5 / scale;
-			float faceAlpha = saturate((sd + edgeSoftness) / (edgeSoftness * 2.0));
-			faceColor.a *= faceAlpha;
+		    #if OUTLINE2_ON
+			float2 atlasUV3 = input.texcoord3.xy;
+			bool atlasUV3Inside = (atlasUV3.x >= 0.0 && atlasUV3.x <= 1.0 && atlasUV3.y >= 0.0 && atlasUV3.y <= 1.0);
+			float outline2C = atlasUV3Inside ? tex2D(_MainTex, atlasUV3).a : 0.0;
+			float outline2SD = (input.texcoord3.w - outline2C) * input.texcoord3.z;
 
-		    #if BEVEL_ON
-			float3 dxy = float3(0.5 / _TextureWidth, 0.5 / _TextureHeight, 0);
-			float3 n = GetSurfaceNormal(input.atlas, weight, dxy);
+			float outline2Thickness = 0.5 * scale;
+			float outline2Softness = 0.5 * scale;
+			outline2Softness = max(outline2Softness, 0.5 / scale);
 
-			float3 bump = UnpackNormal(tex2D(_BumpMap, input.textures.xy + float2(_FaceUVSpeedX, _FaceUVSpeedY) * _Time.y)).xyz;
-			bump *= lerp(_BumpFace, _BumpOutline, saturate(sd + outline * 0.5));
-			n = normalize(n- bump);
+			half4 outline2FaceColor = _Outline2Color;
+			half4 outline2OutlineColor = _Outline2Color;
 
-			float3 light = normalize(float3(sin(_LightAngle), cos(_LightAngle), -1.0));
+			float2 outline2TexUV = input.outline2UV + float2(_Outline2UVSpeedX, _Outline2UVSpeedY) * _Time.y;
 
-			float3 col = GetSpecular(n, light);
-			faceColor.rgb += col*faceColor.a;
-			faceColor.rgb *= 1-(dot(n, light)*_Diffuse);
-			faceColor.rgb *= lerp(_Ambient, 1, n.z*n.z);
+			bool outline2TexUVInside = (outline2TexUV.x >= 0.0 && outline2TexUV.x <= 1.0 && outline2TexUV.y >= 0.0 && outline2TexUV.y <= 1.0);
+			if (outline2TexUVInside)
+			{
+				outline2FaceColor *= tex2D(_Outline2Tex, outline2TexUV);
+				outline2OutlineColor = outline2FaceColor;
+			}
+			else
+			{
+				outline2FaceColor = half4(0,0,0,0);
+				outline2OutlineColor = half4(0,0,0,0);
+			}
 
-			fixed4 reflcol = texCUBE(_Cube, reflect(input.viewDir, -n));
-			faceColor.rgb += reflcol.rgb * lerp(_ReflectFaceColor.rgb, _ReflectOutlineColor.rgb, saturate(sd + outline * 0.5)) * faceColor.a;
-		    #endif
-
-		    #if UNDERLAY_ON
-			// Sample the shadow distance field at the offset position
-			float shadowC = tex2D(_MainTex, input.texcoord2.xy).a;
-			float shadowScale = input.texcoord2.z;
-			float shadowBias = input.texcoord2.w;
-			float shadowSD = (shadowBias - shadowC) * shadowScale;
-			
-			// Calculate outline parameters for shadow (same as main text)
-			float shadowOutline = (_OutlineWidth * _ScaleRatioA) * shadowScale;
-			float shadowSoftness = (_UnderlaySoftness * _ScaleRatioC) * shadowScale;
-			shadowSoftness = max(shadowSoftness, 0.5 / shadowScale);
-			
-			// Create shadow with the same outline rendering as main text
-			half4 shadowFaceColor = input.underlayColor;
-			half4 shadowOutlineColor = input.underlayColor;
-			
-			// Render shadow using GetColor to include outline like main text
+			fixed4 outline2Color;
 			#if _OUTLINEMODE_OUTER
-			float shadowOuterSD = shadowSD + shadowOutline * 0.5;
-			fixed4 shadowColor = GetColor(shadowOuterSD, shadowFaceColor, shadowOutlineColor, shadowOutline, shadowSoftness);
+			float outline2OuterSD = outline2SD + outline2Thickness * 0.5;
+			outline2Color = GetColor(outline2OuterSD, outline2FaceColor, outline2OutlineColor, outline2Thickness, outline2Softness);
 			#elif _OUTLINEMODE_INNER
-			float shadowInnerSD = shadowSD - shadowOutline * 0.5;
-			fixed4 shadowColor = GetColor(shadowInnerSD, shadowFaceColor, shadowOutlineColor, shadowOutline, shadowSoftness);
+			float outline2InnerSD = outline2SD - outline2Thickness * 0.5;
+			outline2Color = GetColor(outline2InnerSD, outline2FaceColor, outline2OutlineColor, outline2Thickness, outline2Softness);
 			#else
-			fixed4 shadowColor = GetColor(shadowSD, shadowFaceColor, shadowOutlineColor, shadowOutline, shadowSoftness);
+			outline2Color = GetColor(outline2SD, outline2FaceColor, outline2OutlineColor, outline2Thickness, outline2Softness);
 			#endif
-			
-			// Composite shadow behind main text using "over" operator
-			faceColor.rgb = faceColor.rgb + shadowColor.rgb * (1.0 - faceColor.a);
-			faceColor.a = saturate(faceColor.a + shadowColor.a * (1.0 - faceColor.a));
-		    #endif
 
-		    #if UNDERLAY_INNER
-			float d = tex2D(_MainTex, input.texcoord2.xy).a * input.texcoord2.z;
-			faceColor += input.underlayColor * (1 - saturate(d - input.texcoord2.w)) * saturate(1 - sd) * (1 - faceColor.a);
-		    #endif
-
-		    #if GLOW_ON
-			float4 glowColor = GetGlowColor(sd, scale);
-			faceColor.rgb += glowColor.rgb * glowColor.a;
+			faceColor.rgb = faceColor.rgb + outline2Color.rgb * (1.0 - faceColor.a);
+			faceColor.a = saturate(faceColor.a + outline2Color.a * (1.0 - faceColor.a));
 		    #endif
 
 		    #if UNITY_UI_CLIP_RECT

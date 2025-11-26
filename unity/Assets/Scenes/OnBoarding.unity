@@ -119,25 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &112877745 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3842597370970461480, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-  m_PrefabInstance: {fileID: 5868683374538393339}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &112877750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112877745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!1001 &223249192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1889,42 +1870,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -133.735
       objectReference: {fileID: 0}
-    - target: {fileID: 1128591025247492206, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128591025247492206, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_Pivot.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128591025247492206, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128591025247492206, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128591025247492206, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128591025247492206, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128591025247492206, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128591025247492206, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4648679850612911077, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      propertyPath: m_Padding.m_Bottom
-      value: 32
-      objectReference: {fileID: 0}
     - target: {fileID: 5981491790052716114, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2018,16 +1963,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8114862418667996648, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 770.15063
+      objectReference: {fileID: 0}
+    - target: {fileID: 8114862418667996648, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8114862418667996648, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 409.075
+      value: 409.07532
       objectReference: {fileID: 0}
     - target: {fileID: 8114862418667996648, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -92.585
+      value: -69.725
       objectReference: {fileID: 0}
     - target: {fileID: 8359662288389616297, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2056,10 +2005,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3842597370970461480, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 112877750}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
 --- !u!224 &5868683374538393340 stripped
 RectTransform:

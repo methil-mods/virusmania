@@ -14,6 +14,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ENABLEBORDER_ON
+  - _ENABLEOUTLINE_ON
   - _OUTLINEENABLED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,25 +33,38 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.052
-    - _AspectRatio: 2
+    - _AspectRatio: 1.484375
     - _BorderOffset: 0.1825
     - _BorderOffsetX: 0.022
     - _BorderOffsetY: -0.051
     - _BorderThickness: 0.07
+    - _ColorMask: 15
     - _CornerRadius: 0.154
     - _EnableBorder: 1
+    - _EnableOutline: 1
     - _Frequency: 14.93
     - _NoiseAmplitude: 0.0756
     - _NoiseScale: 3.2
     - _NoiseSpeed: 1.09
     - _OutlineEnabled: 1
+    - _OutlineOffset: 0
+    - _OutlineOffsetX: 0
+    - _OutlineOffsetY: 0
+    - _OutlineSizeMultiplier: 0
+    - _OutlineThickness: 0
     - _Roundness: 0.456
     - _Speed: 1.82
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _Thickness: 0
     m_Colors:
     - _BorderColor: {r: 0.007843138, g: 0.34901962, b: 0, a: 1}
     - _Color1: {r: 0, g: 1, b: 0.08719444, a: 1}
     - _Color2: {r: 0, g: 0.5849056, b: 0.004974266, a: 1}
     - _FillColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

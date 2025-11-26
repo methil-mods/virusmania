@@ -1,16 +1,17 @@
-Shader "UI/MethilUiWavyBlob"
+Shader "UI/MethilUiWavyBlobOutline"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
         _FillColor ("Fill Color", Color) = (1,1,1,1)
-        _BorderColor ("Border Color", Color) = (0,1,0,1)
+        _OutlineColor ("Outline Color", Color) = (0,1,0,1)
 
-        [Header(Border Controls)]
-        _BorderThickness ("Border Thickness", Range(0, 0.2)) = 0.05
-        _BorderOffset ("Border Offset", Range(0, 0.2)) = 0.0
-        _BorderOffsetX ("Border Offset X", Range(-0.3, 0.3)) = 0.0
-        _BorderOffsetY ("Border Offset Y", Range(-0.3, 0.3)) = 0.0
+        [Header(Outline Controls)]
+        _OutlineThickness ("Outline Thickness", Range(0, 0.5)) = 0.05
+        _OutlineSizeMultiplier ("Outline Size Multiplier", Range(0, 3)) = 1.0
+        _OutlineOffset ("Outline Offset", Range(0, 0.2)) = 0.0
+        _OutlineOffsetX ("Outline Offset X", Range(-0.3, 0.3)) = 0.0
+        _OutlineOffsetY ("Outline Offset Y", Range(-0.3, 0.3)) = 0.0
         _CornerRadius ("Corner Radius", Range(0, 0.5)) = 0.2
 
         [Header(Noise Controls)]
@@ -18,7 +19,7 @@ Shader "UI/MethilUiWavyBlob"
         _NoiseAmplitude ("Noise Amplitude", Range(0, 0.2)) = 0.05
         _NoiseSpeed ("Noise Speed", Range(0, 4)) = 0.5
 
-        [Toggle] _EnableBorder ("Enable Border", Float) = 1
+        [Toggle] _EnableOutline ("Enable Outline", Float) = 1
         
         _AspectRatio ("Aspect Ratio (W/H)", Float) = 1.0
 
@@ -65,7 +66,7 @@ Shader "UI/MethilUiWavyBlob"
                 float4 positionHCS : SV_POSITION; 
                 float2 uv : TEXCOORD0; 
                 float4 color : COLOR;
-                float4 worldPosition : TEXCOORD1;  // Added for RectMask2D clipping
+                float4 worldPosition : TEXCOORD1;
             };
 
             TEXTURE2D(_MainTex);
@@ -74,18 +75,19 @@ Shader "UI/MethilUiWavyBlob"
             CBUFFER_START(UnityPerMaterial)
                 float4 _MainTex_ST;
                 float4 _FillColor;
-                float4 _BorderColor;
-                float _BorderThickness;
-                float _BorderOffset;
-                float _BorderOffsetX;
-                float _BorderOffsetY;
+                float4 _OutlineColor;
+                float _OutlineThickness;
+                float _OutlineSizeMultiplier;
+                float _OutlineOffset;
+                float _OutlineOffsetX;
+                float _OutlineOffsetY;
                 float _CornerRadius;
                 float _NoiseScale;
                 float _NoiseAmplitude;
                 float _NoiseSpeed;
-                float _EnableBorder;
+                float _EnableOutline;
                 float _AspectRatio;
-                float4 _ClipRect;  // Added for RectMask2D clipping
+                float4 _ClipRect;
             CBUFFER_END
 
             float UnityGet2DClipping(float2 position, float4 clipRect)
@@ -94,7 +96,6 @@ Shader "UI/MethilUiWavyBlob"
                 return inside.x * inside.y;
             }
 
-            // --- Hash + Smooth noise ---
             float hash(float2 p) { return frac(sin(dot(p, float2(127.1,311.7))) * 43758.5453); }
 
             float noise(float2 p)
@@ -109,7 +110,6 @@ Shader "UI/MethilUiWavyBlob"
                 return lerp(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
             }
 
-            // --- fBm noise (smoother & more detailed) ---
             float fbm(float2 p)
             {
                 float v = 0.0;
@@ -132,10 +132,11 @@ Shader "UI/MethilUiWavyBlob"
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
-                OUT.positionHCS = TransformObjectToHClip(IN.positionOS);
+                float3 pos = IN.positionOS.xyz;
+                OUT.positionHCS = TransformObjectToHClip(pos);
                 OUT.uv = IN.uv;
                 OUT.color = IN.color;
-                OUT.worldPosition = IN.positionOS;  // Store world position for clipping
+                OUT.worldPosition = IN.positionOS;
                 return OUT;
             }
 
@@ -143,57 +144,48 @@ Shader "UI/MethilUiWavyBlob"
             {
                 float2 uv = IN.uv;
                 float time = _Time.y * _NoiseSpeed;
-            
+
                 float2 p = uv - 0.5;
-                
-                float aspectRatio = max(_AspectRatio, 0.01);
-                p.x *= aspectRatio;
-            
-                float padding = _BorderThickness + _NoiseAmplitude * 1.5;
-                float2 halfSize = float2((0.5 - padding) * aspectRatio, 0.5 - padding);
-            
-                float2 shadowOffset = float2(_BorderOffsetX * aspectRatio, _BorderOffsetY);
-                float2 pShadow = p - shadowOffset;
-                
-                // Shadow shape distance (outline is a full copy of the shape, not just a ring)
-                float distShadowOuter = sdRoundedRect(pShadow, halfSize, _CornerRadius);
-                float distShadowInner = sdRoundedRect(pShadow, halfSize - _BorderThickness, _CornerRadius);
-                
-                // Apply noise to shadow shape
-                float2 nUVShadow = pShadow * _NoiseScale + float2(time * 0.25, time * 0.15);
-                float shadowNoise = (fbm(nUVShadow) - 0.5) * 2.0 * _NoiseAmplitude;
-                float distShadowOuterNoisy = distShadowOuter + shadowNoise;
-                float distShadowInnerNoisy = distShadowInner + shadowNoise;
-                
+
+                // Correction aspect ratio
+                float2 screenSize = float2(_ScreenParams.x, _ScreenParams.y);
+                float aspect = max(_AspectRatio, 0.01); // configurable
+                p.x *= aspect;
+
+                float padding = _NoiseAmplitude * 1.5;
+                float2 halfSize = float2((0.5 - padding) * aspect, 0.5 - padding);
+
+                // Main shape distance field
                 float distMain = sdRoundedRect(p, halfSize, _CornerRadius);
-                
-                // Apply noise to main shape
-                float2 nUVMain = p * _NoiseScale + float2(time * 0.25, time * 0.15);
-                float mainNoise = (fbm(nUVMain) - 0.5) * 2.0 * _NoiseAmplitude;
-                float distMainNoisy = distMain + mainNoise;
-            
+
+                // Optional noise
+                float2 pixelPos = p * screenSize;
+                float2 nUV = pixelPos * (_NoiseScale / max(screenSize.x, screenSize.y)) + float2(time*0.25, time*0.15);
+                float mainNoise = (_NoiseAmplitude > 0.0) ? (fbm(nUV) - 0.5) * 2.0 * _NoiseAmplitude : 0.0;
+                distMain += mainNoise;
+
                 float antiAlias = fwidth(distMain) * 1.2;
-                
-                float shadowOuter = smoothstep(antiAlias, 0.0, distShadowOuterNoisy);
-                float shadowInner = smoothstep(antiAlias, 0.0, distShadowInnerNoisy);
-                float shadowRing = (_EnableBorder > 0.5) ? (shadowOuter - shadowInner) : 0.0;
-                
-                float mainShape = smoothstep(antiAlias, 0.0, distMainNoisy);
-            
-                // Sample texture et multiplier par TOUTES les couleurs (texture, shader property, et Image UI)
+
+                // Outline computation
+                float outlineWidth = _OutlineThickness * _OutlineSizeMultiplier;
+                float outlineMask = (_EnableOutline > 0.5) ? smoothstep(outlineWidth + antiAlias, outlineWidth - antiAlias, abs(distMain)) : 0.0;
+
+                // Fill computation
                 float4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
                 float4 fillColor = texColor * _FillColor * IN.color;
-                
-                float4 col = _BorderColor * shadowRing;
-                col = lerp(col, fillColor, mainShape);
-                col.a = saturate(shadowRing * _BorderColor.a + mainShape * fillColor.a);
-                
-                col.rgb = pow(col.rgb, 1.0 / 2.2);
+                float fillMask = smoothstep(antiAlias, 0.0, distMain);
 
+                // Combine outline and fill
+                float4 outlineColor = _OutlineColor * outlineMask;
+                float4 col = fillColor * fillMask + outlineColor * (1.0 - fillMask);
+                col.a = saturate(fillMask + outlineMask);
+
+                col.rgb = pow(col.rgb, 1.0 / 2.2);
                 col.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
-                
+
                 return col;
             }
+
             ENDHLSL
         }
     }
