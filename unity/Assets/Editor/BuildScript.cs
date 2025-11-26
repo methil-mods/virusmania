@@ -11,7 +11,9 @@ public class BuildScript
         
         string buildPath = "Build/WebGL";
         string[] scenes = new string[] {
+            "Assets/Scenes/SplashScreen.unity",
             "Assets/Scenes/MainMenu.unity",
+            "Assets/Scenes/OnBoarding.unity",
             "Assets/Scenes/Game.unity"
         };
 
