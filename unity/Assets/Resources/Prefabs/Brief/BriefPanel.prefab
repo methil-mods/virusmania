@@ -192,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 569037788938884005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 306, y: -104, z: 0}
+  m_LocalPosition: {x: 366, y: -139, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -984,8 +984,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19, y: 30}
-  m_SizeDelta: {x: 318.1925, y: 318.1925}
+  m_AnchoredPosition: {x: -32, y: 71}
+  m_SizeDelta: {x: 251.6542, y: 251.6542}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5949732638962876494
 CanvasRenderer:
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e7f1fca4a048040d5a6fb699e378852d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df05591ccfbdb42e2bdd07bdf722407b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1701,6 +1701,7 @@ MonoBehaviour:
   briefNameText: {fileID: 4703593547624748285}
   briefDescriptionText: {fileID: 2404658997101531179}
   briefMoneyGivenText: {fileID: 1283657961988642838}
+  briefVirusImage: {fileID: 7864571056040255126}
   briefEndButton: {fileID: 7957691615735369086}
   blackPanel: {fileID: 8940093554533854903}
 --- !u!1 &8962914994180685088

@@ -2779,9 +2779,9 @@ MonoBehaviour:
   interactionIndicatorOffset: {x: 0, y: 0, z: 0}
   maxHoldableItems: 3
   startItems:
-  - {fileID: 11400000, guid: 30e55c24c167f49cd86bae47b00ad50a, type: 2}
-  - {fileID: 11400000, guid: ce074d8c802044bb0898437f0113afa8, type: 2}
-  - {fileID: 11400000, guid: fa0877f89996448bc861b3673ed77ff3, type: 2}
+  - {fileID: 11400000, guid: 82f7a8bde387847b98e901feda83701d, type: 2}
+  - {fileID: 11400000, guid: e4b2ec453068d4a75911a39637c9dc0a, type: 2}
+  - {fileID: 11400000, guid: 9e4456c8ba1fd4fa49a9a41ca9b9201e, type: 2}
   itemParent: {fileID: 0}
   itemOffset: {x: 0, y: 1.5, z: 0}
 --- !u!1 &1465002588 stripped
@@ -3875,9 +3875,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2817525371558095237, guid: c0a51c1b1704b43edaaeaded46d6d962, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564269807911951181, guid: c0a51c1b1704b43edaaeaded46d6d962, type: 3}
       propertyPath: sortingLayer
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347904471409997009, guid: c0a51c1b1704b43edaaeaded46d6d962, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7242349849502524146, guid: c0a51c1b1704b43edaaeaded46d6d962, type: 3}
       propertyPath: m_LocalScale.x

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4009487d80ff4cff9d53966822d4229c, type: 3}
-  m_Name: Influenza A
+  m_Name: Herpes
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.VirusItem
-  itemName: Influenza A
-  itemDescription: A segmented negative-sense RNA virus that rapidly evolves through
-    mutation and reassortment, spreading efficiently through the respiratory tract.
-  itemPrefab: {fileID: 2279619964205076348, guid: 9c431ec9226614cce9e5714bd9a2d123, type: 3}
-  itemIcon: {fileID: 21300000, guid: b0cee88b8ebab4ee4a13fcd4c44b564b, type: 3}
+  itemName: Herpes
+  itemDescription: A large double-stranded DNA virus capable of establishing lifelong
+    latency inside neurons, reactivating under stress or immune weakness.
+  itemPrefab: {fileID: 2434928235391494866, guid: 8182abb848ad14c65a96b306cfa3983f, type: 3}
+  itemIcon: {fileID: 21300000, guid: 680276de671c24617b7595b7f41d6f08, type: 3}
   price: 0
   threatParameters: []

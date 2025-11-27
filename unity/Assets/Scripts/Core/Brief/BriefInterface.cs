@@ -21,6 +21,7 @@ namespace Core.Brief
         public TextMeshProUGUI briefNameText;
         public TextMeshProUGUI briefDescriptionText;
         public TextMeshProUGUI briefMoneyGivenText;
+        public Image briefVirusImage;
         public Button briefEndButton;
         [SerializeField] protected Image blackPanel;
 
@@ -112,6 +113,7 @@ namespace Core.Brief
             briefNameText.text = brief.briefTitle;
             briefDescriptionText.text = brief.briefDescription;
             briefMoneyGivenText.text = $"{brief.moneyGiven} $";
+            briefVirusImage.sprite = brief.wantedItem.itemIcon;
             
             _tempNewBrief = brief;
             
