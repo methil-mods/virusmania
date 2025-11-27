@@ -14,38 +14,42 @@ namespace Core.Item
         public GameObject itemHoldInterface;
         public Image holdItemImage;
         public TextMeshProUGUI holdItemName;
-        
+
         public void Start()
         {
             var playerInteraction = PlayerController.Instance.updatables.FirstOfType<PlayerInteraction>();
-
             playerInteraction.OnItemAdded += UpdateInterface;
             playerInteraction.OnItemRemoved += HideInterface;
-            
             itemHoldInterface.gameObject.SetActive(false);
         }
 
         public void OnDisable()
         {
             var playerInteraction = PlayerController.Instance.updatables.FirstOfType<PlayerInteraction>();
-            
             playerInteraction.OnItemAdded -= UpdateInterface;
             playerInteraction.OnItemRemoved -= HideInterface;
         }
 
         private void HideInterface(HoldItem holdItem)
         {
-            itemHoldInterface.gameObject.SetActive(false);
+            LeanTween.cancel(itemHoldInterface);
+            LeanTween.scale(itemHoldInterface, Vector3.zero, 0.15f)
+                .setEaseOutCirc()
+                .setOnComplete(() => itemHoldInterface.SetActive(false));
         }
 
         private void UpdateInterface(HoldItem holdItem)
         {
-            itemHoldInterface.gameObject.SetActive(true);
+            LeanTween.cancel(itemHoldInterface);
+            itemHoldInterface.transform.localScale = Vector3.zero;
+            itemHoldInterface.SetActive(true);
+
             if (holdItem.Item.itemIcon != null)
-            {
                 holdItemImage.sprite = holdItem.Item.itemIcon;
-            }
+
             holdItemName.text = holdItem.Item.itemName;
+
+            LeanTween.scale(itemHoldInterface, Vector3.one, 0.3f).setEaseSpring();
         }
     }
 }
