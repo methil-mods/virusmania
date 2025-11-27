@@ -6,8 +6,6 @@ namespace Core.Item.Merge
     [CreateAssetMenu(fileName = "MergeRecipe", menuName = "Item/MergeRecipe")]
     public class MergeRecipe<TInput, TResult> : MergeRecipeBase where TInput: Item where TResult: Item
     {
-        public bool isOnBoarding = false;
-        
         [Header("Items to merge")]
         public TInput[] inputItems;
 

@@ -19,6 +19,9 @@ namespace Core.Computer.PathoNet
         [SerializeField] private PathoNetItemReceiver pathoItemReceiver;
         public UnityAction OnBuyCart;
         public UnityAction<Item.Item> OnBuyItem;
+        
+        [SerializeField] 
+        private bool onlyOnBoarding = false;
 
         public TextMeshProUGUI dollarAmountText;
 
@@ -26,8 +29,9 @@ namespace Core.Computer.PathoNet
         {
             foreach (Transform child in pathoBuyableItemContainer)
                 Destroy(child.gameObject);
-
-            foreach (var item in ItemDatabase.Instance.BuyableItems)
+            
+            var database = onlyOnBoarding ? ItemDatabase.Instance.buyableOnBoardingItems : ItemDatabase.Instance.buyableItems;
+            foreach (var item in database)
             {
                 GameObject go = Instantiate(pathoBuyableItemPrefab, pathoBuyableItemContainer);
                 var buyableBehaviour = go.GetComponent<PathoNetBuyableItemBehaviour>();

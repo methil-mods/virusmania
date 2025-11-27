@@ -13,6 +13,7 @@ namespace Core.MergeLibrary
         public RectTransform boilingRecipeTransform;
 
         [SerializeField] private GameObject instructionUiPrefab;
+        [SerializeField] private bool onlyOnBoarding = false;
         
         public override void Start()
         {
@@ -25,7 +26,8 @@ namespace Core.MergeLibrary
             
             MergeDatabase mergeDatabase = MergeDatabase.Instance;
 
-            foreach (MergeRecipeBase mergeRecipe in mergeDatabase.Database)
+            foreach (MergeRecipeBase mergeRecipe in mergeDatabase.Database
+                         .FindAll(mergeRecipe => mergeRecipe.isOnBoarding == onlyOnBoarding))
             {
                 if (mergeRecipe is MergeVirusRecipe mergeVirusRecipe)
                 {
@@ -38,7 +40,8 @@ namespace Core.MergeLibrary
                 }
             }
             
-            foreach (CookRecipe cookRecipe in CookDatabase.Instance.Database)
+            foreach (CookRecipe cookRecipe in CookDatabase.Instance.Database
+                         .FindAll(cookRecipe => cookRecipe.isOnBoarding == onlyOnBoarding))
             {
                 var go = Instantiate(instructionUiPrefab, boilingRecipeTransform);
                 go.name = "Instruction for : " + cookRecipe.name;

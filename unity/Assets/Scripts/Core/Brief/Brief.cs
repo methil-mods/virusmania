@@ -7,8 +7,10 @@ namespace Core.Brief
     {
         public Sprite briefSprite;
         public string briefTitle;
+        [TextArea]
         public string briefDescription;
         public Item.Item wantedItem;
+        public bool onBoarding = false;
 
         [Min(0)]
         public int moneyGiven;

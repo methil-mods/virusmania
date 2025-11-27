@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Brief.BriefDatabase
   Database:
   - {fileID: 11400000, guid: 1a9f8a6c372f243b1a4dee4e2cf976c4, type: 2}
+  - {fileID: 11400000, guid: 5948dc1985a9a4358ba2b9a9cf2a3290, type: 2}

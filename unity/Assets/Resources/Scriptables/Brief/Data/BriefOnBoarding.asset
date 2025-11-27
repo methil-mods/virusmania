@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cadb52f5edad4bcd9f20e4cd485a8a2a, type: 3}
-  m_Name: BriefDemo
+  m_Name: BriefOnBoarding
   m_EditorClassIdentifier: Assembly-CSharp::Core.Brief.Brief
   briefSprite: {fileID: 0}
   briefTitle: BRIEF DE TEST
   briefDescription: Je veux absolument un virus T3ST
   wantedItem: {fileID: 11400000, guid: 9e4456c8ba1fd4fa49a9a41ca9b9201e, type: 2}
+  onBoarding: 1
   moneyGiven: 15
   timeForBrief: 120

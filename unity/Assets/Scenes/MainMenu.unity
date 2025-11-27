@@ -945,7 +945,7 @@ MonoBehaviour:
   m_TransitionTexSpeed: {x: 0, y: 0}
   m_TransitionRotation: 29
   m_TransitionKeepAspectRatio: 1
-  m_TransitionWidth: 0.6
+  m_TransitionWidth: 0.8
   m_TransitionSoftness: 0.475
   m_TransitionRange:
     m_Min: 0

@@ -5,6 +5,8 @@ namespace Core.Item.Cook
     [CreateAssetMenu(fileName = "CookRecipe", menuName = "Item/CookRecipe")]
     public class CookRecipe : ScriptableObject
     {
+        public bool isOnBoarding = false;
+        
         [Header("Item to cook")]
         public Item inputItem;
 

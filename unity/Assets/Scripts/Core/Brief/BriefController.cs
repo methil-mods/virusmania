@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Core.End;
 using Core.Item.Holder;
 using Core.Money;
 using Framework.Controller;
@@ -13,6 +15,11 @@ namespace Core.Brief
         BriefInterface briefInterface;
         [SerializeField]
         public Brief actualBrief;
+        
+        [SerializeField]
+        private bool onlyOnBoarding = false;
+        
+        private List<Brief> _briefsDone =  new List<Brief>();
 
         public void Start()
         {
@@ -22,9 +29,20 @@ namespace Core.Brief
         public void NewBrief()
         {
             actualBrief = null;
-            Brief newBrief = BriefDatabase.Instance.Database.GetRandom();
+
+            var onlyNotOnBoarding = BriefDatabase.Instance.Database
+                .FindAll(b => b.onBoarding == onlyOnBoarding && !_briefsDone.Contains(b));
+
+            if (onlyNotOnBoarding.Count == 0)
+            {
+                EndInterface.Instance.OpenWinPanel();
+                return;
+            }
+
+            Brief newBrief = onlyNotOnBoarding.GetRandom();
             briefInterface.SetupNewBriefShow(newBrief);
         }
+
 
         public bool CanCompleteBrief(HoldItem itemToValidate)
         {
@@ -43,6 +61,7 @@ namespace Core.Brief
             if (actualBrief != null && actualBrief.wantedItem == itemToValidate.Item)
             {
                 MoneyController.Instance.AddMoney(actualBrief.moneyGiven);
+                _briefsDone.Add(actualBrief);
                 actualBrief = null;
                 NewBrief();
                 return true;

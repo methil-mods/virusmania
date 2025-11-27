@@ -2778,7 +2778,7 @@ MonoBehaviour:
   interactionIndicatorOffset: {x: 0, y: 0, z: 0}
   maxHoldableItems: 3
   startItems:
-  - {fileID: 11400000, guid: bbb1b3ad4fdfd4ac5a13e8bee1c033e2, type: 2}
+  - {fileID: 11400000, guid: 30e55c24c167f49cd86bae47b00ad50a, type: 2}
   - {fileID: 11400000, guid: ce074d8c802044bb0898437f0113afa8, type: 2}
   - {fileID: 11400000, guid: fa0877f89996448bc861b3673ed77ff3, type: 2}
   itemParent: {fileID: 0}
@@ -3262,7 +3262,7 @@ Transform:
   m_GameObject: {fileID: 1837478995}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: -0.155, z: -4}
+  m_LocalPosition: {x: 5, y: -0.101, z: -4}
   m_LocalScale: {x: 15, y: 0.2, z: 16}
   m_ConstrainProportionsScale: 0
   m_Children: []
