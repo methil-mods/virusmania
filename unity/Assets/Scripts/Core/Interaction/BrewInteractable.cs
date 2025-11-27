@@ -87,6 +87,9 @@ namespace Core.Interaction
 
         public override void InteractHold(PlayerController playerController)
         {
+            Item.Item[] itemsToMerge = HoldingItems.ConvertAll(h => h.Item).ToArray();
+            if (MergeUtils.CanMerge(itemsToMerge) == false) return;
+            
             isBeingHeld = true;
             mixingTableAnimator.SetBool("IsWorking", true);
             lastHoldTime = Time.time;
