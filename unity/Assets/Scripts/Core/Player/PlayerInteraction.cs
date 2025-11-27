@@ -6,6 +6,7 @@ using Framework.Extensions;
 using Core.Item.Holder;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 namespace Core.Player
 {
@@ -21,7 +22,7 @@ namespace Core.Player
         [Header("Interaction Input")]
         [SerializeField] private InputActionReference interactionAction;
         [SerializeField] private InputActionReference interactionHoldAction;
-        
+
         [Header("Animation Settings")]
         [SerializeField] private Animator animator;
 
@@ -31,23 +32,21 @@ namespace Core.Player
         private HoldItem _holdingItem;
         private GameObject _spawnedHeldItem;
         private bool _isInteractingHeld;
-        
+
         public HoldItem HoldingItem => _holdingItem;
         public bool HasItem => _holdingItem != null;
-        
+
         private HashSet<Interactable> _interactablesInRange = new HashSet<Interactable>();
+
+        public UnityAction<HoldItem> OnItemAdded;
+        public UnityAction<HoldItem> OnItemRemoved;
 
         public override void Start(PlayerController controller)
         {
             _playerMovement = controller.updatables.FirstOfType<PlayerMovement>();
-            if (_playerMovement == null)
-                Debug.LogError("No player movement found in PlayerController");
 
             if (interactionAction == null || interactionHoldAction == null)
-            {
-                Debug.LogError("Missing interaction actions in PlayerInteraction");
                 return;
-            }
 
             interactionAction.action.performed += ctx => Interact(controller);
             interactionAction.action.Enable();
@@ -61,7 +60,7 @@ namespace Core.Player
         {
             if (_isInteractingHeld)
                 InteractHold(controller);
-            
+
             Vector3 origin = controller.body.transform.position.AddY(1.4f);
             Vector3 center = origin + _playerMovement.direction * interactionDistance;
 
@@ -133,8 +132,11 @@ namespace Core.Player
                 _spawnedHeldItem = null;
             }
 
-            Debug.Log("Setting animation holding to false");
             animator.SetBool("Holding", false);
+
+            if (item != null)
+                OnItemRemoved?.Invoke(item);
+
             return item;
         }
 
@@ -145,9 +147,11 @@ namespace Core.Player
 
             _holdingItem = newItem;
             animator.SetBool("Holding", true);
-            Debug.Log("Setting animation holding to true");
 
             SpawnHeldItem();
+
+            OnItemAdded?.Invoke(newItem);
+
             return true;
         }
 
@@ -155,7 +159,7 @@ namespace Core.Player
         {
             if (_holdingItem?.Item?.itemPrefab == null || holdingItemTransform == null)
                 return;
-            
+
             Vector3 prefabEuler = _holdingItem.Item.itemPrefab.transform.rotation.eulerAngles;
             Vector3 holdEuler = holdingItemTransform.rotation.eulerAngles;
 
