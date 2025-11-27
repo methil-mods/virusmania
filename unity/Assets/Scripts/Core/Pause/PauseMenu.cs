@@ -4,15 +4,36 @@ using Core.Scene;
 using Framework.Controller;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace Core.Pause
 {
     public class PauseMenu : InterfaceController<PauseMenu>
     {
+        public Slider musicSlider;
+        public Slider interactionSlider;
+        public Slider uiSlider;
+        
+        public GameObject pauseMenu;
+        public GameObject settingsMenu;
+        
+        
         public override void Start()
         {
             base.Start();
             InputDatabase.Instance.pauseAction.action.performed += context => CallPause();
+            
+            musicSlider.maxValue = 100f;
+            interactionSlider.maxValue = 100f;
+            uiSlider.maxValue = 100f;
+
+            musicSlider.value = SFXDatabase.Instance.musicVolume;
+            interactionSlider.value = SFXDatabase.Instance.interactionVolume;
+            uiSlider.value = SFXDatabase.Instance.uiVolume;
+
+            musicSlider.onValueChanged.AddListener(v => SFXDatabase.Instance.MusicVolume = v);
+            interactionSlider.onValueChanged.AddListener(v => SFXDatabase.Instance.InteractionVolume = v);
+            uiSlider.onValueChanged.AddListener(v => SFXDatabase.Instance.UserInterfaceVolume = v);
         }
 
         public void CallPause()
@@ -31,6 +52,7 @@ namespace Core.Pause
 
         public override void OpenPanel()
         {
+            ActivePauseMenu();
             if (!CanOpen() || panel == null) return;
 
             panel.GetComponent<RectTransform>().localScale = Vector3.zero;
@@ -88,74 +110,16 @@ namespace Core.Pause
                 Debug.LogError("Scene not found in database : " + sceneName);
         }
 
-#if UNITY_EDITOR
-        [Header("Editor Only - Font Settings")]
-        [SerializeField] private Font editorFont;
-        [SerializeField] private TextMeshProUGUI fontNameText;
-
-        /// <summary>
-        /// Applique la font assignée dans editorFont à tous les composants TextMeshProUGUI enfants du panel
-        /// </summary>
-        [ContextMenu("Apply Font to All Texts")]
-        public void ApplyFontToAllTexts()
+        public void ActivePauseMenu()
         {
-            if (panel == null)
-            {
-                Debug.LogWarning("Panel is null. Cannot apply font.");
-                return;
-            }
-
-            if (editorFont == null)
-            {
-                Debug.LogWarning("Editor Font is null. Please assign a Font in the Inspector.");
-                return;
-            }
-
-            // Convertit la Font normale en TMP_FontAsset
-            TMP_FontAsset tmpFont = TMP_FontAsset.CreateFontAsset(editorFont);
-            
-            if (tmpFont == null)
-            {
-                Debug.LogError("Failed to create TMP_FontAsset from Font.");
-                return;
-            }
-
-            // Met à jour le texte avec le nom de la font si fontNameText est assigné
-            if (fontNameText != null)
-            {
-                fontNameText.text = editorFont.name;
-            }
-
-            // Récupère tous les TextMeshProUGUI dans les enfants du panel
-            TextMeshProUGUI[] textComponents = panel.GetComponentsInChildren<TextMeshProUGUI>(true);
-
-            if (textComponents.Length == 0)
-            {
-                Debug.LogWarning("No TextMeshProUGUI components found in panel children.");
-                return;
-            }
-
-            int count = 0;
-            foreach (TextMeshProUGUI textComponent in textComponents)
-            {
-                textComponent.font = tmpFont;
-                
-                // Active l'underlay
-                textComponent.fontSharedMaterial.EnableKeyword("UNDERLAY_ON");
-                
-                // Configure les paramètres de l'underlay
-                textComponent.fontSharedMaterial.SetFloat("_UnderlayOffsetX", 0.6f);
-                textComponent.fontSharedMaterial.SetFloat("_UnderlayOffsetY", -0.6f);
-                
-                // Définit la couleur de l'underlay (RGB: 0, 250, 18, Alpha: 255)
-                Color underlayColor = new Color(0f / 255f, 250f / 204f, 18f / 255f, 1f);
-                textComponent.fontSharedMaterial.SetColor("_UnderlayColor", underlayColor);
-                
-                count++;
-            }
-
-            Debug.Log($"Font '{editorFont.name}' converted to SDF and applied with underlay settings to {count} TextMeshProUGUI component(s).");
+            pauseMenu.SetActive(true);
+            settingsMenu.SetActive(false);
         }
-#endif
+
+        public void ActiveOptionsMenu()
+        {
+            pauseMenu.SetActive(false);
+            settingsMenu.SetActive(true);
+        }
     }
 }

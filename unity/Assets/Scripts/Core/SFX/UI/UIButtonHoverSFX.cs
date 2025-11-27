@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -15,6 +16,11 @@ namespace Core.SFX.UI
         {
             if (!shadow) shadow = GetComponent<Shadow>();
             if (shadow) originalDistance = shadow.effectDistance;
+        }
+
+        public void OnDisable()
+        {
+            shadow.effectDistance = originalDistance;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
