@@ -2896,7 +2896,7 @@ MonoBehaviour:
   maxHoldableItems: 3
   startItems:
   - {fileID: 11400000, guid: bbb1b3ad4fdfd4ac5a13e8bee1c033e2, type: 2}
-  - {fileID: 11400000, guid: 30e55c24c167f49cd86bae47b00ad50a, type: 2}
+  - {fileID: 11400000, guid: 34eda7550414f44cfb3020fc7828dca9, type: 2}
   - {fileID: 11400000, guid: 27ab13f82b56b43309c6f85c1eec0873, type: 2}
   itemParent: {fileID: 0}
   itemOffset: {x: 0, y: 1.5, z: 0}
