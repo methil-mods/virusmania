@@ -844,6 +844,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5286097561731613120, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
+      propertyPath: isOnBoarding
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286097561731613120, guid: e64bdab7cfb94413f9a338be7dc91452, type: 3}
       propertyPath: itemOffset.x
       value: 0.03
       objectReference: {fileID: 0}

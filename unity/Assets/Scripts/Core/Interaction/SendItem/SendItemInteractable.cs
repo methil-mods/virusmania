@@ -20,6 +20,8 @@ namespace Core.Interaction
 
         public UnityAction<Item.Item> onItemSent;
 
+        [SerializeField] private bool isOnBoarding = false;
+
         public override void Start()
         {
             base.Start();
@@ -60,6 +62,7 @@ namespace Core.Interaction
                 RemoveItem(holdItem);
             });
 
+            if (isOnBoarding == true) return;
             if (BriefController.Instance != null && BriefController.Instance.CanCompleteBrief(holdItem))
             {
                 TimerController.Instance.StopTimer();
