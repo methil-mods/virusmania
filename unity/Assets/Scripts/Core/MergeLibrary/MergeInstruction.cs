@@ -26,7 +26,7 @@ namespace Core.MergeLibrary
             
             // Right Item
             var goItemRight = Instantiate(imageItem, this.transform);
-            goItemRight.transform.GetComponent<MergeItem>().SetupItem(itemOnRight);
+            goItemRight.transform.GetComponent<MergeItem>().SetupItem(itemOnRight, true);
         }
     }
 }

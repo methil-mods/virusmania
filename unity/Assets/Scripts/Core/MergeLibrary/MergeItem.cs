@@ -11,29 +11,28 @@ namespace Core.MergeLibrary
         [SerializeField] private GameObject hoverObject;
         [SerializeField] private Image itemImage;
         [SerializeField] private TextMeshProUGUI itemText;
-
-        void Start()
-        {
-            hoverObject.SetActive(false);
-        }
+        public bool showItemName = false;
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            hoverObject.SetActive(true);
+            if(showItemName == false) hoverObject.SetActive(true);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            hoverObject.SetActive(false);
+            if(showItemName == false) hoverObject.SetActive(false);
         }
 
-        public void SetupItem(Item.Item item)
+        public void SetupItem(Item.Item item, bool dontShowItemName = false)
         {
+            if(dontShowItemName) hoverObject.SetActive(true);
+            else  hoverObject.SetActive(false);
+            showItemName = dontShowItemName;
             if (item == null) return;
             if (item.itemIcon != null)
                 itemImage.sprite = item.itemIcon;
             itemText.text = item.itemName;
-            itemText.maskable = false;
+            itemText.maskable = true;
         }
     }
 }
