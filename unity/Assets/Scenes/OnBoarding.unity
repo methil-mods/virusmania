@@ -868,6 +868,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7628ec76de44ac8dd2d7e998c65d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Computer.PathoNet.PathoNetInterface
+--- !u!1 &1248148467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1248148468}
+  m_Layer: 0
+  m_Name: LibraryInteractable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1248148468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248148467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.23, y: 0.08, z: 7.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2106494277}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1388687778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,19 +1578,23 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1248148468}
     m_Modifications:
     - target: {fileID: 1562159037401975246, guid: 00d1c9bbaeb664d81ab661d072a18d70, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 97.9401
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562159037401975246, guid: 00d1c9bbaeb664d81ab661d072a18d70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1562159037401975246, guid: 00d1c9bbaeb664d81ab661d072a18d70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1562159037401975246, guid: 00d1c9bbaeb664d81ab661d072a18d70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1562159037401975246, guid: 00d1c9bbaeb664d81ab661d072a18d70, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1752,6 +1788,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3500928585411388079, guid: 3292a371c27bc4ea08d6ac8395739d9c, type: 3}
   m_PrefabInstance: {fileID: 2103576064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2106494277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1562159037401975246, guid: 00d1c9bbaeb664d81ab661d072a18d70, type: 3}
+  m_PrefabInstance: {fileID: 1921262596}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2123098412
 PrefabInstance:
@@ -2349,6 +2390,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1921262597}
     - target: {fileID: 4546508865244429192, guid: de23056d43ecc4bb0a30a3a8ef29a2c2, type: 3}
+      propertyPath: libraryInteractableObject
+      value: 
+      objectReference: {fileID: 1248148467}
+    - target: {fileID: 4546508865244429192, guid: de23056d43ecc4bb0a30a3a8ef29a2c2, type: 3}
       propertyPath: sendItemInteractableObject
       value: 
       objectReference: {fileID: 1014272919}
@@ -2416,4 +2461,4 @@ SceneRoots:
   - {fileID: 7423996589848677976}
   - {fileID: 1784465803}
   - {fileID: 1014272918}
-  - {fileID: 1921262596}
+  - {fileID: 1248148468}

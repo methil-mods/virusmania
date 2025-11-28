@@ -60,7 +60,7 @@ namespace Core.Interaction
                 RemoveItem(holdItem);
             });
 
-            if (BriefController.Instance.CanCompleteBrief(holdItem))
+            if (BriefController.Instance != null && BriefController.Instance.CanCompleteBrief(holdItem))
             {
                 TimerController.Instance.StopTimer();
                 LeanTween.delayedCall(1.4f, () =>

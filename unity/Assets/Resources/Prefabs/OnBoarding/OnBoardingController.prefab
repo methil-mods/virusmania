@@ -44,3 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a4ed3845d846efb9423daecd6d859d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.OnBoarding.OnBoardingController
+  actualOnBoardingIndex: 0
+  brewInteractable: {fileID: 0}
+  cookInteractable: {fileID: 0}
+  pathoNetInterface: {fileID: 0}
+  sendItemInteractable: {fileID: 0}
+  recipeListInteractable: {fileID: 0}
+  libraryInteractableObject: {fileID: 0}
+  brewInteractableObject: {fileID: 0}
+  cookInteractableObject: {fileID: 0}
+  computerObject: {fileID: 0}
+  cartObject: {fileID: 0}
+  sendItemInteractableObject: {fileID: 0}
+  wavySpeed: 2
+  wavyAmplitude: 3
