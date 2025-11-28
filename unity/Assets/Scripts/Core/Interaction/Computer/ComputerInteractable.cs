@@ -12,8 +12,9 @@ namespace Core.Interaction
         private Material _computerScreenMaterial;
         private bool _isLightAnimating = false;
 
-        private void Awake()
+        public override void Awake()
         {
+            base.Awake();
             if (computerLight != null)
                 computerLight.intensity = 0f;
 

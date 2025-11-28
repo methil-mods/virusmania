@@ -1,3 +1,4 @@
+using System;
 using Core.Player;
 using Core.Prefab;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Core.Interaction
         [SerializeField]
         private Vector3 interactionIndicatorOffset;
 
-        public virtual void Start()
+        public virtual void Awake()
         {
             if (PrefabDatabase.Instance.interactionIndicationPrefab != null)
             {
@@ -33,6 +34,10 @@ namespace Core.Interaction
                 _interactionIndicator.transform.localScale = Vector3.zero;
                 _interactionIndicator.SetActive(false);
             }
+        }
+
+        public virtual void Start()
+        {
         }
 
         public virtual void InInteractZone(PlayerController playerController)

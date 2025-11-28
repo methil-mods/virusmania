@@ -34,6 +34,7 @@ namespace Core.OnBoarding
 
     public enum OnBoardingState
     {
+        OpenLibrary,
         BuyItems,
         CookItem,
         MergeItems,
