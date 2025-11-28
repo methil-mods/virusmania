@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MethilGreenLiquid2
+  m_Name: MethilNoiseGreenLiquid
   m_Shader: {fileID: -6465566751694194690, guid: 9fb3df0dffbfe4858b5dcad5567c08e9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,6 +37,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Texture2D:
+        m_Texture: {fileID: 2800000, guid: b9517c137a70e4d51b7fb78ed80470e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -58,7 +62,7 @@ Material:
     - _WobbleZ: 0
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _SideColor: {r: 0.5432995, g: 5.992157, b: 0, a: 1}
+    - _SideColor: {r: 0.7539263, g: 8, b: 0, a: 1}
     - _TopColor: {r: 0.13499092, g: 11.984314, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

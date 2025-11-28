@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: CookDatabase
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.Cook.CookDatabase
   Database:
+  - {fileID: 11400000, guid: f14ad915ed4064fd294d2e6c276d35ec, type: 2}
   - {fileID: 11400000, guid: 439e5789deaff41659f63757781bc8d4, type: 2}
+  - {fileID: 11400000, guid: 043c8dabfd4414d6b9848ea3ad098647, type: 2}

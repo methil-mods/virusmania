@@ -26,8 +26,10 @@ namespace Core.MergeLibrary
             
             MergeDatabase mergeDatabase = MergeDatabase.Instance;
 
-            foreach (MergeRecipeBase mergeRecipe in mergeDatabase.Database
-                         .FindAll(mergeRecipe => mergeRecipe.isOnBoarding == onlyOnBoarding))
+            var mergeList = mergeDatabase.Database
+                .FindAll(mergeRecipe => mergeRecipe.isOnBoarding == onlyOnBoarding);
+            if (onlyOnBoarding == false) { mergeList = mergeDatabase.Database; }
+            foreach (MergeRecipeBase mergeRecipe in mergeList)
             {
                 if (mergeRecipe is MergeVirusRecipe mergeVirusRecipe)
                 {
@@ -39,9 +41,11 @@ namespace Core.MergeLibrary
                         );
                 }
             }
-            
-            foreach (CookRecipe cookRecipe in CookDatabase.Instance.Database
-                         .FindAll(cookRecipe => cookRecipe.isOnBoarding == onlyOnBoarding))
+
+            var cookingList = CookDatabase.Instance.Database
+                .FindAll(cookRecipe => cookRecipe.isOnBoarding == onlyOnBoarding);
+            if (onlyOnBoarding == false) { cookingList = CookDatabase.Instance.Database; }
+            foreach (CookRecipe cookRecipe in cookingList)
             {
                 var go = Instantiate(instructionUiPrefab, boilingRecipeTransform);
                 go.name = "Instruction for : " + cookRecipe.name;

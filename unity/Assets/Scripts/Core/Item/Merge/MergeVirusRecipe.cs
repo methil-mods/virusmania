@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Core.Item.Merge
 {
     [CreateAssetMenu(fileName = "MergeVirusRecipe", menuName = "MergeRecipe/MergeVirusRecipe")]
-    public class MergeVirusRecipe : MergeRecipe<MicrobeItem, VirusItem>
+    public class MergeVirusRecipe : MergeRecipe<Item, Item>
     {
         public override HoldItem GetResultItem()
         {

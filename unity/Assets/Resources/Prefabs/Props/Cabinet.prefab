@@ -9,8 +9,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 54165560031454b9b98f1f10873bc556, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 97.94011
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 54165560031454b9b98f1f10873bc556, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.956
+      value: -4.9615
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 54165560031454b9b98f1f10873bc556, type: 3}
       propertyPath: m_LocalPosition.y
@@ -166,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6e03cb68a64dceb4fe99838da85b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Interaction.RecipeListInteractable
-  interactionIndicatorOffset: {x: 0, y: 0, z: 0}
+  interactionIndicatorOffset: {x: 0, y: 0, z: -0.4}
 --- !u!1001 &4231457997162772309
 PrefabInstance:
   m_ObjectHideFlags: 0

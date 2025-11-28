@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48d669d73e104d60abad3152d69f5953, type: 3}
-  m_Name: OnBoardingRecipe
+  m_Name: Aeromucosa
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.Merge.MergeVirusRecipe
-  isOnBoarding: 1
+  isOnBoarding: 0
   inputItems:
-  - {fileID: 11400000, guid: bbb1b3ad4fdfd4ac5a13e8bee1c033e2, type: 2}
-  - {fileID: 11400000, guid: ce074d8c802044bb0898437f0113afa8, type: 2}
-  resultItem: {fileID: 11400000, guid: 9e4456c8ba1fd4fa49a9a41ca9b9201e, type: 2}
+  - {fileID: 11400000, guid: 27ab13f82b56b43309c6f85c1eec0873, type: 2}
+  - {fileID: 11400000, guid: 27ab13f82b56b43309c6f85c1eec0873, type: 2}
+  resultItem: {fileID: 11400000, guid: 3828aa65aece042e690dc89fc28084e5, type: 2}

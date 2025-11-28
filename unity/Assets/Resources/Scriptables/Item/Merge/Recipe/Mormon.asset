@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d669d73e104d60abad3152d69f5953, type: 3}
+  m_Name: Mormon
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.Merge.MergeVirusRecipe
+  isOnBoarding: 0
+  inputItems:
+  - {fileID: 11400000, guid: 5404de5919c2947019eec0baa4795b27, type: 2}
+  - {fileID: 11400000, guid: 82f7a8bde387847b98e901feda83701d, type: 2}
+  resultItem: {fileID: 11400000, guid: 34eda7550414f44cfb3020fc7828dca9, type: 2}

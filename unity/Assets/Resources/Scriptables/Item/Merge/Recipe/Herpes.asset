@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d669d73e104d60abad3152d69f5953, type: 3}
+  m_Name: Herpes
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.Merge.MergeVirusRecipe
+  isOnBoarding: 0
+  inputItems:
+  - {fileID: 11400000, guid: 3828aa65aece042e690dc89fc28084e5, type: 2}
+  - {fileID: 11400000, guid: 2beefac9f9cf0470d8ed3d872b961579, type: 2}
+  resultItem: {fileID: 11400000, guid: e4b2ec453068d4a75911a39637c9dc0a, type: 2}

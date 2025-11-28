@@ -39,7 +39,9 @@ namespace Core.Brief
                 return;
             }
 
-            Brief newBrief = onlyNotOnBoarding.GetRandom();
+            onlyNotOnBoarding.Sort((a, b) => a.difficulty.CompareTo(b.difficulty));
+            Brief newBrief = onlyNotOnBoarding[0];
+
             briefInterface.SetupNewBriefShow(newBrief);
         }
 

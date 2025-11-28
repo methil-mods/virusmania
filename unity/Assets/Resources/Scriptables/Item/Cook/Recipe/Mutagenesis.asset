@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bc992df0daa45beb6949d7fa0fdddb0, type: 3}
-  m_Name: NanoCook
+  m_Name: Mutagenesis
   m_EditorClassIdentifier: Assembly-CSharp::Core.Item.Cook.CookRecipe
   isOnBoarding: 0
-  inputItem: {fileID: 11400000, guid: 1c28912b938e7424fa074e634993fb03, type: 2}
-  resultItem: {fileID: 11400000, guid: bbb1b3ad4fdfd4ac5a13e8bee1c033e2, type: 2}
+  inputItem: {fileID: 11400000, guid: c8e4523e151bd4c319410d164176d884, type: 2}
+  resultItem: {fileID: 11400000, guid: 2beefac9f9cf0470d8ed3d872b961579, type: 2}
