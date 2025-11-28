@@ -5,7 +5,6 @@ namespace Core.Brief
     [CreateAssetMenu(menuName = "Brief/Brief", fileName = "Brief")]
     public class Brief : ScriptableObject
     {
-        public Sprite briefSprite;
         public string briefTitle;
         [TextArea]
         public string briefDescription;
@@ -17,5 +16,15 @@ namespace Core.Brief
 
         [Min(0)]
         public int timeForBrief;
+        
+        public BriefDifficulty difficulty;
+    }
+
+    public enum BriefDifficulty
+    {
+        Easy,
+        Medium,
+        Hard,
+        OnBoarding
     }
 }

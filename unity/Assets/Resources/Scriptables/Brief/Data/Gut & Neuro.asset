@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadb52f5edad4bcd9f20e4cd485a8a2a, type: 3}
   m_Name: Gut & Neuro
   m_EditorClassIdentifier: Assembly-CSharp::Core.Brief.Brief
-  briefSprite: {fileID: 0}
   briefTitle: Gut & Neuro
-  briefDescription: "Professor Fourmi, the Council requests your engineered poliovirus\u2014it's
-    essential for tightening our control over the population."
+  briefDescription: Professor Fourmi, the Council requests your engineered Poliovirus,
+    it's essential for tightening our control over the population.
   wantedItem: {fileID: 11400000, guid: 27ab13f82b56b43309c6f85c1eec0873, type: 2}
   onBoarding: 0
   moneyGiven: 15
   timeForBrief: 120
+  difficulty: 0
