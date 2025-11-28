@@ -2814,6 +2814,27 @@ MonoBehaviour:
   outlineChildren: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &1465002593
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465002588}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020230707, y: 0.020791704, z: 0.02}
+  m_Center: {x: -0.0000000023238933, y: -0.00039586728, z: 0.010000001}
 --- !u!224 &1537907719 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 569398836308915853, guid: 6e7037426bc654214b0f32e3ad08ce7f, type: 3}
@@ -6858,6 +6879,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8990246134640723594, guid: 0ffe7334592f14f24ad01e5a6dc5ab9e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1465002592}
+    - targetCorrespondingSourceObject: {fileID: 8990246134640723594, guid: 0ffe7334592f14f24ad01e5a6dc5ab9e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1465002593}
   m_SourcePrefab: {fileID: 100100000, guid: 0ffe7334592f14f24ad01e5a6dc5ab9e, type: 3}
 --- !u!1001 &4748948000846074545
 PrefabInstance:
