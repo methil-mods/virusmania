@@ -16,7 +16,9 @@ MonoBehaviour:
   popUiClip: {fileID: 8300000, guid: 56631044970bc47399b3bb058f69809f, type: 3}
   clickUiClip: {fileID: 8300000, guid: 8c139522accbc480ebd1e4417cb9590e, type: 3}
   walkClip: {fileID: 8300000, guid: 7f17f18f496114c01ab620c1195f87ec, type: 3}
-  musicClip1: {fileID: 8300000, guid: 3ff5f4b0a75244ab9b7a399405f1a559, type: 3}
+  musicClip1: {fileID: 8300000, guid: de2fe0abe47e247ffb17968f564394d5, type: 3}
+  musicClip2: {fileID: 8300000, guid: e5bb1c9afe72b41f097f39bd2dd2b211, type: 3}
+  musicClip3: {fileID: 8300000, guid: 567f1582815174d4093375e60cc43bab, type: 3}
   openCookClip: {fileID: 8300000, guid: 5b0262874eea2404bbb07fbf25bc39f0, type: 3}
   boilingCookClip: {fileID: 8300000, guid: 6a466d2d2cf8149c0a0a66a812a44197, type: 3}
   endCookClip: {fileID: 8300000, guid: 7a2c44a4b5ad14583a9d9eed618cd5e0, type: 3}

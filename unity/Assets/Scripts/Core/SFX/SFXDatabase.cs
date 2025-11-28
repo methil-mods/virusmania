@@ -16,6 +16,8 @@ public class SFXDatabase : SingletonScriptableObject<SFXDatabase>
     public AudioClip walkClip;
     
     public AudioClip musicClip1;
+    public AudioClip musicClip2;
+    public AudioClip musicClip3;
 
     public AudioClip openCookClip;
     public AudioClip boilingCookClip;

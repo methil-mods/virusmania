@@ -2,6 +2,7 @@ using System;
 using Framework.Controller;
 using UnityEngine;
 using System.Collections.Generic;
+using Core.Timer;
 
 namespace Core.SFX
 {
@@ -13,10 +14,13 @@ namespace Core.SFX
         private readonly List<AudioSource> interactionPool = new List<AudioSource>();
         private readonly List<AudioSource> uiPool = new List<AudioSource>();
 
+        private bool music1Played = false;
+        private bool music2Played = false;
+        private bool music3Played = false;
+
         protected override void Awake()
         {
             base.Awake();
-
             for (int i = 0; i < initialPoolSize; i++)
             {
                 CreateInteractionSource();
@@ -28,7 +32,78 @@ namespace Core.SFX
         {
             DontDestroyOnLoad(gameObject);
             SFXDatabase.Instance.SetupSound();
+
             PlayMusic(SFXDatabase.Instance.musicClip1);
+            music1Played = true;
+
+            if (TimerController.Instance != null)
+                TimerController.Instance.OnTimerTick += OnTimerTick;
+        }
+
+        private void Update()
+        {
+            if (TimerController.Instance == null)
+            {
+                ForceMusic1();
+                return;
+            }
+
+            if (TimerController.Instance.TimerDuration == 0f)
+            {
+                ForceMusic1();
+                return;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (TimerController.Instance != null)
+                TimerController.Instance.OnTimerTick -= OnTimerTick;
+        }
+
+        private void OnTimerTick(float elapsed)
+        {
+            if (TimerController.Instance == null)
+            {
+                ForceMusic1();
+                return;
+            }
+
+            float remaining = TimerController.Instance.TimerDuration - elapsed;
+
+            if (remaining <= 120f && !music1Played)
+            {
+                PlayMusic(SFXDatabase.Instance.musicClip1);
+                music1Played = true;
+            }
+
+            if (remaining <= 60f && !music2Played)
+            {
+                PlayMusic(SFXDatabase.Instance.musicClip2);
+                music2Played = true;
+            }
+
+            if (remaining <= 30f && !music3Played)
+            {
+                PlayMusic(SFXDatabase.Instance.musicClip3);
+                music3Played = true;
+            }
+        }
+
+        public void ResetMusicState()
+        {
+            music1Played = false;
+            music2Played = false;
+            music3Played = false;
+        }
+
+        private void ForceMusic1()
+        {
+            if (!music1Played)
+            {
+                PlayMusic(SFXDatabase.Instance.musicClip1);
+                music1Played = true;
+            }
         }
 
         private AudioSource CreateInteractionSource()
