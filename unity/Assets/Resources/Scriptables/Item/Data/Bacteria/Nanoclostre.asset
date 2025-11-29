@@ -16,4 +16,4 @@ MonoBehaviour:
   itemDescription: 
   itemPrefab: {fileID: 6584508006877052939, guid: 785bf818619e545d0ba44e714c5fd8a6, type: 3}
   itemIcon: {fileID: 21300000, guid: 199d2feb9d263441199fc58f7d120313, type: 3}
-  price: 7
+  price: 3

@@ -1398,10 +1398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Interaction.ItemHolderInteractable
   interactionIndicatorOffset: {x: 0, y: 0, z: 0}
   maxHoldableItems: 3
-  startItems:
-  - {fileID: 11400000, guid: bbb1b3ad4fdfd4ac5a13e8bee1c033e2, type: 2}
-  - {fileID: 11400000, guid: ce074d8c802044bb0898437f0113afa8, type: 2}
-  - {fileID: 11400000, guid: fa0877f89996448bc861b3673ed77ff3, type: 2}
+  startItems: []
   itemParent: {fileID: 0}
   itemOffset: {x: 0, y: 1.5, z: 0}
 --- !u!1 &782835934
@@ -2651,10 +2648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Interaction.ItemHolderInteractable
   interactionIndicatorOffset: {x: 0, y: 0, z: 0}
   maxHoldableItems: 3
-  startItems:
-  - {fileID: 11400000, guid: 82f7a8bde387847b98e901feda83701d, type: 2}
-  - {fileID: 11400000, guid: e4b2ec453068d4a75911a39637c9dc0a, type: 2}
-  - {fileID: 11400000, guid: 9e4456c8ba1fd4fa49a9a41ca9b9201e, type: 2}
+  startItems: []
   itemParent: {fileID: 0}
   itemOffset: {x: 0, y: 1.5, z: 0}
 --- !u!224 &1537907719 stripped
@@ -2737,10 +2731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Interaction.ItemHolderInteractable
   interactionIndicatorOffset: {x: 0, y: 0, z: 0}
   maxHoldableItems: 3
-  startItems:
-  - {fileID: 11400000, guid: bbb1b3ad4fdfd4ac5a13e8bee1c033e2, type: 2}
-  - {fileID: 11400000, guid: 34eda7550414f44cfb3020fc7828dca9, type: 2}
-  - {fileID: 11400000, guid: 27ab13f82b56b43309c6f85c1eec0873, type: 2}
+  startItems: []
   itemParent: {fileID: 0}
   itemOffset: {x: 0, y: 1.5, z: 0}
 --- !u!1001 &1689057443
@@ -6642,9 +6633,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 579089556284929861, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
+      propertyPath: outlineMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167437400977797273, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167437400977797273, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a19a7e6de302e4056914e6622646e88b, type: 2}
+    - target: {fileID: 4129706734056463364, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
+      propertyPath: outlineMode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4744712901518478911, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
       propertyPath: m_Name
       value: Posters
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729259746593238664, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
+      propertyPath: outlineMode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8628824424772006179, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6686,7 +6697,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 579089556284929861, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
+    - {fileID: 4129706734056463364, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
+    - {fileID: 7729259746593238664, guid: 63e15cce653ed4b2f8759faf8cf69ee9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7449,6 +7463,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5668464276597887852, guid: adc30f232e1f3496ebc7ef6acf56da13, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6050485987053033404, guid: adc30f232e1f3496ebc7ef6acf56da13, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.95

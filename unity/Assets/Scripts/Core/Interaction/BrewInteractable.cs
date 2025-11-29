@@ -36,11 +36,12 @@ namespace Core.Interaction
 
             mixingSource.clip = SFXDatabase.Instance.mergeAudioClip;
             mixingSource.volume = 0f;
+            mixingSource.loop = true;
 
-            OnItemAdded += (_ => ResetFusion());
-            OnItemRemoved += (_ => ResetFusion());
-            
-            holdInteractImage.GetComponent<RectTransform>().localScale = Vector2.zero;
+            OnItemAdded += (_ => OnItemChanged());
+            OnItemRemoved += (_ => OnItemChanged());
+
+            holdInteractImage.rectTransform.localScale = Vector2.zero;
         }
 
         private void Update()
@@ -51,66 +52,58 @@ namespace Core.Interaction
                 {
                     isBeingHeld = false;
                     mixingTableAnimator.SetBool("IsWorking", false);
-                    LeanTween.value(1f, 0f, 0.3f)
-                        .setOnUpdate(v => mixingSource.volume = v)
-                        .setOnComplete(() => mixingSource.Stop());
+                    FadeOutMixing();
                 }
             }
 
             if (!isBeingHeld && holdTimer > 0f)
                 holdTimer = Mathf.Max(0f, holdTimer - Time.deltaTime * cooldownSpeed);
-            
+
             if (holdTimer <= 0.3f && isSliderVisible)
             {
                 isSliderVisible = false;
                 LeanTween.cancel(holdInteractImage.gameObject);
-                LeanTween.scale(holdInteractImage.GetComponent<RectTransform>(), Vector3.zero, 0.4f)
+                LeanTween.scale(holdInteractImage.rectTransform, Vector3.zero, 0.4f)
                     .setEase(LeanTweenType.easeInBack);
             }
             else if (holdTimer > 0.3f && !isSliderVisible)
             {
                 isSliderVisible = true;
                 LeanTween.cancel(holdInteractImage.gameObject);
-                LeanTween.scale(holdInteractImage.GetComponent<RectTransform>(), Vector3.one, 0.4f)
+                LeanTween.scale(holdInteractImage.rectTransform, Vector3.one, 0.4f)
                     .setEase(LeanTweenType.easeOutBack);
             }
-            
-            holdInteractImage.material.SetFloat("_InnerFillAmount", Mathf.Lerp(
-                holdInteractImage.material.GetFloat("_InnerFillAmount"), holdTimer / mergeHoldTime * 100 / 100, .1f
-            ));
+
+            holdInteractImage.material.SetFloat("_InnerFillAmount",
+                Mathf.Lerp(holdInteractImage.material.GetFloat("_InnerFillAmount"), holdTimer / mergeHoldTime, 0.1f));
         }
 
         public override void InInteractZone(PlayerController playerController)
         {
-            if (this.HoldingItems.Count == maxHoldableItems) base.InInteractZone(playerController);
-            
-            PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
-            if (playerInteraction == null) return;
-            
-            if (playerInteraction.HasItem)
+            if (HoldingItems.Count == maxHoldableItems)
             {
                 base.InInteractZone(playerController);
+                return;
             }
-            else
-            {
-                if (this.HoldingItems.Count > 0) base.InInteractZone(playerController);
-            }
+
+            PlayerInteraction p = playerController.updatables.FirstOfType<PlayerInteraction>();
+            if (p == null) return;
+
+            if (p.HasItem || HoldingItems.Count > 0)
+                base.InInteractZone(playerController);
         }
 
         public override void InteractHold(PlayerController playerController)
         {
-            Item.Item[] itemsToMerge = HoldingItems.ConvertAll(h => h.Item).ToArray();
-            if (MergeUtils.CanMerge(itemsToMerge) == false) return;
-            
+            Item.Item[] items = HoldingItems.ConvertAll(h => h.Item).ToArray();
+            if (!MergeUtils.CanMerge(items)) return;
+
             if (!isBeingHeld)
-            {
-                mixingSource.Play();
-                LeanTween.value(0f, 1f, 0.2f).setOnUpdate(v => mixingSource.volume = v);
-            }
+                StartMixingSound();
 
             isBeingHeld = true;
-            mixingTableAnimator.SetBool("IsWorking", true);
             lastHoldTime = Time.time;
+            mixingTableAnimator.SetBool("IsWorking", true);
 
             if (HoldingItems.Count < 2)
             {
@@ -126,8 +119,27 @@ namespace Core.Interaction
                 holdTimer = 0f;
                 isBeingHeld = false;
                 mixingTableAnimator.SetBool("IsWorking", false);
+                FadeOutMixing();
+            }
+        }
 
-                LeanTween.value(1f, 0f, 0.3f)
+        private void StartMixingSound()
+        {
+            LeanTween.cancel(mixingSource.gameObject);
+            
+            if (!mixingSource.isPlaying)
+                mixingSource.Play();
+            
+            LeanTween.value(mixingSource.volume, 1f, 0.25f)
+                .setOnUpdate(v => mixingSource.volume = v);
+        }
+
+        private void FadeOutMixing()
+        {
+            if (mixingSource.isPlaying)
+            {
+                LeanTween.cancel(mixingSource.gameObject);
+                LeanTween.value(mixingSource.volume, 0f, 0.3f)
                     .setOnUpdate(v => mixingSource.volume = v)
                     .setOnComplete(() => mixingSource.Stop());
             }
@@ -135,16 +147,16 @@ namespace Core.Interaction
 
         private void TryMergeItems()
         {
-            Item.Item[] itemsToMerge = HoldingItems.ConvertAll(h => h.Item).ToArray();
-            HoldItem mergedHoldItem = MergeUtils.TryMerge(itemsToMerge);
+            Item.Item[] items = HoldingItems.ConvertAll(h => h.Item).ToArray();
+            HoldItem merged = MergeUtils.TryMerge(items);
 
-            if (mergedHoldItem != null)
+            if (merged != null)
             {
                 foreach (var h in new List<HoldItem>(HoldingItems))
                     RemoveItem(h);
-                
-                onItemMerged?.Invoke(mergedHoldItem.Item);
-                AddItem(mergedHoldItem);
+
+                onItemMerged?.Invoke(merged.Item);
+                AddItem(merged);
                 ResetFusion();
             }
         }
@@ -153,31 +165,14 @@ namespace Core.Interaction
         {
             holdTimer = 0f;
             isBeingHeld = false;
-            mixingTableAnimator.SetBool("IsWorking", false);
             lastHoldTime = -999f;
-
-            LeanTween.value(1f, 0f, 0.3f)
-                .setOnUpdate(v => mixingSource.volume = v)
-                .setOnComplete(() => mixingSource.Stop());
+            mixingTableAnimator.SetBool("IsWorking", false);
+            FadeOutMixing();
         }
 
-#if UNITY_EDITOR
-        protected override void OnDrawGizmos()
+        private void OnItemChanged()
         {
-            base.OnDrawGizmos();
-
-            if (Application.isPlaying && HoldingItems.Count >= 2)
-            {
-                float progress = Mathf.Clamp01(holdTimer / mergeHoldTime);
-                UnityEditor.Handles.Label(transform.position + Vector3.up * 3.5f,
-                    $"Fusion: {(progress * 100f):F0}%", new GUIStyle
-                    {
-                        normal = new GUIStyleState { textColor = Color.cyan },
-                        alignment = TextAnchor.MiddleCenter,
-                        fontStyle = FontStyle.Italic
-                    });
-            }
+            holdTimer = 0f;
         }
-#endif
     }
 }
