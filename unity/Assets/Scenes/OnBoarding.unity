@@ -2203,6 +2203,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -133.735
       objectReference: {fileID: 0}
+    - target: {fileID: 5835307244738974263, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
+      propertyPath: m_text
+      value: m!insertt pas2grappling coeurco (best song ever)
+      objectReference: {fileID: 0}
     - target: {fileID: 5981491790052716114, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2334,6 +2338,10 @@ PrefabInstance:
     - target: {fileID: 8359662288389616297, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -54.864998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668044287339481090, guid: 9239e19bcecc544869c83d93306e7017, type: 3}
+      propertyPath: m_VerticalFit
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
