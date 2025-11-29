@@ -3,7 +3,17 @@ guid: 036f6f14db22345d69a82ea85daa196e
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paper
+    second: {fileID: 2100000, guid: 2a3ddbd02642f4d21b9131d78b211d80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: poster-corden
+    second: {fileID: 2100000, guid: 15409e7e38b134207b3581e823a65d03, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
