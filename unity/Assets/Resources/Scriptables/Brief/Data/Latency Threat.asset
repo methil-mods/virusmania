@@ -17,6 +17,6 @@ MonoBehaviour:
     keeping the populace suitably downcast.
   wantedItem: {fileID: 11400000, guid: e4b2ec453068d4a75911a39637c9dc0a, type: 2}
   onBoarding: 0
-  moneyGiven: 25
+  moneyGiven: 50
   timeForBrief: 120
   difficulty: 1

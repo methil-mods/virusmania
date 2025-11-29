@@ -32,7 +32,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce074d8c802044bb0898437f0113afa8, type: 2}
   buyableItems:
   - {fileID: 11400000, guid: fa0877f89996448bc861b3673ed77ff3, type: 2}
+  - {fileID: 11400000, guid: ce074d8c802044bb0898437f0113afa8, type: 2}
   - {fileID: 11400000, guid: 30e55c24c167f49cd86bae47b00ad50a, type: 2}
   - {fileID: 11400000, guid: 1c28912b938e7424fa074e634993fb03, type: 2}
   - {fileID: 11400000, guid: c8e4523e151bd4c319410d164176d884, type: 2}
-  - {fileID: 11400000, guid: 30e55c24c167f49cd86bae47b00ad50a, type: 2}

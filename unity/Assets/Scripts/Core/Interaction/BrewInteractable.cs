@@ -18,6 +18,9 @@ namespace Core.Interaction
         [SerializeField] private float holdReleaseDelay = 0.1f;
         [SerializeField] private Animator mixingTableAnimator;
 
+        [Header("SFX")]
+        [SerializeField] private AudioSource mixingSource;
+
         public Image holdInteractImage;
 
         private float holdTimer = 0f;
@@ -31,6 +34,9 @@ namespace Core.Interaction
         {
             base.Start();
 
+            mixingSource.clip = SFXDatabase.Instance.mergeAudioClip;
+            mixingSource.volume = 0f;
+
             OnItemAdded += (_ => ResetFusion());
             OnItemRemoved += (_ => ResetFusion());
             
@@ -41,8 +47,14 @@ namespace Core.Interaction
         {
             if (Time.time - lastHoldTime > holdReleaseDelay)
             {
-                isBeingHeld = false;
-                mixingTableAnimator.SetBool("IsWorking", false);
+                if (isBeingHeld)
+                {
+                    isBeingHeld = false;
+                    mixingTableAnimator.SetBool("IsWorking", false);
+                    LeanTween.value(1f, 0f, 0.3f)
+                        .setOnUpdate(v => mixingSource.volume = v)
+                        .setOnComplete(() => mixingSource.Stop());
+                }
             }
 
             if (!isBeingHeld && holdTimer > 0f)
@@ -90,6 +102,12 @@ namespace Core.Interaction
             Item.Item[] itemsToMerge = HoldingItems.ConvertAll(h => h.Item).ToArray();
             if (MergeUtils.CanMerge(itemsToMerge) == false) return;
             
+            if (!isBeingHeld)
+            {
+                mixingSource.Play();
+                LeanTween.value(0f, 1f, 0.2f).setOnUpdate(v => mixingSource.volume = v);
+            }
+
             isBeingHeld = true;
             mixingTableAnimator.SetBool("IsWorking", true);
             lastHoldTime = Time.time;
@@ -108,6 +126,10 @@ namespace Core.Interaction
                 holdTimer = 0f;
                 isBeingHeld = false;
                 mixingTableAnimator.SetBool("IsWorking", false);
+
+                LeanTween.value(1f, 0f, 0.3f)
+                    .setOnUpdate(v => mixingSource.volume = v)
+                    .setOnComplete(() => mixingSource.Stop());
             }
         }
 
@@ -133,6 +155,10 @@ namespace Core.Interaction
             isBeingHeld = false;
             mixingTableAnimator.SetBool("IsWorking", false);
             lastHoldTime = -999f;
+
+            LeanTween.value(1f, 0f, 0.3f)
+                .setOnUpdate(v => mixingSource.volume = v)
+                .setOnComplete(() => mixingSource.Stop());
         }
 
 #if UNITY_EDITOR

@@ -7432,10 +7432,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6102647223425919400, guid: adc30f232e1f3496ebc7ef6acf56da13, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.29
-      objectReference: {fileID: 0}
     - target: {fileID: 7609736583288876144, guid: adc30f232e1f3496ebc7ef6acf56da13, type: 3}
       propertyPath: m_Name
       value: BrewInteractable

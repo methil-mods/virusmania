@@ -17,6 +17,6 @@ MonoBehaviour:
     it's essential for tightening our control over the population.
   wantedItem: {fileID: 11400000, guid: 27ab13f82b56b43309c6f85c1eec0873, type: 2}
   onBoarding: 0
-  moneyGiven: 15
+  moneyGiven: 35
   timeForBrief: 120
   difficulty: 0

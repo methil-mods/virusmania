@@ -23,6 +23,8 @@ public class SFXDatabase : SingletonScriptableObject<SFXDatabase>
     public AudioClip boilingCookClip;
     public AudioClip endCookClip;
 
+    public AudioClip mergeAudioClip;
+
     public AudioClip triggerTrashClip;
 
     public AudioClip leverClip;

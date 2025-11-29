@@ -17,6 +17,6 @@ MonoBehaviour:
     A, it\u2019s critical to maintaining our strategic level of public irritation.\n"
   wantedItem: {fileID: 11400000, guid: 82f7a8bde387847b98e901feda83701d, type: 2}
   onBoarding: 0
-  moneyGiven: 25
+  moneyGiven: 80
   timeForBrief: 120
   difficulty: 1

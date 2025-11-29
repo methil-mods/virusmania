@@ -20,8 +20,9 @@ MonoBehaviour:
   musicClip2: {fileID: 8300000, guid: e5bb1c9afe72b41f097f39bd2dd2b211, type: 3}
   musicClip3: {fileID: 8300000, guid: 567f1582815174d4093375e60cc43bab, type: 3}
   openCookClip: {fileID: 8300000, guid: 5b0262874eea2404bbb07fbf25bc39f0, type: 3}
-  boilingCookClip: {fileID: 8300000, guid: 6a466d2d2cf8149c0a0a66a812a44197, type: 3}
+  boilingCookClip: {fileID: 8300000, guid: 36470172eca1c4fb7a11ffda6e095817, type: 3}
   endCookClip: {fileID: 8300000, guid: 7a2c44a4b5ad14583a9d9eed618cd5e0, type: 3}
+  mergeAudioClip: {fileID: 8300000, guid: cbff9f47897294e89908ec7537a30564, type: 3}
   triggerTrashClip: {fileID: 8300000, guid: 1bf0831af84f14b649b377ee7ecac1fe, type: 3}
   leverClip: {fileID: 8300000, guid: 7dcccd023281c4b92b92cbad0d53e2c5, type: 3}
   flapOpenClip: {fileID: 8300000, guid: 5b0262874eea2404bbb07fbf25bc39f0, type: 3}
