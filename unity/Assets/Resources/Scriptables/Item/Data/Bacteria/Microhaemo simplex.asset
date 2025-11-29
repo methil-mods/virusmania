@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Microhaemo simplex
   itemDescription: 
   itemPrefab: {fileID: 6584508006877052939, guid: 257813f18691d450d851599bb845b884, type: 3}
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 725fea4420867464e9c3dbd46e7d59f6, type: 3}
   price: 2

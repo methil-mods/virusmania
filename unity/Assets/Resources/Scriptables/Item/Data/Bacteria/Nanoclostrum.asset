@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Nanoclostrum reducta
   itemDescription: 
   itemPrefab: {fileID: 6584508006877052939, guid: 9d94a1cbebf3a45b9a0ccd35d39d4de2, type: 3}
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 7f357531b551c467ca2e8903c4411e23, type: 3}
   price: 1

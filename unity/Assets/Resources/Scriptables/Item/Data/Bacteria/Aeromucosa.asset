@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Aeromucosa
   itemDescription: 
   itemPrefab: {fileID: 8741529279835541926, guid: dd7d88d7346954ad9a7aaf14cec96cb1, type: 3}
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 554781fa9be6a4312820658d800d0793, type: 3}
   price: 2

@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Enteroflux spiralis
   itemDescription: 
   itemPrefab: {fileID: 8741529279835541926, guid: eb93f42ec19d34818a49ce3cc9ebfe2d, type: 3}
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: e7db3716e789c4eccaab90b7e15905de, type: 3}
   price: 2
