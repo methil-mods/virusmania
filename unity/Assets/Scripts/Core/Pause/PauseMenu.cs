@@ -3,7 +3,6 @@ using Core.PostProcess;
 using Core.Scene;
 using Framework.Controller;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 namespace Core.Pause
@@ -65,7 +64,7 @@ namespace Core.Pause
             {
                 LeanTween.cancel(blackPanel.gameObject);
                 LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0, 0, 0, 0.6f), 0.6f)
-                    .setEaseOutCirc();;
+                    .setEaseOutCirc();
             }
 
             OnPanelOpen?.Invoke();
@@ -84,7 +83,7 @@ namespace Core.Pause
             {
                 LeanTween.cancel(blackPanel.gameObject);
                 LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0, 0, 0, 0f), 0.6f)
-                    .setEaseOutCirc();;
+                    .setEaseOutCirc();
             }
             
             LeanTween.cancel(panel);
