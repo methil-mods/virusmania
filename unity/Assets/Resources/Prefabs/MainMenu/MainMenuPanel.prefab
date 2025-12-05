@@ -88,12 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b4165be0194f9cacea1e6683ceea4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.MainMenu.MainMenuController
-  maskImage: {fileID: 0}
-  maskImage2: {fileID: 0}
-  maskImage3: {fileID: 0}
-  maskImage4: {fileID: 0}
-  maskImage5: {fileID: 0}
-  newSceneName: Game
+  maskImages: []
 --- !u!1 &5936746963790196915
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +319,30 @@ PrefabInstance:
     - target: {fileID: 3011088336711157974, guid: 51f01b24ea4db483382c3afb666e0f68, type: 3}
       propertyPath: m_text
       value: quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420392965824418726, guid: 51f01b24ea4db483382c3afb666e0f68, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.08454966
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420392965824418726, guid: 51f01b24ea4db483382c3afb666e0f68, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.08454966
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420392965824418726, guid: 51f01b24ea4db483382c3afb666e0f68, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.7169812
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420392965824418726, guid: 51f01b24ea4db483382c3afb666e0f68, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.15294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420392965824418726, guid: 51f01b24ea4db483382c3afb666e0f68, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.15294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420392965824418726, guid: 51f01b24ea4db483382c3afb666e0f68, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7420392965824418726, guid: 51f01b24ea4db483382c3afb666e0f68, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

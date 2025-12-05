@@ -51,7 +51,7 @@ Material:
     - _OutlineOffsetX: 0
     - _OutlineOffsetY: 0
     - _OutlineSizeMultiplier: 1
-    - _OutlineThickness: 0.03
+    - _OutlineThickness: 0.02
     - _Roundness: 0.456
     - _Speed: 1.82
     - _Stencil: 0

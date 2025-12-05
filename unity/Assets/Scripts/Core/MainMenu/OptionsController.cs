@@ -1,3 +1,4 @@
+using System;
 using Framework.Controller;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,14 +14,30 @@ namespace Core.MainMenu
         public Slider interactionSlider;
         public Slider uiSlider;
 
-        Vector3 startPos;
-        Vector3 offscreenPos;
-        bool initialized;
+        Vector3 _startPos;
+        Vector3 _offscreenPos;
+        bool _initialized;
+
+        [SerializeField] private ButtonWithPanel[] buttonWithPanel;
+
+        void Start()
+        {
+            foreach (var b in buttonWithPanel)
+            {
+                var targetPanel = b.panel;
+                b.button.onClick.AddListener(() =>
+                {
+                    foreach (var bp in buttonWithPanel)
+                        bp.panel.SetActive(false);
+                    targetPanel.SetActive(true);
+                });
+            }
+        }
 
         void Init()
         {
-            if (initialized) return;
-            initialized = true;
+            if (_initialized) return;
+            _initialized = true;
 
             musicSlider.maxValue = 100f;
             interactionSlider.maxValue = 100f;
@@ -34,9 +51,9 @@ namespace Core.MainMenu
             interactionSlider.onValueChanged.AddListener(v => SFXDatabase.Instance.InteractionVolume = v);
             uiSlider.onValueChanged.AddListener(v => SFXDatabase.Instance.UserInterfaceVolume = v);
 
-            startPos = optionPanel.localPosition;
-            offscreenPos = startPos + new Vector3(optionPanel.rect.width*1.5f, 0, 0);
-            optionPanel.localPosition = offscreenPos;
+            _startPos = optionPanel.localPosition;
+            _offscreenPos = _startPos + new Vector3(optionPanel.rect.width * 1.5f, 0, 0);
+            optionPanel.localPosition = _offscreenPos;
             optionPanel.gameObject.SetActive(false);
         }
 
@@ -46,7 +63,7 @@ namespace Core.MainMenu
             optionPanel.gameObject.SetActive(true);
             if (MainMenuController.Instance != null)
                 LeanTween.scale(MainMenuController.Instance.gameObject, new Vector3(0f, 0f, 0f), duration).setEaseSpring();
-            LeanTween.moveLocal(optionPanel.gameObject, startPos, duration).setEaseSpring();
+            LeanTween.moveLocal(optionPanel.gameObject, _startPos, duration).setEaseSpring();
         }
 
         public void CloseOption()
@@ -54,9 +71,16 @@ namespace Core.MainMenu
             Init();
             if (MainMenuController.Instance != null)
                 LeanTween.scale(MainMenuController.Instance.gameObject, new Vector3(1f, 1f, 1f), duration).setEaseSpring();
-            LeanTween.moveLocal(optionPanel.gameObject, offscreenPos, duration)
+            LeanTween.moveLocal(optionPanel.gameObject, _offscreenPos, duration)
                 .setEaseOutCirc()
                 .setOnComplete(() => optionPanel.gameObject.SetActive(false));
         }
+    }
+
+    [Serializable]
+    class ButtonWithPanel
+    {
+        public Button button;
+        public GameObject panel;
     }
 }
