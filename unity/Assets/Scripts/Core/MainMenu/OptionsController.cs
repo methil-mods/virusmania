@@ -31,7 +31,9 @@ namespace Core.MainMenu
                         bp.panel.SetActive(false);
                     targetPanel.SetActive(true);
                 });
+                b.panel.gameObject.SetActive(false);
             }
+            buttonWithPanel[0].panel.gameObject.SetActive(false);
         }
 
         void Init()
