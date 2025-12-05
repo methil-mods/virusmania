@@ -6,8 +6,6 @@ namespace Core.MainMenu
 {
     public class OnBoardingMainMenuController : InterfaceController<OnBoardingMainMenuController>
     {
-        
-        
         public void GoOnOnBoarding()
         {
             this.ClosePanel();

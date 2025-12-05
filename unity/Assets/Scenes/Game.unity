@@ -1803,6 +1803,7 @@ GameObject:
   - component: {fileID: 1044237023}
   - component: {fileID: 1044237022}
   - component: {fileID: 1044237021}
+  - component: {fileID: 1044237025}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1901,6 +1902,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1044237025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044237020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1afb889eef42c5b7c63de745106777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.UI.UserInterfaceController
 --- !u!1 &1048754731
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,7 +60,7 @@ namespace Core.Analysis
 
         public override void ClosePanel()
         {
-            if (!PanelIsActive()) return;
+            if (!IsOpen) return;
             if (panel == null) return;
             
             PostProcessController.Instance.OnHidePanelPostProcess();

@@ -17,11 +17,9 @@ namespace Core.Pause
         public GameObject pauseMenu;
         public GameObject settingsMenu;
         
-        
         public override void Start()
         {
             base.Start();
-            InputDatabase.Instance.pauseAction.action.performed += context => CallPause();
             
             musicSlider.maxValue = 100f;
             interactionSlider.maxValue = 100f;
@@ -76,7 +74,7 @@ namespace Core.Pause
 
         public override void ClosePanel()
         {
-            if (!PanelIsActive()) return;
+            if (!IsOpen) return;
             if (panel == null) return;
 
             if(PostProcessController.Instance != null) PostProcessController.Instance.OnHidePanelPostProcess();

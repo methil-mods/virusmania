@@ -48,7 +48,7 @@ namespace Core.Computer
 
         public override void ClosePanel()
         {
-            if (!PanelIsActive()) return;
+            if (!IsOpen) return;
             if (panel == null) return;
             
             if (PostProcessController.Instance != null) 
