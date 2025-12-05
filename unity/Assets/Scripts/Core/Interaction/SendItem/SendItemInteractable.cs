@@ -21,6 +21,7 @@ namespace Core.Interaction
         public UnityAction<Item.Item> onItemSent;
 
         [SerializeField] private bool isOnBoarding = false;
+        private bool _isSendingItem = false;
 
         public override void Start()
         {
@@ -35,6 +36,7 @@ namespace Core.Interaction
         {
             PlayerInteraction playerInteraction = playerController.updatables.FirstOfType<PlayerInteraction>();
             if (playerInteraction == null) return;
+            if (_isSendingItem) return;
             
             if (playerInteraction.HasItem)
             {
@@ -47,10 +49,14 @@ namespace Core.Interaction
 
         public void SendItem()
         {
+            if (_isSendingItem) return;
+            
+            _isSendingItem = true;
             HoldItem holdItem = HoldingItems.Count > 0 ? HoldingItems.First() : null;
             threadMillAnimator.SetBool("Roll", true);
             LeanTween.delayedCall(2.084f, () =>
             {
+                _isSendingItem = false;
                 threadMillAnimator.SetBool("Roll", false);
             });
 
@@ -119,9 +125,16 @@ namespace Core.Interaction
             seq.append(() => callback?.Invoke());
         }
 
+        public override void Interact(PlayerController playerController)
+        {
+            if(_isSendingItem) return;
+            base.Interact(playerController);
+        }
+
 
         public override void InteractHold(PlayerController playerController)
         {
+            
         }
         
 #if UNITY_EDITOR
