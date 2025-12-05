@@ -1,5 +1,6 @@
 using System;
 using Core.Input;
+using Core.PostProcess;
 using Core.Scene;
 using Core.Timer;
 using Framework.Controller;
@@ -41,7 +42,14 @@ namespace Core.End
             InputDatabase.Instance.DisablePauseInput();
             LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0, 0, 0, 0.6f), 0.6f)
                 .setEaseOutCirc();;
+            
+            openWinPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
             openWinPanel.gameObject.SetActive(true);
+            if (PostProcessController.Instance != null) 
+                PostProcessController.Instance.OnShowPanelPostProcess();
+            LeanTween.cancel(openWinPanel);
+            LeanTween.scale(openWinPanel.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .4f)
+                .setEase(LeanTweenType.easeSpring);
         }
 
         public void OpenLosePanel()
@@ -51,7 +59,14 @@ namespace Core.End
             InputDatabase.Instance.DisablePauseInput();
             LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0, 0, 0, 0.6f), 0.6f)
                 .setEaseOutCirc();;
+            
+            openLosePanel.GetComponent<RectTransform>().localScale = Vector3.zero;
             openLosePanel.gameObject.SetActive(true);
+            if (PostProcessController.Instance != null) 
+                PostProcessController.Instance.OnShowPanelPostProcess();
+            LeanTween.cancel(openLosePanel);
+            LeanTween.scale(openLosePanel.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .4f)
+                .setEase(LeanTweenType.easeSpring);
         }
 
         public void ReturnToMainMenu()
