@@ -40,12 +40,12 @@ namespace Core.Pause
         {
             if (this.panel.activeSelf)
             {
-                InputDatabase.Instance.EnableInputs();
+                InputDatabase.Instance.EnableMovementInputs();
                 ClosePanel();
             }
             else
             {
-                InputDatabase.Instance.DisableInputs();
+                InputDatabase.Instance.DisableMovementInputs();
                 OpenPanel();
             }
         }
@@ -57,7 +57,7 @@ namespace Core.Pause
 
             panel.GetComponent<RectTransform>().localScale = Vector3.zero;
             if(PostProcessController.Instance != null) PostProcessController.Instance.OnShowPanelPostProcess();
-            InputDatabase.Instance.DisableInputs();
+            InputDatabase.Instance.DisableMovementInputs();
 
             LeanTween.cancel(panel);
             LeanTween.scale(panel.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .4f)
@@ -80,7 +80,7 @@ namespace Core.Pause
             if (panel == null) return;
 
             if(PostProcessController.Instance != null) PostProcessController.Instance.OnHidePanelPostProcess();
-            InputDatabase.Instance.EnableInputs();
+            InputDatabase.Instance.EnableMovementInputs();
             
             if (blackPanel != null)
             {

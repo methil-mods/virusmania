@@ -29,7 +29,7 @@ namespace Core.Computer
             
             if (PostProcessController.Instance != null) 
                 PostProcessController.Instance.OnShowPanelPostProcess();
-            InputDatabase.Instance.DisableInputs();
+            InputDatabase.Instance.DisableMovementInputs();
             
             LeanTween.cancel(panel);
             LeanTween.scale(panel.GetComponent<RectTransform>(), new Vector3(1f, 1f, 1f), .4f)
@@ -53,7 +53,7 @@ namespace Core.Computer
             
             if (PostProcessController.Instance != null) 
                 PostProcessController.Instance.OnHidePanelPostProcess();
-            InputDatabase.Instance.EnableInputs();
+            InputDatabase.Instance.EnableMovementInputs();
             
             if (blackPanel != null)
             {

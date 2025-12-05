@@ -16,7 +16,7 @@ namespace Core.Input
         
         public InputActionReference pauseAction;
 
-        public void DisableInputs()
+        public void DisableMovementInputs()
         {
             Debug.Log("-- Disable Inputs --");
             moveAction.action.Disable();
@@ -24,12 +24,24 @@ namespace Core.Input
             interactionHoldAction.action.Disable();
         }
 
-        public void EnableInputs()
+        public void EnableMovementInputs()
         {
             Debug.Log("-- Enable Inputs --");
             moveAction.action.Enable();
             interactionAction.action.Enable();
             interactionHoldAction.action.Enable();
+        }
+
+        public void DisablePauseInput()
+        {
+            Debug.Log("-- Disable Pause Action --");
+            pauseAction.action.Disable();
+        }
+
+        public void EnablePauseInput()
+        {
+            Debug.Log("-- Disable Pause Action --");
+            pauseAction.action.Enable();
         }
     }
 }

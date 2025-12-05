@@ -95,7 +95,7 @@ namespace Core.Brief
         public void SetupNewBriefShow(Brief brief)
         {
             PostProcessController.Instance.OnShowPanelPostProcess();
-            InputDatabase.Instance.DisableInputs();
+            InputDatabase.Instance.DisableMovementInputs();
             
             briefPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
             briefPanel.gameObject.SetActive(true);
@@ -139,7 +139,7 @@ namespace Core.Brief
                     .setEaseOutCirc();
             }
             PostProcessController.Instance.OnHidePanelPostProcess();
-            InputDatabase.Instance.EnableInputs();
+            InputDatabase.Instance.EnableMovementInputs();
             LeanTween.scale(briefPanel.GetComponent<RectTransform>(), new Vector3(0f, 0f, 0f), .4f)
                 .setEase(LeanTweenType.easeOutCirc)
                 .setOnComplete((() =>

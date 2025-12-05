@@ -1,4 +1,5 @@
 using System;
+using Core.Input;
 using Core.Scene;
 using Core.Timer;
 using Framework.Controller;
@@ -14,6 +15,11 @@ namespace Core.End
         public RectTransform openWinPanel;
         public RectTransform openLosePanel;
 
+        private bool IsOnePanelActive()
+        {
+            return openWinPanel.gameObject.activeSelf || openLosePanel.gameObject.activeSelf;
+        }
+        
         public void Start()
         {
             blackPanel.color = new Color(0, 0, 0, 0);
@@ -30,6 +36,9 @@ namespace Core.End
 
         public void OpenWinPanel()
         {
+            if (IsOnePanelActive()) return;
+            InputDatabase.Instance.DisableMovementInputs();
+            InputDatabase.Instance.DisablePauseInput();
             LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0, 0, 0, 0.6f), 0.6f)
                 .setEaseOutCirc();;
             openWinPanel.gameObject.SetActive(true);
@@ -37,6 +46,9 @@ namespace Core.End
 
         public void OpenLosePanel()
         {
+            if (IsOnePanelActive()) return;
+            InputDatabase.Instance.DisableMovementInputs();
+            InputDatabase.Instance.DisablePauseInput();
             LeanTween.color(blackPanel.GetComponent<RectTransform>(), new Color(0, 0, 0, 0.6f), 0.6f)
                 .setEaseOutCirc();;
             openLosePanel.gameObject.SetActive(true);
@@ -44,6 +56,8 @@ namespace Core.End
 
         public void ReturnToMainMenu()
         {
+            InputDatabase.Instance.EnableMovementInputs();
+            InputDatabase.Instance.EnablePauseInput();
             var scene = SceneDatabase.Instance.GetSceneByName("MainMenu");
             SceneTransitor.Instance.LoadScene(scene);
         }
