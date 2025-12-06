@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Latency Threat
   m_EditorClassIdentifier: Assembly-CSharp::Core.Brief.Brief
   briefTitle: Latency Threat
-  briefDescription: Professor Fourmi, the Council requires your Herpex, vital for
+  briefDescription: Professor Fourmi, the Council requires your Herpes, vital for
     keeping the populace suitably downcast.
   wantedItem: {fileID: 11400000, guid: e4b2ec453068d4a75911a39637c9dc0a, type: 2}
   onBoarding: 0
