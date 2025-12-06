@@ -24,6 +24,11 @@ namespace Framework.Controller
             foreach (var updatable in updatables) updatable.FixedUpdate((T)(object)this);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            foreach (var updatable in updatables) updatable.OnTriggerEnter((T)(object)this, other);
+        }
+
         public void OnDrawGizmos()
         {
             foreach (var updatable in updatables) updatable.OnDrawGizmos((T)(object)this);

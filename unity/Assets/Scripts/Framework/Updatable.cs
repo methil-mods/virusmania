@@ -9,6 +9,7 @@ namespace Framework
         public virtual void Start(T controller) {}
         public virtual void Update(T controller) {}
         public virtual void FixedUpdate(T controller) {}
+        public virtual void OnTriggerEnter(T controller, Collider other) {}
         
         // Virtual cause there is no obligation to override it in fact
         public virtual void OnDrawGizmos(T controller) {}

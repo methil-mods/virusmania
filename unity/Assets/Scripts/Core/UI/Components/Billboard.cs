@@ -15,9 +15,9 @@ namespace Core.UI
 
         void Awake()
         {
-            if (target == null && Camera.main != null)
+            if (target == null && UnityEngine.Camera.main != null)
             {
-                target = Camera.main.transform;
+                target = UnityEngine.Camera.main.transform;
             }
         }
 
