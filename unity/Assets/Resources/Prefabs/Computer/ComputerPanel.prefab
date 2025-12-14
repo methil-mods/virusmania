@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bacteries
+  m_text: 'Microbes
 
 '
   m_isRightToLeft: 0

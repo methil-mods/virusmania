@@ -7,6 +7,7 @@ using Core.Item.Holder;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using Core.SFX;
 
 namespace Core.Player
 {
@@ -134,6 +135,9 @@ namespace Core.Player
 
             animator.SetBool("Holding", false);
 
+            if (SFXDatabase.Instance.putItemClip != null)
+                SFXController.Instance.PlayInteraction(SFXDatabase.Instance.putItemClip);
+
             if (item != null)
                 OnItemRemoved?.Invoke(item);
 
@@ -147,6 +151,9 @@ namespace Core.Player
 
             _holdingItem = newItem;
             animator.SetBool("Holding", true);
+
+            if (SFXDatabase.Instance.getItemClip != null)
+                SFXController.Instance.PlayInteraction(SFXDatabase.Instance.getItemClip);
 
             SpawnHeldItem();
 

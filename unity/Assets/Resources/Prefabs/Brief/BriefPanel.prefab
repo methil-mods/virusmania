@@ -2065,7 +2065,8 @@ PrefabInstance:
       propertyPath: m_text
       value: mney
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 466537082836277425, guid: ba0b3c295879243e79fa83d8d4e14e75, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
