@@ -6,6 +6,7 @@ using Core.Item;
 using Core.Money;
 using TMPro;
 using UnityEngine.Events;
+using Core.SFX;
 
 namespace Core.Computer.PathoNet
 {
@@ -17,14 +18,25 @@ namespace Core.Computer.PathoNet
         public PathoNetItemReceiver pathoItemReceiver;
         public UnityAction OnBuyCart;
         public UnityAction<Item.Item> OnBuyItem;
+
+        public RectTransform noMoneyPanel;
         
         [SerializeField] 
         private bool onlyOnBoarding;
 
         public TextMeshProUGUI dollarAmountText;
 
+        CanvasGroup noMoneyCanvasGroup;
+
         protected void Start()
         {
+            noMoneyCanvasGroup = noMoneyPanel.GetComponent<CanvasGroup>();
+            if (noMoneyCanvasGroup == null)
+                noMoneyCanvasGroup = noMoneyPanel.gameObject.AddComponent<CanvasGroup>();
+
+            noMoneyPanel.gameObject.SetActive(false);
+            noMoneyCanvasGroup.alpha = 0f;
+
             foreach (Transform child in pathoBuyableItemContainer)
                 Destroy(child.gameObject);
             
@@ -73,6 +85,7 @@ namespace Core.Computer.PathoNet
             {
                 if (!MoneyController.Instance.CanRemoveMoney(total))
                 {
+                    TriggerNoMoney();
                     MoneyController.Instance.OnMoneyInsufficient?.Invoke();
                     return;
                 }
@@ -92,6 +105,33 @@ namespace Core.Computer.PathoNet
             UpdateInterface();
             OnBuyCart?.Invoke();
         }
+        
+        public void TriggerNoMoney()
+        {
+            LeanTween.cancel(noMoneyPanel);
+            LeanTween.cancel(noMoneyCanvasGroup.gameObject);
 
+            noMoneyPanel.gameObject.SetActive(true);
+            noMoneyCanvasGroup.alpha = 1f;
+            noMoneyPanel.anchoredPosition = Vector2.zero;
+
+            LeanTween.value(noMoneyPanel.gameObject, 0f, 1f, 0.5f)
+                .setOnStart(() =>
+                {
+                    LeanTween.cancel(noMoneyPanel);
+                    LeanTween.cancel(noMoneyCanvasGroup.gameObject);
+
+                    LeanTween.rotateZ(noMoneyPanel.gameObject, 10f, 0.05f).setLoopPingPong(5)
+                    .setOnComplete(() =>
+                    {
+                        LeanTween.delayedCall(1f, () =>
+                        {
+                            noMoneyPanel.gameObject.SetActive(false);
+                            if (SFXDatabase.Instance.noMoneyClip != null)
+                                SFXController.Instance.PlayUI(SFXDatabase.Instance.noMoneyClip);
+                        });
+                    });
+                });
+        }
     }
 }

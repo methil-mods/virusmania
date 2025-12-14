@@ -11,6 +11,8 @@ public class SFXDatabase : SingletonScriptableObject<SFXDatabase>
     [Header("UI Audio Clip Database")]
     public AudioClip popUiClip;
     public AudioClip clickUiClip;
+
+    public AudioClip noMoneyClip;
     
     [Header("World Audio Clip Database")]
     public AudioClip walkClip;
