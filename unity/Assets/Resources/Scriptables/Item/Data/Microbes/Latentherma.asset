@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1aaa388ae224effb415e9d67f5f2a81, type: 3}
-  m_Name: Shellsplit
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.BacteriaItem
-  itemName: Shellsplit
+  m_Name: Latentherma
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.MicrobeItem
+  itemName: Latentherma
   itemDescription: 
-  itemPrefab: {fileID: 6584508006877052939, guid: 8c6904c85cb5642d99fc1ba20b44c26b, type: 3}
-  itemIcon: {fileID: 21300000, guid: 2116681f97ff34182a8f2c4bcee12c11, type: 3}
-  price: 4
+  itemPrefab: {fileID: 6584508006877052939, guid: 738e7ffe8663440449bce3351252ea79, type: 3}
+  itemIcon: {fileID: 21300000, guid: 5fcd26e89b4274965906aab96088d8b0, type: 3}
+  price: 12

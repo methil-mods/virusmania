@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1aaa388ae224effb415e9d67f5f2a81, type: 3}
-  m_Name: Neurotaxis minor
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.BacteriaItem
-  itemName: Neurotaxis minor
+  m_Name: Mutagenesis
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.MicrobeItem
+  itemName: Mutagenesis
   itemDescription: 
-  itemPrefab: {fileID: 8741529279835541926, guid: 0e26dd983084d4821a8871fe2674222d, type: 3}
-  itemIcon: {fileID: 21300000, guid: 629c086906dd443c583e14c55c8e5bd9, type: 3}
-  price: 4
+  itemPrefab: {fileID: 6584508006877052939, guid: d8bdebfef4baa4f8c8274e9de35a6402, type: 3}
+  itemIcon: {fileID: 21300000, guid: d7e0e31ae61e14f07aa9369cb139029a, type: 3}
+  price: 2

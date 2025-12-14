@@ -18,18 +18,18 @@ MonoBehaviour:
     onBoardingHint: Go to the library and press E to interact. This opens the Recipe
       List, where all virus recipes are displayed.
     onBoardingState: 0
-  - onBoardingName: Buy 2 bacteries
-    onBoardingDescription: Buy 2 bacteries in the shop
+  - onBoardingName: Buy 2 microbes
+    onBoardingDescription: Buy 2 microbes in the shop
     onBoardingHint: 'Go to the computer and interact with it by pressing E. Then,
       in the shop, purchase two microbes: the Nanoclostre and the Microhaemo.'
     onBoardingState: 1
-  - onBoardingName: Cook turbo bactery
+  - onBoardingName: Cook turbo microbe
     onBoardingDescription: Cook the Nanoclostre
     onBoardingHint: Now take the Nanoclostre from the cart and cook it by placing
       it in the bain-marie.
     onBoardingState: 2
   - onBoardingName: Merge that shit
-    onBoardingDescription: Merge the bacteries together
+    onBoardingDescription: Merge the microbes together
     onBoardingHint: To obtain a virus, take the cooked Nanoclostrum from the bain-marie
       and place it in the Merge Space. Then add the Microhaemo from the cart, and
       hold E to merge them.

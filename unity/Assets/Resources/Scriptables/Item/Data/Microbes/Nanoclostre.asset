@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1aaa388ae224effb415e9d67f5f2a81, type: 3}
-  m_Name: Aeromucosa
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.BacteriaItem
-  itemName: Aeromucosa
+  m_Name: Nanoclostre
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.MicrobeItem
+  itemName: Nanoclostre
   itemDescription: 
-  itemPrefab: {fileID: 8741529279835541926, guid: dd7d88d7346954ad9a7aaf14cec96cb1, type: 3}
-  itemIcon: {fileID: 21300000, guid: 554781fa9be6a4312820658d800d0793, type: 3}
-  price: 10
+  itemPrefab: {fileID: 6584508006877052939, guid: 785bf818619e545d0ba44e714c5fd8a6, type: 3}
+  itemIcon: {fileID: 21300000, guid: 199d2feb9d263441199fc58f7d120313, type: 3}
+  price: 3

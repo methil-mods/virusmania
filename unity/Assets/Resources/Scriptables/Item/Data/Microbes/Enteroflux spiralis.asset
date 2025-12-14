@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1aaa388ae224effb415e9d67f5f2a81, type: 3}
   m_Name: Enteroflux spiralis
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.BacteriaItem
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.MicrobeItem
   itemName: Enteroflux spiralis
   itemDescription: 
   itemPrefab: {fileID: 8741529279835541926, guid: eb93f42ec19d34818a49ce3cc9ebfe2d, type: 3}

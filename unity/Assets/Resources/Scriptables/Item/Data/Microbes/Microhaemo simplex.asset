@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1aaa388ae224effb415e9d67f5f2a81, type: 3}
-  m_Name: Nanoclostrum
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.BacteriaItem
-  itemName: Nanoclostrum reducta
+  m_Name: Microhaemo simplex
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Item.MicrobeItem
+  itemName: Microhaemo simplex
   itemDescription: 
-  itemPrefab: {fileID: 6584508006877052939, guid: 9d94a1cbebf3a45b9a0ccd35d39d4de2, type: 3}
-  itemIcon: {fileID: 21300000, guid: 7f357531b551c467ca2e8903c4411e23, type: 3}
-  price: 7
+  itemPrefab: {fileID: 6584508006877052939, guid: 257813f18691d450d851599bb845b884, type: 3}
+  itemIcon: {fileID: 21300000, guid: 725fea4420867464e9c3dbd46e7d59f6, type: 3}
+  price: 5
