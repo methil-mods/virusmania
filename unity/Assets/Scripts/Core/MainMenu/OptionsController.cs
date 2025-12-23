@@ -33,7 +33,7 @@ namespace Core.MainMenu
                 });
                 b.panel.gameObject.SetActive(false);
             }
-            buttonWithPanel[0].panel.gameObject.SetActive(false);
+            buttonWithPanel[0].panel.gameObject.SetActive(true);
         }
 
         void Init()
